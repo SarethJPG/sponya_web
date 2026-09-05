@@ -1,0 +1,423 @@
+/* =========================================
+   VARIABLES GLOBALES Y RESETEO BÁSICO
+========================================= */
+:root {
+    --color-blanco: #ffffff;
+    --color-negro: #3b3b3b;
+    --color-verde: #5faf3c;
+    /* Familias tipográficas */
+    --fuente-principal: 'Montserrat', sans-serif;
+    --fuente-secundaria: 'Athelas', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    background-color: #f4f4f4; /* Color de fondo temporal para contraste */
+}
+
+/* =========================================
+   ESTILOS DE LA NAVBAR (BARRA DE NAVEGACIÓN)
+========================================= */
+.navbar {
+    background-color: var(--color-blanco);
+    width: 100%;
+    position: fixed; /* Mantiene la navbar fija en la pantalla */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Asegura que esté por encima de todo el contenido */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Transición suave para cuando la ocultemos/mostremos con JS */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Clase dinámica que agregaremos con JS para ocultar la navbar hacia arriba */
+.navbar-oculta {
+    transform: translateY(-100%);
+}
+
+/* SECCIÓN A: Contenedor principal */
+.seccion-a {
+    display: flex;
+    justify-content: space-between; /* Separa Sección B (izq) y Sección D (der) */
+    align-items: center;
+    padding: 0 5%; /* El 5% genera los márgenes iguales a izquierda y derecha */
+    height: 100px; /* Altura base que se ajustará según el logo */
+}
+
+/* SECCIÓN B: Lado Izquierdo (Logo) */
+.seccion-b {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 100px; /* Define la altura del logo (y por ende, afecta la navbar) */
+    width: auto;
+}
+
+/* SECCIÓN D: Lado Derecho (Pestañas y Teléfono) */
+.seccion-d {
+    display: flex;
+    align-items: center;
+    gap: 90px; /* Separación entre la Sección 2 (Pestañas) y la Sección 3 (Contacto) */
+}
+
+/* =========================================
+   SECCIÓN 2: PESTAÑAS (ENLACES)
+========================================= */
+.seccion-2 {
+    display: flex;
+    gap: 25px; /* Separación entre cada palabra/pestaña */
+}
+
+.nav-link {
+    font-family: var(--fuente-principal);
+    font-weight: 550; /* Ancho de letra por defecto */
+    color: var(--color-negro);
+    text-decoration: none;
+    font-size: 1.2rem;
+    position: relative; /* Necesario para posicionar la línea verde debajo */
+    transition: color 0.3s ease, transform 0.3s ease; /* Suaviza el cambio de color y tamaño */
+    display: inline-block; /* Permite que el 'transform: scale' funcione correctamente */
+}
+
+/* Efecto Hover: Cambio a verde y aumento de tamaño (5%) */
+.nav-link:hover {
+    color: var(--color-verde);
+    transform: scale(1.05); 
+}
+
+/* Línea verde inferior animada desde el centro */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* Distancia entre la palabra y la línea */
+    left: 0;
+    width: 100%;
+    height: 4px; /* Grosor de la línea */
+    background-color: var(--color-verde);
+    transform: scaleX(0); /* Inicialmente la línea tiene ancho 0 */
+    transform-origin: center; /* Hace que crezca desde el centro hacia los lados */
+    transition: transform 0.3s ease; /* Suaviza la animación de la línea */
+}
+
+/* Al pasar el cursor, la línea se expande al 100% de la palabra */
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* =========================================
+   SECCIÓN 3: CONTACTO (TELÉFONO)
+========================================= */
+.seccion-3 {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Separación entre el icono y el texto */
+}
+
+.icono-telefono {
+    height: 1.2em; /* Toma la misma altura proporcional al texto que lo acompaña */
+    width: auto;
+}
+
+.texto-telefono {
+    font-family: var(--fuente-principal);
+    font-weight: 700; /* Letra negrita */
+    color: var(--color-verde);
+    font-size: 1.2rem;
+}
+
+/* =========================================
+   ESTILOS DE PRUEBA PARA LAS SECCIONES (HERO Y SCROLL)
+========================================= */
+.seccion-prueba {
+    min-height: 100vh; /* Cada sección ocupa al menos el alto completo de la pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero1 {
+    background-color: #e0e0e0;
+    /* Añadimos un padding-top para que el contenido no quede oculto detrás de la navbar fija al inicio */
+    padding-top: 100px; 
+}
+
+.contenido-prueba {
+    background-color: #d1d1d1;
+}
+
+.final-prueba {
+    background-color: #c2c2c2;
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO PARA LAPTOPS Y MÓVILES)
+========================================= */
+
+/* Adaptación para pantallas medianas (Laptops pequeñas / Tablets en horizontal) */
+@media (max-width: 1024px) {
+    .seccion-d {
+        gap: 20px;
+    }
+    .seccion-2 {
+        gap: 15px;
+    }
+    .nav-link, .texto-telefono {
+        font-size: 14px; /* Reducimos un poco el texto */
+    }
+}
+
+/* Adaptación para móviles (Por ahora ajustamos para que no se rompa, luego podemos implementar un menú hamburguesa si lo requieres) */
+@media (max-width: 768px) {
+    .seccion-a {
+        flex-direction: column; /* Apila el logo y los enlaces */
+        height: auto;
+        padding: 15px 5%;
+        gap: 15px;
+    }
+    .seccion-d {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .seccion-2 {
+        flex-wrap: wrap; /* Permite que las pestañas bajen a la siguiente línea si no caben */
+        justify-content: center;
+    }
+    .hero1 {
+        padding-top: 180px; /* Ajuste para el nuevo alto de la navbar apilada */
+    }
+}
+
+/* =========================================
+   SECCIÓN HERO: CARRUSEL DE BANNERS
+========================================= */
+.hero-carrusel {
+    position: relative;
+    width: 100%;
+    /* Ocultamos lo que desborde para no mostrar las otras cards a los lados */
+    overflow: hidden; 
+    /* Margen superior para que la navbar fija (que mide aprox 100px) no lo tape */
+    margin-top: 100px; 
+}
+
+/* Pista que contiene todas las cards (se moverá horizontalmente con JS) */
+.carrusel-track {
+    display: flex;
+    width: 100%;
+    /* Transición fluida para el efecto de desplazamiento que activaremos con JS */
+    transition: transform 0.5s ease-in-out; 
+}
+
+/* Cada tarjeta del carrusel */
+.carrusel-slide {
+    min-width: 100%; /* Cada card ocupa obligatoriamente el 100% del ancho */
+    position: relative;
+    display: flex;
+    align-items: center; /* Centra el contenido interior (la seccion-1) */
+}
+
+/* Imagen de fondo de la card */
+.img-fondo {
+    width: 100%;
+    height: auto; /* Mantiene la proporción y dicta la altura final de la section */
+    display: block;
+}
+
+/* =========================================
+   CONTENIDO INTERNO DEL BANNER (SECCIÓN 1)
+========================================= */
+.seccion-1 {
+    position: absolute;
+    left: 10%; 
+    /* Cambiamos de 50% a 60% para bajar todos los textos juntos */
+    top: 60%; 
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Elemento 1: Título Principal */
+.titulo-banner {
+    font-family: var(--fuente-secundaria); /* Aplica Athelas */
+    font-size: 5.9rem;
+    line-height: 0.85; /* Reduce el espacio vertical entre "Perfuma" y "tu espacio" */
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.texto-azul {
+    color: #153e6d;
+}
+
+.texto-verde {
+    color: #5dae39;
+}
+
+/* Elemento 2: Línea decorativa */
+.linea-decorativa {
+    width: 2rem; 
+    height: 0.2rem; 
+    background-color: #5dae39;
+    /* Al usar margen negativo a la izquierda, sobresale artificialmente de la alineación */
+    margin-left: -0.7rem; 
+    margin-bottom: 1.3rem;
+    margin-top: 0.5rem;
+}
+
+/* Elemento 3: Subtítulo Premium */
+.subtitulo-premium {
+    font-family: var(--fuente-principal); /* Aplica Montserrat */
+    font-weight: 800;
+    color: var(--color-negro);
+    font-size: 1.2rem;
+    letter-spacing: -0.01rem; /* Pequeño espaciado para mejor lectura */
+    margin-bottom: 0.8rem;
+}
+
+/* Elemento 4: Párrafo */
+.parrafo-banner {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-size: 1.3rem;
+    line-height: 1.5;
+    /* Limitamos el ancho de la caja (aprox. lo que mide el texto "tu espacio" en tamaño 5rem) */
+    max-width: 27rem; 
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+}
+
+/* Elemento 5: Botón */
+.btn-hero {
+    font-family: var(--fuente-principal);
+    font-weight: 400;
+    color: var(--color-negro);
+    text-decoration: none;
+    font-size: 1.1rem;
+    background-color: transparent;
+    border: 2px solid #5dae39;
+    /* Un radio muy alto (50px) crea laterales completamente redondos (estilo pastilla) */
+    border-radius: 50px; 
+    padding: 0.8rem 2.2rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover opcional para mejorar la experiencia */
+.btn-hero:hover {
+    background-color: #5dae39;
+    color: var(--color-blanco);
+}
+
+/* =========================================
+   CONTROLES DEL CARRUSEL (FLECHAS Y PUNTOS)
+========================================= */
+
+/* Flechas Laterales */
+.carrusel-flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.2); 
+    color: var(--color-blanco); 
+    border: none;
+    font-size: 2rem;
+    font-family: monospace; 
+    /* Ancho y alto iguales para formar el cuadrado */
+    width: 2rem;
+    height: 2rem;
+    /* Centramos el símbolo < > dentro del cuadrado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10; 
+    transition: background-color 0.3s ease;
+}
+
+.carrusel-flecha:hover {
+    background-color: rgba(0, 0, 0, 0.3); /* Se oscurece al pasar el cursor */
+}
+
+.flecha-izq {
+    left: 2rem;
+}
+
+.flecha-der {
+    right: 2rem;
+}
+
+/* Puntos Indicadores */
+.carrusel-puntos {
+    position: absolute;
+    bottom: 2rem; /* Casi pegados al borde inferior */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+}
+
+.punto {
+    width: 0.7rem;
+    height: 0.7rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 50%; /* Círculo perfecto */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Estado del punto activo (Card que se está viendo) */
+.punto.activo {
+    background-color: #5dae39;
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO HERO)
+========================================= */
+@media (max-width: 1024px) {
+    .titulo-banner {
+        font-size: 4rem;
+    }
+    .parrafo-banner {
+        max-width: 18rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .seccion-1 {
+        left: 5%; /* Acercamos un poco más el contenido al borde en móviles */
+    }
+    .titulo-banner {
+        font-size: 2.5rem;
+    }
+    .linea-decorativa {
+        margin-left: -0.25rem; /* Adaptamos el sobresaliente */
+    }
+    .subtitulo-premium {
+        font-size: 0.8rem;
+    }
+    .parrafo-banner {
+        font-size: 0.9rem;
+        max-width: 14rem;
+    }
+    .btn-hero {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    /* Ocultamos las flechas en celular si queremos priorizar táctil, 
+       o las achicamos. Por ahora las achicamos. */
+    .carrusel-flecha {
+        font-size: 1.5rem;
+        padding: 0.8rem 0.3rem;
+    }
+}

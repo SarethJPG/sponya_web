@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponya - Inicio</title>
+    
+    <!-- Importación de la fuente Montserrat desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Vinculación del archivo de estilos CSS (Todo en minúsculas) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Inicio del cuerpo de la Navbar -->
+    <nav class="navbar" id="navbar">
+        <!-- Sección A: Contenedor principal de la navbar que abarca todo el ancho -->
+        <div class="seccion-a">
+            
+            <!-- Sección B: Contenedor alineado a la izquierda -->
+            <div class="seccion-b">
+                <!-- Sección 1: Logo de la empresa -->
+                <a href="index.html" class="enlace-logo">
+                    <img src="imgs/logo.webp" alt="Logo Sponya" class="logo" loading="lazy">
+                </a>
+            </div>
+
+            <!-- Sección D: Contenedor alineado a la derecha -->
+            <div class="seccion-d">
+                <!-- Sección 2: Pestañas/Enlaces de navegación -->
+                <div class="seccion-2">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                    <a href="guantes.html" class="nav-link">Guantes</a>
+                    <a href="aerosoles.html" class="nav-link">Aerosoles</a>
+                    <a href="difusores.html" class="nav-link">Difusores</a>
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                </div>
+                
+                <!-- Sección 3: Información de Contacto (Teléfono) -->
+                <div class="seccion-3">
+                    <img src="imgs/telefono.svg" alt="Icono Teléfono" class="icono-telefono" loading="lazy">
+                    <span class="texto-telefono">55 55 76 67 09 / 55 55 76 00 04</span>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <!-- Fin de la Navbar -->
+    <!-- =========================================
+         SECCIÓN HERO: CARRUSEL DE BANNERS
+    ========================================= -->
+    <section class="hero-carrusel" id="hero">
+        
+        <!-- Contenedor de la pista donde se deslizarán los banners -->
+        <div class="carrusel-track" id="carrusel-track">
+            
+            <!-- ================= CARD 1 ================= -->
+            <div class="carrusel-slide">
+                <!-- Imagen de fondo del banner que dictará la altura -->
+                <img src="imgs/banner_1.webp" alt="Banner Perfuma tu espacio" class="img-fondo" loading="lazy">
+                
+                <!-- Sección 1: Contenedor absoluto de los textos -->
+                <div class="seccion-1">
+                    <!-- Elemento 1: Título Principal -->
+                    <h1 class="titulo-banner">
+                        <span class="texto-azul">Perfuma</span><br>
+                        <span class="texto-verde">tu espacio</span>
+                    </h1>
+                    
+                    <!-- Elemento 2: Pequeña línea sobresaliente -->
+                    <div class="linea-decorativa"></div>
+                    
+                    <!-- Elemento 3: Subtítulo -->
+                    <h2 class="subtitulo-premium">NUEVA LINEA PREMIUM DE AROMATIZANTES</h2>
+                    
+                    <!-- Elemento 4: Párrafo -->
+                    <p class="parrafo-banner">Fragancias exclusivas que transforman tus ambientes y crean experiencias inolvidables</p>
+                    
+                    <!-- Elemento 5: Botón -->
+                    <a href="#" class="btn-hero">Conoce la selección</a>
+                </div>
+            </div>
+
+            <!-- ================= CARD 2 (Duplicada) ================= -->
+            <div class="carrusel-slide">
+                <img src="imgs/banner_1.webp" alt="Banner Perfuma tu espacio 2" class="img-fondo" loading="lazy">
+                <div class="seccion-1">
+                    <h1 class="titulo-banner">
+                        <span class="texto-azul">Perfuma</span><br>
+                        <span class="texto-verde">tu espacio</span>
+                    </h1>
+                    <div class="linea-decorativa"></div>
+                    <h2 class="subtitulo-premium">NUEVA LINEA PREMIUM DE AROMATIZANTES</h2>
+                    <p class="parrafo-banner">Fragancias exclusivas que transforman tus ambientes y crean experiencias inolvidables</p>
+                    <a href="#" class="btn-hero">Conoce la selección</a>
+                </div>
+            </div>
+
+            <!-- ================= CARD 3 (Duplicada) ================= -->
+            <div class="carrusel-slide">
+                <img src="imgs/banner_1.webp" alt="Banner Perfuma tu espacio 3" class="img-fondo" loading="lazy">
+                <div class="seccion-1">
+                    <h1 class="titulo-banner">
+                        <span class="texto-azul">Perfuma</span><br>
+                        <span class="texto-verde">tu espacio</span>
+                    </h1>
+                    <div class="linea-decorativa"></div>
+                    <h2 class="subtitulo-premium">NUEVA LINEA PREMIUM DE AROMATIZANTES</h2>
+                    <p class="parrafo-banner">Fragancias exclusivas que transforman tus ambientes y crean experiencias inolvidables</p>
+                    <a href="#" class="btn-hero">Conoce la selección</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Botones de navegación (Flechas) -->
+        <button class="carrusel-flecha flecha-izq" id="flecha-izq">&lt;</button>
+        <button class="carrusel-flecha flecha-der" id="flecha-der">&gt;</button>
+
+        <!-- Indicadores (Puntos) -->
+        <div class="carrusel-puntos" id="carrusel-puntos">
+            <!-- El primer punto inicia con la clase "activo" -->
+            <span class="punto activo" data-index="0"></span>
+            <span class="punto" data-index="1"></span>
+            <span class="punto" data-index="2"></span>
+        </div>
+        
+    </section>
+    <!-- Fin de la Sección Hero -->
+
+    <section id="contenido-prueba" class="seccion-prueba contenido-prueba">
+        <!-- Contenido simulado para hacer más scroll -->
+        <h2>Más contenido</h2>
+        <p>Sigue deslizando hacia abajo... Y luego desliza hacia arriba para ver aparecer la barra.</p>
+    </section>
+    
+    <section id="final-prueba" class="seccion-prueba final-prueba">
+        <!-- Contenido simulado final -->
+        <h2>Fin de la página</h2>
+    </section>
+
+    <!-- Vinculación del archivo JavaScript (Todo en minúsculas) -->
+    <script src="script.js"></script>
+</body>
+</html>
