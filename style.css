@@ -829,10 +829,14 @@ html {
 }
 
 .guante-img-central {
-    height: 50vw; /* Ligeramente menor para no exagerar la altura en laptops */
-    max-height: 85vh; 
+    /* 10% más grande (pasamos de 50vw a 55vw) */
+    height: 55vw; 
+    /* Aumentamos el max-height para permitir que el guante crezca libremente */
+    max-height: 95vh; 
     width: auto;
     object-fit: contain;
+    /* Desplaza la imagen exactamente un 10% del ancho de la pantalla hacia la izquierda */
+    transform: translateX(-1vw); 
 }
 
 /* --- CAPA 3: Textos (Izquierda) --- */
@@ -840,27 +844,30 @@ html {
     position: absolute;
     top: 0;
     left: 0;
-    width: 40%; /* Más ancho para que el texto respire */
+    width: 45%; 
     height: 100%;
     display: flex;
-    flex-direction: column; /* Columna para el centrado nativo */
-    justify-content: center; /* Centra perfectamente el bloque en la altura disponible */
-    padding-left: 8%; 
+    flex-direction: column; 
+    justify-content: center; 
+    /* Reducimos de 15% a 11% para pegarlo un poquito más a la izquierda */
+    padding-left: 11%; 
 }
 
 .guante-textos {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* Eleva todo el bloque ligeramente un 5% sin romper la caja (reemplaza el padding de 20rem) */
-    transform: translateY(-5%); 
+    /* Reducimos el 5% a 0% para regresarlo a su centro natural, subiéndolo un poco. 
+       (Si aún lo quieres más arriba, puedes usar un valor negativo como -3%) */
+    transform: translateY(0%); 
 }
 
 /* Elemento 1: Título */
 .guante-titulo {
     font-family: var(--fuente-secundaria);
     color: #173456;
-    font-size: clamp(2rem, 4vw, 3.5rem); 
+    /* Aumentamos el escalado: mínimo 2.5rem, ideal 4.5vw, máximo 4.5rem */
+    font-size: clamp(2.5rem, 4.5vw, 4.5rem); 
     line-height: 0.95;
     margin-bottom: 1.2rem;
     font-weight: 600;
@@ -871,9 +878,11 @@ html {
     font-family: var(--fuente-principal); 
     color: var(--color-negro);
     font-weight: 600;
-    font-size: 0.95rem;
+    /* Fuente aumentada */
+    font-size: 1.15rem; 
     line-height: 1.3;
-    max-width: 25rem; 
+    /* Ampliamos el contenedor para evitar saltos de línea indeseados */
+    max-width: 28rem; 
     margin-bottom: 1rem;
 }
 
@@ -881,20 +890,23 @@ html {
 .linea-azul {
     background-color: #173456;
     margin-bottom: 1.5rem;
-    width: 2rem; 
-    height: 0.3rem; 
-    margin-left: -1rem; 
+    /* Línea más ancha y gruesa para mantener proporción */
+    width: 2.5rem; 
+    height: 0.4rem; 
+    margin-left: -1.2rem; 
 }
 
 /* Elemento 4: Lista de 5 puntos */
 .guante-lista {
     font-family: var(--fuente-principal); 
     color: var(--color-negro);
-    font-size: 1.1rem;
+    /* Fuente aumentada */
+    font-size: 1.3rem; 
     line-height: 1.6;
     list-style-type: disc; 
     margin-left: 1.2rem; 
-    max-width: 14rem; 
+    /* Ampliamos el contenedor al crecer la letra */
+    max-width: 17rem; 
     margin-bottom: 2rem;
     font-weight: 600;
 }
@@ -903,21 +915,24 @@ html {
 .guante-texto-colores {
     font-family: var(--fuente-principal);
     color: var(--color-negro);
-    font-size: 0.7rem;
+    /* Fuente aumentada */
+    font-size: 0.9rem; 
     font-weight: 550;
     margin-bottom: 0.5rem;
 }
 
 /* Elemento 6: Imagen colores */
 .guante-img-colores {
-    height: 4.5rem; 
+    /* Imagen más grande */
+    height: 5.5rem; 
     width: auto;
     margin-bottom: 3rem;
 }
 
-/* Elemento 7: Botón modificado */
+/* Elemento 7: Botón modificado (Recuperado) */
 .btn-guante {
-    border-color: #173456; 
+    border: 2px solid #173456; 
+    color: #173456; 
 }
 
 .btn-guante:hover {
