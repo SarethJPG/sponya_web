@@ -797,91 +797,90 @@ html {
     position: relative;
     background-color: var(--color-blanco);
     width: 100%;
-    /* display y justify-content removidos, el centrado ahora lo dicta la Capa 2 */
     overflow: hidden;
+    /* Altura mínima de seguridad para que el texto nunca se corte en pantallas raras */
+    min-height: 38rem; 
 }
 
 /* --- CAPA 1: Imagen de fondo (Mitad derecha) --- */
 .guante-capa-1 {
-    /* CAMBIO: Ahora es absoluta para no dictar la altura, pero se mantiene a la derecha */
     position: absolute;
     top: 0;
     right: 0;
     width: 50%;
-    height: 90%; /* Toma la altura que la Capa 2 le dicte a la sección */
+    height: 100%; /* Corregido al 100% para llenar el fondo */
 }
 
 .guante-img-fondo {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* CAMBIO: Asegura que no se deforme ni se aplaste con la nueva altura */
+    object-fit: cover;
+    object-position: left; /* Asegura que la mujer no se recorte al comprimir la pantalla */
     display: block;
 }
 
-/* --- CAPA 2: Guante central (Flotante) --- */
+/* --- CAPA 2: Guante central (Flotante y dicta altura) --- */
 .guante-capa-2 {
-    /* CAMBIO: Pasa al flujo normal (relative) para ser la capa que empuja y dicta la altura */
     position: relative;
     width: 100%;
     display: flex;
-    justify-content: center; /* Centra el guante perfectamente a la mitad */
+    justify-content: center; 
     align-items: center; 
 }
 
 .guante-img-central {
-    /* CAMBIO: Como la Capa 1 era cuadrada y ocupaba el 50% del ancho (50vw), 
-       ponerle 55vw hace a esta Capa 2 ligeramente más grande que el tamaño original de la Capa 1 */
-    height: 55vw; 
-    max-height: 90vh; /* Limita que no sea exageradamente alta en monitores gigantes */
+    height: 50vw; /* Ligeramente menor para no exagerar la altura en laptops */
+    max-height: 85vh; 
     width: auto;
     object-fit: contain;
 }
 
-/* --- CAPA 3: Textos (Tercio izquierdo) --- */
+/* --- CAPA 3: Textos (Izquierda) --- */
 .guante-capa-3 {
     position: absolute;
     top: 0;
     left: 0;
-    width: 33.33%; /* Abarca 1/3 de la sección */
+    width: 40%; /* Más ancho para que el texto respire */
     height: 100%;
     display: flex;
-    align-items: center; /* Centra los textos verticalmente */
-    padding-left: 10%; /* Respiro desde el borde izquierdo */
-    padding-bottom: 20rem;
+    flex-direction: column; /* Columna para el centrado nativo */
+    justify-content: center; /* Centra perfectamente el bloque en la altura disponible */
+    padding-left: 8%; 
 }
 
 .guante-textos {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* Asegúrate de ELIMINAR el transform y transform-origin si aún los tienes aquí */
+    /* Eleva todo el bloque ligeramente un 5% sin romper la caja (reemplaza el padding de 20rem) */
+    transform: translateY(-5%); 
 }
 
+/* Elemento 1: Título */
 .guante-titulo {
     font-family: var(--fuente-secundaria);
     color: #173456;
-    /* Usamos clamp: Mínimo 2rem, ideal 4vw, Máximo 3.5rem */
     font-size: clamp(2rem, 4vw, 3.5rem); 
-    line-height: 0.9;
-    margin-bottom: 1.5rem;
+    line-height: 0.95;
+    margin-bottom: 1.2rem;
     font-weight: 600;
 }
 
 /* Elemento 2: Subtítulo */
 .guante-subtitulo {
-    font-family: var(--fuente-principal); /* Montserrat */
+    font-family: var(--fuente-principal); 
     color: var(--color-negro);
     font-weight: 600;
     font-size: 0.95rem;
-    line-height: 1.2;
-    max-width: 25rem; /* Limita el ancho por debajo del título */
+    line-height: 1.3;
+    max-width: 25rem; 
     margin-bottom: 1rem;
 }
 
-/* Elemento 3: Línea azul (Hereda forma de .linea-decorativa de Hero) */
+/* Elemento 3: Línea azul */
 .linea-azul {
     background-color: #173456;
-    margin-bottom: 1.7rem;
+    margin-bottom: 1.5rem;
     width: 2rem; 
     height: 0.3rem; 
     margin-left: -1rem; 
@@ -889,14 +888,14 @@ html {
 
 /* Elemento 4: Lista de 5 puntos */
 .guante-lista {
-    font-family: var(--fuente-principal); /* Montserrat */
+    font-family: var(--fuente-principal); 
     color: var(--color-negro);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1.6;
-    list-style-type: disc; /* Punto sólido por defecto */
-    margin-left: 1.2rem; /* Necesario para que las viñetas sean visibles */
-    max-width: 12rem; /* Exactamente la mitad del max-width del subtítulo (20rem) */
-    margin-bottom: 2.2rem;
+    list-style-type: disc; 
+    margin-left: 1.2rem; 
+    max-width: 14rem; 
+    margin-bottom: 2rem;
     font-weight: 600;
 }
 
@@ -906,21 +905,21 @@ html {
     color: var(--color-negro);
     font-size: 0.7rem;
     font-weight: 550;
+    margin-bottom: 0.5rem;
 }
 
 /* Elemento 6: Imagen colores */
 .guante-img-colores {
-    height: 5.5rem; 
+    height: 4.5rem; 
     width: auto;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 /* Elemento 7: Botón modificado */
 .btn-guante {
-    border-color: #173456; /* Borde azul */
+    border-color: #173456; 
 }
 
-/* Hover específico para el botón azul */
 .btn-guante:hover {
     background-color: #173456; 
     color: var(--color-blanco);
@@ -929,49 +928,37 @@ html {
 /* =========================================
    MEDIA QUERIES (RESPONSIVO GUANTE)
 ========================================= */
-
-/* Adaptación Laptops */
 @media (max-width: 1024px) {
     .guante-capa-3 {
-        width: 40%; /* Aumentamos ligeramente el espacio de texto */
-    }
-    .guante-titulo {
-        font-size: 2.8rem;
+        width: 45%; 
     }
 }
 
-/* Adaptación Móviles (Stacking) */
 @media (max-width: 768px) {
     .seccion-guante {
-        display: flex; /* CAMBIO: Restaurado para apilar en móvil */
+        display: flex; 
         flex-direction: column; 
     }
-    
     .guante-capa-1 {
-        position: relative; /* CAMBIO: Rompemos la posición absoluta para que vuelva al flujo */
+        position: relative; 
         width: 100%;
         height: auto;
     }
-
     .guante-img-fondo {
-        height: auto; /* CAMBIO: Permite que la imagen se adapte natural en móvil */
+        height: auto; 
     }
-
     .guante-capa-2 {
-        display: none; /* Ocultamos el guante central para no saturar el móvil */
+        display: none; 
     }
-    
     .guante-capa-3 {
-        position: relative; /* Rompemos la posición flotante para apilarlo debajo */
+        position: relative; 
         width: 100%;
-        padding: 3rem 5%;
+        padding: 4rem 5%;
     }
-
-    .guante-subtitulo {
-        max-width: 100%; /* Dejamos que ocupe todo el ancho posible */
+    .guante-textos {
+        transform: none; /* Apagamos el desplazamiento en móvil */
     }
-
-    .guante-lista {
+    .guante-subtitulo, .guante-lista {
         max-width: 100%; 
     }
 }
