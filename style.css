@@ -643,3 +643,132 @@ body {
         gap: 3rem;
     }
 }
+
+/* =========================================
+   SECCIÓN: BANNER AMBIENTES
+========================================= */
+.seccion-ambientes {
+    position: relative;
+    width: 100%;
+    /* Ocultamos cualquier desbordamiento */
+    overflow: hidden; 
+}
+
+/* Imagen de fondo que determina la altura */
+.ambientes-img-fondo {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* max-height opcional por si en pantallas ultranchas se hace muy alta */
+    max-height: 80vh;
+    object-fit: cover;
+}
+
+/* Contenedor superpuesto que ocupa el 100% del banner */
+.ambientes-contenedor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex; /* Divide el contenedor en columnas */
+}
+
+/* Mitad Izquierda: Vacía, solo empuja el contenido a la derecha */
+.ambientes-mitad-izq {
+    width: 40%;
+}
+
+/* Mitad Derecha: Contiene los textos centrados */
+.ambientes-mitad-der {
+    width: 60%;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente dentro de su mitad */
+    align-items: center; /* Centra verticalmente */
+    padding: 0 5%; /* Respiro lateral por si la pantalla se reduce */
+}
+
+/* Caja que agrupa los textos para controlar su ancho */
+.ambientes-caja-textos {
+    max-width: 30rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5rem;
+}
+
+/* Elemento 1: Subtítulo (Montserrat) */
+.ambientes-subtitulo {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-weight: 650;
+    font-size: 1.5rem;
+    /* Ajusta este valor para separar el subtítulo del título */
+    margin-bottom: 1.9rem; 
+}
+
+/* Elemento 2: Título principal (Athelas) */
+.ambientes-titulo {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-verde);
+    font-weight: 500;
+    font-size: 3.5rem;
+    line-height: 1;
+    /* Ajusta este valor para separar el título del párrafo */
+    margin-bottom: 1.5rem; 
+    margin-top: 0.5;
+}
+
+/* Elemento 3: Párrafo (Athelas) */
+.ambientes-parrafo {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-negro);
+    font-size: 1.7rem;
+    line-height: 1;
+    max-width: 26rem;
+    margin-top: 1rem;
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO AMBIENTES)
+========================================= */
+
+/* Adaptación para pantallas medianas (Laptops) */
+@media (max-width: 1024px) {
+    .ambientes-titulo {
+        font-size: 2.5rem;
+    }
+    .ambientes-subtitulo, .ambientes-parrafo {
+        font-size: 1rem;
+    }
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+    .ambientes-contenedor {
+        /* En móvil, la distribución 50/50 suele apretar mucho el texto, 
+           así que dejamos que la caja ocupe casi todo el ancho */
+        justify-content: center; 
+    }
+    
+    .ambientes-mitad-izq {
+        display: none; /* Ocultamos la mitad vacía en móviles */
+    }
+    
+    .ambientes-mitad-der {
+        width: 90%; /* Toma casi todo el ancho */
+        text-align: center; /* Centramos el texto para mejor estética en móvil */
+    }
+    
+    .ambientes-caja-textos {
+        align-items: center; /* Asegura el centrado de los bloques de texto */
+        /* Agregamos un fondo semitransparente blanco opcional si la imagen 
+           interfiere con la lectura en celular al abarcar toda la pantalla */
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 2rem;
+        border-radius: 1rem;
+    }
+
+    .ambientes-titulo {
+        font-size: 2rem;
+    }
+}
