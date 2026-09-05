@@ -22,20 +22,11 @@ body {
 }
 
 /* =========================================
-   ESCALADO 100% FLUIDO (Monitores y Laptops)
+   ESCALADO BASE FLUIDO (Sin saltos bruscos)
 ========================================= */
 html {
-    /* La fuente base será fluida: 
-       Mínimo 9px, escalado ideal basado en el ancho (0.833vw), Máximo 16px */
-    font-size: clamp(9px, 0.833vw, 16px); 
-}
-
-/* En celulares y tablets pequeñas (768px o menos), congelamos el tamaño 
-   en 14px porque el diseño ya se apila hacia abajo y no necesita encogerse más */
-@media (max-width: 768px) {
-    html {
-        font-size: 14px;
-    }
+    /* Tamaño base que se ajusta suavemente entre 14px y 18px según el ancho de la ventana */
+    font-size: clamp(14px, 0.7vw + 10px, 18px);
 }
 
 /* =========================================
@@ -44,16 +35,14 @@ html {
 .navbar {
     background-color: var(--color-blanco);
     width: 100%;
-    position: fixed; /* Mantiene la navbar fija en la pantalla */
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000; /* Asegura que esté por encima de todo el contenido */
+    z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    /* Transición suave para cuando la ocultemos/mostremos con JS */
     transition: transform 0.3s ease-in-out;
 }
 
-/* Clase dinámica que agregaremos con JS para ocultar la navbar hacia arriba */
 .navbar-oculta {
     transform: translateY(-100%);
 }
@@ -61,10 +50,10 @@ html {
 /* SECCIÓN A: Contenedor principal */
 .seccion-a {
     display: flex;
-    justify-content: space-between; /* Separa Sección B (izq) y Sección D (der) */
+    justify-content: space-between;
     align-items: center;
-    padding: 0 5%; /* El 5% genera los márgenes iguales a izquierda y derecha */
-    height: 100px; /* Altura base que se ajustará según el logo */
+    padding: 0.5rem 5%; /* altura flexible, ya no height fijo */
+    /* La altura la dicta el logo */
 }
 
 /* SECCIÓN B: Lado Izquierdo (Logo) */
@@ -74,7 +63,7 @@ html {
 }
 
 .logo {
-    height: 100px; /* Define la altura del logo (y por ende, afecta la navbar) */
+    height: 6rem; /* 96px aprox, escalable con rem */
     width: auto;
 }
 
@@ -82,91 +71,83 @@ html {
 .seccion-d {
     display: flex;
     align-items: center;
-    gap: 90px; /* Separación entre la Sección 2 (Pestañas) y la Sección 3 (Contacto) */
+    gap: 5rem; /* en rem, antes 90px */
 }
 
-/* =========================================
-   SECCIÓN 2: PESTAÑAS (ENLACES)
-========================================= */
+/* SECCIÓN 2: PESTAÑAS */
 .seccion-2 {
     display: flex;
-    gap: 25px; /* Separación entre cada palabra/pestaña */
+    gap: 1.5rem; /* en rem, antes 25px */
 }
 
 .nav-link {
     font-family: var(--fuente-principal);
-    font-weight: 550; /* Ancho de letra por defecto */
+    font-weight: 550;
     color: var(--color-negro);
     text-decoration: none;
     font-size: 1.2rem;
-    position: relative; /* Necesario para posicionar la línea verde debajo */
-    transition: color 0.3s ease, transform 0.3s ease; /* Suaviza el cambio de color y tamaño */
-    display: inline-block; /* Permite que el 'transform: scale' funcione correctamente */
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
 }
 
-/* Efecto Hover: Cambio a verde y aumento de tamaño (5%) */
 .nav-link:hover {
     color: var(--color-verde);
-    transform: scale(1.05); 
+    transform: scale(1.05);
 }
 
-/* Línea verde inferior animada desde el centro */
 .nav-link::after {
     content: '';
     position: absolute;
-    bottom: -5px; /* Distancia entre la palabra y la línea */
+    bottom: -0.3rem; /* en rem */
     left: 0;
     width: 100%;
-    height: 4px; /* Grosor de la línea */
+    height: 0.25rem;
     background-color: var(--color-verde);
-    transform: scaleX(0); /* Inicialmente la línea tiene ancho 0 */
-    transform-origin: center; /* Hace que crezca desde el centro hacia los lados */
-    transition: transform 0.3s ease; /* Suaviza la animación de la línea */
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
 }
 
-/* Al pasar el cursor, la línea se expande al 100% de la palabra */
 .nav-link:hover::after {
     transform: scaleX(1);
 }
 
-/* =========================================
-   SECCIÓN 3: CONTACTO (TELÉFONO)
-========================================= */
+/* SECCIÓN 3: CONTACTO (TELÉFONO) */
 .seccion-3 {
     display: flex;
     align-items: center;
-    gap: 10px; /* Separación entre el icono y el texto */
+    gap: 0.6rem;
 }
 
 .icono-telefono {
-    height: 1.2em; /* Toma la misma altura proporcional al texto que lo acompaña */
+    height: 1.2em;
     width: auto;
 }
 
 .texto-telefono {
     font-family: var(--fuente-principal);
-    font-weight: 700; /* Letra negrita */
+    font-weight: 700;
     color: var(--color-verde);
     font-size: 1.2rem;
 }
 
 /* =========================================
-   ESTILOS DE PRUEBA PARA LAS SECCIONES (HERO Y SCROLL)
+   ESTILOS DE PRUEBA PARA SECCIONES (SCROLL)
 ========================================= */
 .seccion-prueba {
-    min-height: 100vh; /* Cada sección ocupa al menos el alto completo de la pantalla */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 20px;
+    padding: 1.5rem;
 }
 
 .hero1 {
     background-color: #e0e0e0;
-    /* Añadimos un padding-top para que el contenido no quede oculto detrás de la navbar fija al inicio */
-    padding-top: 100px; 
+    padding-top: 6rem; /* para compensar navbar */
 }
 
 .contenido-prueba {
@@ -178,40 +159,39 @@ html {
 }
 
 /* =========================================
-   MEDIA QUERIES (RESPONSIVO PARA LAPTOPS Y MÓVILES)
+   MEDIA QUERIES (SOLO ESTRUCTURALES)
 ========================================= */
 
-/* Adaptación para pantallas medianas (Laptops pequeñas / Tablets en horizontal) */
+/* Laptops pequeñas / Tablets horizontales */
 @media (max-width: 1024px) {
     .seccion-d {
-        gap: 20px;
+        gap: 2rem;
     }
     .seccion-2 {
-        gap: 15px;
+        gap: 1rem;
     }
     .nav-link, .texto-telefono {
-        font-size: 14px; /* Reducimos un poco el texto */
+        font-size: 1rem; /* se ajusta al rem base */
     }
 }
 
-/* Adaptación para móviles (Por ahora ajustamos para que no se rompa, luego podemos implementar un menú hamburguesa si lo requieres) */
+/* Móviles */
 @media (max-width: 768px) {
     .seccion-a {
-        flex-direction: column; /* Apila el logo y los enlaces */
-        height: auto;
-        padding: 15px 5%;
-        gap: 15px;
+        flex-direction: column;
+        padding: 0.8rem 5%;
+        gap: 1rem;
     }
     .seccion-d {
         flex-direction: column;
-        gap: 15px;
+        gap: 1rem;
     }
     .seccion-2 {
-        flex-wrap: wrap; /* Permite que las pestañas bajen a la siguiente línea si no caben */
+        flex-wrap: wrap;
         justify-content: center;
     }
     .hero1 {
-        padding-top: 180px; /* Ajuste para el nuevo alto de la navbar apilada */
+        padding-top: 10rem;
     }
 }
 
@@ -221,32 +201,26 @@ html {
 .hero-carrusel {
     position: relative;
     width: 100%;
-    /* Ocultamos lo que desborde para no mostrar las otras cards a los lados */
-    overflow: hidden; 
-    /* Margen superior para que la navbar fija (que mide aprox 100px) no lo tape */
-    margin-top: 100px; 
+    overflow: hidden;
+    margin-top: 6rem; /* altura de navbar (antes 100px) */
 }
 
-/* Pista que contiene todas las cards (se moverá horizontalmente con JS) */
 .carrusel-track {
     display: flex;
     width: 100%;
-    /* Transición fluida para el efecto de desplazamiento que activaremos con JS */
-    transition: transform 0.5s ease-in-out; 
+    transition: transform 0.5s ease-in-out;
 }
 
-/* Cada tarjeta del carrusel */
 .carrusel-slide {
-    min-width: 100%; /* Cada card ocupa obligatoriamente el 100% del ancho */
+    min-width: 100%;
     position: relative;
     display: flex;
-    align-items: center; /* Centra el contenido interior (la seccion-1) */
+    align-items: center;
 }
 
-/* Imagen de fondo de la card */
 .img-fondo {
     width: 100%;
-    height: auto; /* Mantiene la proporción y dicta la altura final de la section */
+    height: auto;
     display: block;
 }
 
@@ -255,20 +229,18 @@ html {
 ========================================= */
 .seccion-1 {
     position: absolute;
-    left: 10%; 
-    /* Cambiamos de 50% a 60% para bajar todos los textos juntos */
-    top: 60%; 
+    left: 10%;
+    top: 60%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-/* Elemento 1: Título Principal */
 .titulo-banner {
-    font-family: var(--fuente-secundaria); /* Aplica Athelas */
-    font-size: 5.9rem;
-    line-height: 0.85; /* Reduce el espacio vertical entre "Perfuma" y "tu espacio" */
+    font-family: var(--fuente-secundaria);
+    font-size: clamp(2.5rem, 8vw, 5.9rem);
+    line-height: 0.85;
     margin-bottom: 1rem;
     font-weight: 400;
 }
@@ -281,55 +253,47 @@ html {
     color: #5dae39;
 }
 
-/* Elemento 2: Línea decorativa */
 .linea-decorativa {
-    width: 2rem; 
-    height: 0.2rem; 
+    width: 2rem;
+    height: 0.2rem;
     background-color: #5dae39;
-    /* Al usar margen negativo a la izquierda, sobresale artificialmente de la alineación */
-    margin-left: -0.7rem; 
+    margin-left: -0.7rem;
     margin-bottom: 1.3rem;
     margin-top: 0.5rem;
 }
 
-/* Elemento 3: Subtítulo Premium */
 .subtitulo-premium {
-    font-family: var(--fuente-principal); /* Aplica Montserrat */
+    font-family: var(--fuente-principal);
     font-weight: 800;
     color: var(--color-negro);
-    font-size: 1.2rem;
-    letter-spacing: -0.01rem; /* Pequeño espaciado para mejor lectura */
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+    letter-spacing: -0.01rem;
     margin-bottom: 0.8rem;
 }
 
-/* Elemento 4: Párrafo */
 .parrafo-banner {
     font-family: var(--fuente-principal);
     color: var(--color-negro);
-    font-size: 1.3rem;
+    font-size: clamp(0.9rem, 1.8vw, 1.3rem);
     line-height: 1.5;
-    /* Limitamos el ancho de la caja (aprox. lo que mide el texto "tu espacio" en tamaño 5rem) */
-    max-width: 27rem; 
+    max-width: clamp(14rem, 30vw, 27rem);
     margin-bottom: 2.5rem;
     font-weight: 500;
 }
 
-/* Elemento 5: Botón */
 .btn-hero {
     font-family: var(--fuente-principal);
     font-weight: 400;
     color: var(--color-negro);
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 1.4vw, 1.1rem);
     background-color: transparent;
     border: 2px solid #5dae39;
-    /* Un radio muy alto (50px) crea laterales completamente redondos (estilo pastilla) */
-    border-radius: 50px; 
+    border-radius: 50px;
     padding: 0.8rem 2.2rem;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Hover opcional para mejorar la experiencia */
 .btn-hero:hover {
     background-color: #5dae39;
     color: var(--color-blanco);
@@ -338,31 +302,27 @@ html {
 /* =========================================
    CONTROLES DEL CARRUSEL (FLECHAS Y PUNTOS)
 ========================================= */
-
-/* Flechas Laterales */
 .carrusel-flecha {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.2); 
-    color: var(--color-blanco); 
+    background-color: rgba(0, 0, 0, 0.2);
+    color: var(--color-blanco);
     border: none;
     font-size: 2rem;
-    font-family: monospace; 
-    /* Ancho y alto iguales para formar el cuadrado */
+    font-family: monospace;
     width: 2rem;
     height: 2rem;
-    /* Centramos el símbolo < > dentro del cuadrado */
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    z-index: 10; 
+    z-index: 10;
     transition: background-color 0.3s ease;
 }
 
 .carrusel-flecha:hover {
-    background-color: rgba(0, 0, 0, 0.3); /* Se oscurece al pasar el cursor */
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .flecha-izq {
@@ -373,10 +333,9 @@ html {
     right: 2rem;
 }
 
-/* Puntos Indicadores */
 .carrusel-puntos {
     position: absolute;
-    bottom: 2rem; /* Casi pegados al borde inferior */
+    bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -388,37 +347,27 @@ html {
     width: 0.7rem;
     height: 0.7rem;
     background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 50%; /* Círculo perfecto */
+    border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-/* Estado del punto activo (Card que se está viendo) */
 .punto.activo {
     background-color: #5dae39;
 }
 
 /* =========================================
-   MEDIA QUERIES (RESPONSIVO HERO)
+   RESPONSIVO HERO (solo ajustes de alineación)
 ========================================= */
-@media (max-width: 1024px) {
-    .titulo-banner {
-        font-size: 4rem;
-    }
-    .parrafo-banner {
-        max-width: 18rem;
-    }
-}
-
 @media (max-width: 768px) {
     .seccion-1 {
-        left: 5%; /* Acercamos un poco más el contenido al borde en móviles */
+        left: 5%;
     }
     .titulo-banner {
-        font-size: 2.5rem;
+        font-size: clamp(2rem, 6vw, 2.5rem);
     }
     .linea-decorativa {
-        margin-left: -0.25rem; /* Adaptamos el sobresaliente */
+        margin-left: -0.25rem;
     }
     .subtitulo-premium {
         font-size: 0.8rem;
@@ -431,11 +380,10 @@ html {
         padding: 0.6rem 1.5rem;
         font-size: 0.9rem;
     }
-    /* Ocultamos las flechas en celular si queremos priorizar táctil, 
-       o las achicamos. Por ahora las achicamos. */
     .carrusel-flecha {
         font-size: 1.5rem;
-        padding: 0.8rem 0.3rem;
+        width: 1.5rem;
+        height: 1.5rem;
     }
 }
 
@@ -444,128 +392,97 @@ html {
 ========================================= */
 .seccion-coleccion {
     background-color: var(--color-blanco);
-    /* 5rem de espacio arriba y abajo, 10% a los lados para asegurar un margen lateral amplio */
-    padding: 5rem 10%; 
+    padding: 5rem 10%;
     width: 100%;
 }
 
-/* --- Contenedor del Encabezado (Títulos) --- */
 .coleccion-encabezado {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra los títulos horizontalmente */
-    gap: 0.5rem; /* Separación vertical entre el título y el subtítulo */
-    margin-bottom: 4rem; /* Separación entre el bloque de títulos y las imágenes */
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 4rem;
     text-align: center;
 }
 
 .coleccion-titulo {
-    font-family: var(--fuente-secundaria); /* Athelas */
-    color: var(--color-negro); /* Ya configuraste esta variable a #3b3b3b */
-    font-size: 3.5rem;
-    font-weight: normal; /* Athelas luce mejor en pesos normales para encabezados */
-}
-
-.coleccion-subtitulo {
-    font-family: var(--fuente-secundaria); /* Athelas */
-    color: var(--color-verde);
-    font-size: 2rem;
+    font-family: var(--fuente-secundaria);
+    color: var(--color-negro);
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: normal;
 }
 
-/* --- Contenedor de la Cuadrícula de 3 Imágenes --- */
-.coleccion-grid {
-    display: grid;
-    /* Crea 3 columnas del mismo ancho (1 fracción de espacio cada una) */
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem; /* Espacio exacto entre cada tarjeta/imagen */
+.coleccion-subtitulo {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-verde);
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: normal;
 }
 
-/* --- Cada Tarjeta (Imagen + Textos + Botón) --- */
+.coleccion-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
 .coleccion-card {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Alineación vertical al centro */
+    align-items: center;
     text-align: center;
 }
 
 .coleccion-img {
     width: 100%;
-    /* Limitamos el tamaño para que no crezcan de forma desproporcionada en monitores gigantes */
-    max-width: 22rem; 
+    max-width: 22rem;
     height: auto;
     object-fit: cover;
-    margin-bottom: 1.5rem; /* Separación entre la imagen y su título */
+    margin-bottom: 1.5rem;
 }
 
-/* Título de la imagen (Floral, Frutal, Perfumado) */
 .card-titulo {
-    font-family: var(--fuente-secundaria); /* Athelas */
+    font-family: var(--fuente-secundaria);
     color: var(--color-negro);
     font-weight: 500;
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     margin-bottom: 0.5rem;
     -webkit-text-stroke: 0.3px var(--color-negro);
 }
 
-/* Subtítulo de la imagen */
 .card-subtitulo {
-    font-family: var(--fuente-principal); /* Montserrat */
+    font-family: var(--fuente-principal);
     color: var(--color-negro);
     font-weight: 500;
-    font-size: 0.9rem; /* Mucho más pequeño */
-    margin-bottom: 2rem; /* Espacio para separar del botón */
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
     margin-top: 1rem;
 }
 
-/* Ajuste específico para el botón de esta sección (reutiliza los colores y formas de .btn-hero) */
 .btn-coleccion {
-    /* Hacemos el texto un poco más pequeño y el padding ligeramente menor para ajustarse al bloque */
     font-size: 1rem;
     padding: 0.7rem 1.8rem;
 }
 
-/* =========================================
-   MEDIA QUERIES (RESPONSIVO COLECCIÓN)
-========================================= */
-
-/* Adaptación para pantallas medianas (Laptops) */
+/* Responsivo Colección */
 @media (max-width: 1024px) {
     .seccion-coleccion {
-        padding: 4rem 5%; /* Reducimos el margen lateral para aprovechar espacio */
-    }
-    .coleccion-titulo {
-        font-size: 2.8rem;
-    }
-    .coleccion-subtitulo {
-        font-size: 1.6rem;
+        padding: 4rem 5%;
     }
     .coleccion-grid {
-        gap: 1.5rem; /* Acercamos un poco más las imágenes */
-    }
-    .card-titulo {
-        font-size: 1.8rem;
+        gap: 1.5rem;
     }
 }
 
-/* Adaptación para móviles */
 @media (max-width: 768px) {
     .seccion-coleccion {
         padding: 3rem 5%;
     }
-    .coleccion-titulo {
-        font-size: 2.2rem;
-    }
-    .coleccion-subtitulo {
-        font-size: 1.4rem;
-    }
     .coleccion-grid {
-        /* Cambiamos de 3 columnas a 1 sola columna para apilar las imágenes */
         grid-template-columns: 1fr;
-        gap: 3.5rem; /* Aumentamos la separación vertical entre cada grupo (imagen+textos+botón) */
+        gap: 3.5rem;
     }
     .coleccion-img {
-        max-width: 18rem; /* Imágenes un poco más pequeñas en celular */
+        max-width: 18rem;
     }
 }
 
@@ -574,88 +491,73 @@ html {
 ========================================= */
 .seccion-calidad {
     background-color: var(--color-blanco);
-    /* 10% de padding lateral asegura que el margen exterior sea mayor al gap interno (2rem) */
     padding: 5rem 10%;
     width: 100%;
 }
 
 .calidad-titulo-principal {
-    font-family: var(--fuente-secundaria); /* Athelas */
+    font-family: var(--fuente-secundaria);
     font-weight: 500;
-    /* Agregamos el truco de contorno por si el 500 nativo no marca diferencia en esta fuente */
-    -webkit-text-stroke: 0.2px var(--color-negro); 
-    font-size: 2.7rem;
+    -webkit-text-stroke: 0.2px var(--color-negro);
+    font-size: clamp(1.8rem, 4vw, 2.7rem);
     color: var(--color-negro);
     text-align: center;
     margin-bottom: 5rem;
 }
 
-/* --- Cuadrícula de 4 elementos --- */
 .calidad-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas del mismo ancho */
-    gap: 2rem; /* Separación interna entre las secciones */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
 }
 
-/* --- Elementos individuales --- */
 .calidad-item {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Alineación vertical centralizada */
+    align-items: center;
     text-align: center;
 }
 
 .calidad-icono {
-    width: 6rem; /* Tamaño uniforme para los SVG */
+    width: 6rem;
     height: 6rem;
     margin-bottom: 1.5rem;
 }
 
 .calidad-titulo {
-    font-family: var(--fuente-secundaria); /* Athelas para mantener jerarquía visual */
+    font-family: var(--fuente-secundaria);
     font-weight: 500;
-    font-size: 1.7rem;
+    font-size: clamp(1.2rem, 2.5vw, 1.7rem);
     color: var(--color-negro);
     margin-bottom: 0.8rem;
 }
 
 .calidad-subtitulo {
-    font-family: var(--fuente-principal); /* Montserrat */
+    font-family: var(--fuente-principal);
     font-weight: 500;
-    font-size: 0.7rem;
+    font-size: clamp(0.6rem, 1vw, 0.7rem);
     color: var(--color-negro);
     line-height: 1.5;
-    /* Límite de ancho para que sea uniforme y menor a la extensión visual del título */
-    max-width: 13rem; 
-    margin: 0 auto; /* Asegura que la caja de texto restringida se mantenga al centro */
+    max-width: 13rem;
+    margin: 0 auto;
 }
 
-/* =========================================
-   MEDIA QUERIES (RESPONSIVO CALIDAD)
-========================================= */
-
-/* Adaptación para pantallas medianas (Laptops y Tablets) */
+/* Responsivo Calidad */
 @media (max-width: 1024px) {
     .seccion-calidad {
         padding: 4rem 5%;
     }
     .calidad-grid {
-        /* Pasamos de 4 a 2 columnas para que no se aprieten los textos */
         grid-template-columns: repeat(2, 1fr);
-        gap: 3rem 2rem; /* 3rem de separación vertical, 2rem horizontal */
+        gap: 3rem 2rem;
     }
 }
 
-/* Adaptación para móviles */
 @media (max-width: 768px) {
     .seccion-calidad {
         padding: 3rem 5%;
     }
-    .calidad-titulo-principal {
-        font-size: 1.8rem;
-    }
     .calidad-grid {
-        /* 1 sola columna para apilar todo hacia abajo */
         grid-template-columns: 1fr;
         gap: 3rem;
     }
@@ -667,45 +569,38 @@ html {
 .seccion-ambientes {
     position: relative;
     width: 100%;
-    /* Ocultamos cualquier desbordamiento */
-    overflow: hidden; 
+    overflow: hidden;
 }
 
-/* Imagen de fondo que determina la altura */
 .ambientes-img-fondo {
     width: 100%;
     height: auto;
     display: block;
-    /* max-height opcional por si en pantallas ultranchas se hace muy alta */
     max-height: 80vh;
     object-fit: cover;
 }
 
-/* Contenedor superpuesto que ocupa el 100% del banner */
 .ambientes-contenedor {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex; /* Divide el contenedor en columnas */
+    display: flex;
 }
 
-/* Mitad Izquierda: Vacía, solo empuja el contenido a la derecha */
 .ambientes-mitad-izq {
     width: 40%;
 }
 
-/* Mitad Derecha: Contiene los textos centrados */
 .ambientes-mitad-der {
     width: 60%;
     display: flex;
-    justify-content: center; /* Centra horizontalmente dentro de su mitad */
-    align-items: center; /* Centra verticalmente */
-    padding: 0 5%; /* Respiro lateral por si la pantalla se reduce */
+    justify-content: center;
+    align-items: center;
+    padding: 0 5%;
 }
 
-/* Caja que agrupa los textos para controlar su ancho */
 .ambientes-caja-textos {
     max-width: 30rem;
     display: flex;
@@ -713,80 +608,63 @@ html {
     margin-bottom: 5rem;
 }
 
-/* Elemento 1: Subtítulo (Montserrat) */
 .ambientes-subtitulo {
     font-family: var(--fuente-principal);
     color: var(--color-negro);
     font-weight: 650;
-    font-size: 1.5rem;
-    /* Ajusta este valor para separar el subtítulo del título */
-    margin-bottom: 1.9rem; 
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    margin-bottom: 1.9rem;
 }
 
-/* Elemento 2: Título principal (Athelas) */
 .ambientes-titulo {
     font-family: var(--fuente-secundaria);
     color: var(--color-verde);
     font-weight: 500;
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 6vw, 3.5rem);
     line-height: 1;
-    /* Ajusta este valor para separar el título del párrafo */
-    margin-bottom: 1.5rem; 
-    margin-top: 0.5;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
 }
 
-/* Elemento 3: Párrafo (Athelas) */
 .ambientes-parrafo {
     font-family: var(--fuente-secundaria);
     color: var(--color-negro);
-    font-size: 1.7rem;
+    font-size: clamp(1rem, 2vw, 1.7rem);
     line-height: 1;
-    max-width: 26rem;
+    max-width: clamp(14rem, 30vw, 26rem);
     margin-top: 1rem;
 }
 
-/* =========================================
-   MEDIA QUERIES (RESPONSIVO AMBIENTES)
-========================================= */
-
-/* Adaptación para pantallas medianas (Laptops) */
+/* Responsivo Ambientes */
 @media (max-width: 1024px) {
     .ambientes-titulo {
-        font-size: 2.5rem;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
     }
     .ambientes-subtitulo, .ambientes-parrafo {
-        font-size: 1rem;
+        font-size: clamp(0.8rem, 1.5vw, 1rem);
     }
 }
 
-/* Adaptación para móviles */
 @media (max-width: 768px) {
     .ambientes-contenedor {
-        /* En móvil, la distribución 50/50 suele apretar mucho el texto, 
-           así que dejamos que la caja ocupe casi todo el ancho */
-        justify-content: center; 
+        justify-content: center;
     }
-    
     .ambientes-mitad-izq {
-        display: none; /* Ocultamos la mitad vacía en móviles */
+        display: none;
     }
-    
     .ambientes-mitad-der {
-        width: 90%; /* Toma casi todo el ancho */
-        text-align: center; /* Centramos el texto para mejor estética en móvil */
+        width: 90%;
+        text-align: center;
     }
-    
     .ambientes-caja-textos {
-        align-items: center; /* Asegura el centrado de los bloques de texto */
-        /* Agregamos un fondo semitransparente blanco opcional si la imagen 
-           interfiere con la lectura en celular al abarcar toda la pantalla */
+        align-items: center;
         background-color: rgba(255, 255, 255, 0.7);
         padding: 2rem;
         border-radius: 1rem;
+        margin-bottom: 2rem;
     }
-
     .ambientes-titulo {
-        font-size: 2rem;
+        font-size: clamp(1.6rem, 4vw, 2rem);
     }
 }
 
@@ -797,114 +675,102 @@ html {
     position: relative;
     background-color: var(--color-blanco);
     width: 100%;
-    /* display y justify-content removidos, el centrado ahora lo dicta la Capa 2 */
     overflow: hidden;
 }
 
-/* --- CAPA 1: Imagen de fondo (Mitad derecha) --- */
+/* CAPA 1: Imagen de fondo (mitad derecha) */
 .guante-capa-1 {
-    /* CAMBIO: Ahora es absoluta para no dictar la altura, pero se mantiene a la derecha */
     position: absolute;
     top: 0;
     right: 0;
     width: 50%;
-    height: 90%; /* Toma la altura que la Capa 2 le dicte a la sección */
+    height: 90%;
 }
 
 .guante-img-fondo {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* CAMBIO: Asegura que no se deforme ni se aplaste con la nueva altura */
+    object-fit: cover;
     display: block;
 }
 
-/* --- CAPA 2: Guante central (Flotante) --- */
+/* CAPA 2: Guante central */
 .guante-capa-2 {
-    /* CAMBIO: Pasa al flujo normal (relative) para ser la capa que empuja y dicta la altura */
     position: relative;
     width: 100%;
     display: flex;
-    justify-content: center; /* Centra el guante perfectamente a la mitad */
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
 }
 
 .guante-img-central {
-    /* CAMBIO: Como la Capa 1 era cuadrada y ocupaba el 50% del ancho (50vw), 
-       ponerle 55vw hace a esta Capa 2 ligeramente más grande que el tamaño original de la Capa 1 */
-    height: 55vw; 
-    max-height: 90vh; /* Limita que no sea exageradamente alta en monitores gigantes */
+    height: 55vw;
+    max-height: 90vh;
     width: auto;
     object-fit: contain;
 }
 
-/* --- CAPA 3: Textos (Tercio izquierdo) --- */
+/* CAPA 3: Textos (tercio izquierdo) */
 .guante-capa-3 {
     position: absolute;
     top: 0;
     left: 0;
-    width: 33.33%; /* Abarca 1/3 de la sección */
+    width: 33.33%;
     height: 100%;
     display: flex;
-    align-items: center; /* Centra los textos verticalmente */
-    padding-left: 10%; /* Respiro desde el borde izquierdo */
+    align-items: center;
+    padding-left: 10%;
     padding-bottom: 20rem;
 }
 
 .guante-textos {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Asegura alineación interna a la izquierda */
-    /* CAMBIO: Efecto de editor de imágenes. Agranda todo el grupo proporcionalmente */
-    transform: scale(1.4); /* Aumenta un 15% todo. Ajusta este número (ej. 1.2 o 1.1) a tu gusto */
-    transform-origin: left center; /* Ancla el crecimiento a la esquina izquierda para no desbordar */
-    margin-left: 5rem;
-    margin-top: 15rem;
+    align-items: flex-start;
+    /* Eliminado transform: scale() y márgenes excesivos */
+    margin-left: 2rem;
+    margin-top: 5rem;
 }
 
-/* Elemento 1: Título */
 .guante-titulo {
-    font-family: var(--fuente-secundaria); /* Athelas */
-    color: #173456; /* Azul especificado */
-    font-size: 4rem;
+    font-family: var(--fuente-secundaria);
+    color: #173456;
+    font-size: clamp(2rem, 4vw, 4rem);
     line-height: 0.9;
     margin-bottom: 2rem;
     font-weight: 500;
 }
 
-/* Elemento 2: Subtítulo */
 .guante-subtitulo {
-    font-family: var(--fuente-principal); /* Montserrat */
+    font-family: var(--fuente-principal);
     color: var(--color-negro);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: clamp(0.7rem, 1vw, 0.95rem);
     line-height: 1.2;
-    max-width: 25rem; /* Limita el ancho por debajo del título */
+    max-width: clamp(14rem, 30vw, 25rem);
     margin-bottom: 1rem;
 }
 
-/* Elemento 3: Línea azul (Hereda forma de .linea-decorativa de Hero) */
 .linea-azul {
     background-color: #173456;
     margin-bottom: 1.7rem;
-    width: 2rem; 
-    height: 0.3rem; 
-    margin-left: -1rem; 
+    width: 2rem;
+    height: 0.3rem;
+    margin-left: -1rem;
 }
 
-/* Elemento 4: Lista de 5 puntos */
 .guante-lista {
-    font-family: var(--fuente-principal); /* Montserrat */
+    font-family: var(--fuente-principal);
     color: var(--color-negro);
-    font-size: 1.2rem;
+    font-size: clamp(0.8rem, 1.2vw, 1.2rem);
     line-height: 1.6;
-    list-style-type: disc; /* Punto sólido por defecto */
-    margin-left: 1.2rem; /* Necesario para que las viñetas sean visibles */
-    max-width: 12rem; /* Exactamente la mitad del max-width del subtítulo (20rem) */
+    list-style-type: disc;
+    margin-left: 1.2rem;
+    max-width: clamp(8rem, 20vw, 12rem);
     margin-bottom: 2.2rem;
     font-weight: 600;
 }
 
-/* Elemento 5: Texto colores */
 .guante-texto-colores {
     font-family: var(--fuente-principal);
     color: var(--color-negro);
@@ -912,70 +778,62 @@ html {
     font-weight: 550;
 }
 
-/* Elemento 6: Imagen colores */
 .guante-img-colores {
-    height: 5.5rem; 
+    height: 5.5rem;
     width: auto;
     margin-bottom: 4rem;
 }
 
-/* Elemento 7: Botón modificado */
 .btn-guante {
-    border-color: #173456; /* Borde azul */
+    border-color: #173456;
 }
 
-/* Hover específico para el botón azul */
 .btn-guante:hover {
-    background-color: #173456; 
+    background-color: #173456;
     color: var(--color-blanco);
 }
 
-/* =========================================
-   MEDIA QUERIES (RESPONSIVO GUANTE)
-========================================= */
-
-/* Adaptación Laptops */
+/* Responsivo Guante */
 @media (max-width: 1024px) {
     .guante-capa-3 {
-        width: 40%; /* Aumentamos ligeramente el espacio de texto */
+        width: 40%;
     }
     .guante-titulo {
-        font-size: 2.8rem;
+        font-size: clamp(1.8rem, 3.5vw, 2.8rem);
     }
 }
 
-/* Adaptación Móviles (Stacking) */
 @media (max-width: 768px) {
     .seccion-guante {
-        display: flex; /* CAMBIO: Restaurado para apilar en móvil */
-        flex-direction: column; 
+        display: flex;
+        flex-direction: column;
     }
-    
     .guante-capa-1 {
-        position: relative; /* CAMBIO: Rompemos la posición absoluta para que vuelva al flujo */
+        position: relative;
         width: 100%;
         height: auto;
     }
-
     .guante-img-fondo {
-        height: auto; /* CAMBIO: Permite que la imagen se adapte natural en móvil */
+        height: auto;
     }
-
     .guante-capa-2 {
-        display: none; /* Ocultamos el guante central para no saturar el móvil */
+        display: none;
     }
-    
     .guante-capa-3 {
-        position: relative; /* Rompemos la posición flotante para apilarlo debajo */
+        position: relative;
         width: 100%;
         padding: 3rem 5%;
+        height: auto;
     }
-
+    .guante-textos {
+        transform: none;
+        margin-left: 0;
+        margin-top: 0;
+    }
     .guante-subtitulo {
-        max-width: 100%; /* Dejamos que ocupe todo el ancho posible */
+        max-width: 100%;
     }
-
     .guante-lista {
-        max-width: 100%; 
+        max-width: 100%;
     }
 }
