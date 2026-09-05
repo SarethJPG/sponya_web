@@ -22,6 +22,23 @@ body {
 }
 
 /* =========================================
+   ESCALADO 100% FLUIDO (Monitores y Laptops)
+========================================= */
+html {
+    /* La fuente base será fluida: 
+       Mínimo 9px, escalado ideal basado en el ancho (0.833vw), Máximo 16px */
+    font-size: clamp(9px, 0.833vw, 16px); 
+}
+
+/* En celulares y tablets pequeñas (768px o menos), congelamos el tamaño 
+   en 14px porque el diseño ya se apila hacia abajo y no necesita encogerse más */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+/* =========================================
    ESTILOS DE LA NAVBAR (BARRA DE NAVEGACIÓN)
 ========================================= */
 .navbar {
@@ -770,5 +787,195 @@ body {
 
     .ambientes-titulo {
         font-size: 2rem;
+    }
+}
+
+/* =========================================
+   SECCIÓN: GUANTE DE DOBLE RESISTENCIA
+========================================= */
+.seccion-guante {
+    position: relative;
+    background-color: var(--color-blanco);
+    width: 100%;
+    /* display y justify-content removidos, el centrado ahora lo dicta la Capa 2 */
+    overflow: hidden;
+}
+
+/* --- CAPA 1: Imagen de fondo (Mitad derecha) --- */
+.guante-capa-1 {
+    /* CAMBIO: Ahora es absoluta para no dictar la altura, pero se mantiene a la derecha */
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 90%; /* Toma la altura que la Capa 2 le dicte a la sección */
+}
+
+.guante-img-fondo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* CAMBIO: Asegura que no se deforme ni se aplaste con la nueva altura */
+    display: block;
+}
+
+/* --- CAPA 2: Guante central (Flotante) --- */
+.guante-capa-2 {
+    /* CAMBIO: Pasa al flujo normal (relative) para ser la capa que empuja y dicta la altura */
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centra el guante perfectamente a la mitad */
+    align-items: center; 
+}
+
+.guante-img-central {
+    /* CAMBIO: Como la Capa 1 era cuadrada y ocupaba el 50% del ancho (50vw), 
+       ponerle 55vw hace a esta Capa 2 ligeramente más grande que el tamaño original de la Capa 1 */
+    height: 55vw; 
+    max-height: 90vh; /* Limita que no sea exageradamente alta en monitores gigantes */
+    width: auto;
+    object-fit: contain;
+}
+
+/* --- CAPA 3: Textos (Tercio izquierdo) --- */
+.guante-capa-3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33.33%; /* Abarca 1/3 de la sección */
+    height: 100%;
+    display: flex;
+    align-items: center; /* Centra los textos verticalmente */
+    padding-left: 10%; /* Respiro desde el borde izquierdo */
+    padding-bottom: 20rem;
+}
+
+.guante-textos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Asegura alineación interna a la izquierda */
+    /* CAMBIO: Efecto de editor de imágenes. Agranda todo el grupo proporcionalmente */
+    transform: scale(1.4); /* Aumenta un 15% todo. Ajusta este número (ej. 1.2 o 1.1) a tu gusto */
+    transform-origin: left center; /* Ancla el crecimiento a la esquina izquierda para no desbordar */
+    margin-left: 5rem;
+    margin-top: 15rem;
+}
+
+/* Elemento 1: Título */
+.guante-titulo {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: #173456; /* Azul especificado */
+    font-size: 4rem;
+    line-height: 0.9;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+/* Elemento 2: Subtítulo */
+.guante-subtitulo {
+    font-family: var(--fuente-principal); /* Montserrat */
+    color: var(--color-negro);
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    max-width: 25rem; /* Limita el ancho por debajo del título */
+    margin-bottom: 1rem;
+}
+
+/* Elemento 3: Línea azul (Hereda forma de .linea-decorativa de Hero) */
+.linea-azul {
+    background-color: #173456;
+    margin-bottom: 1.7rem;
+    width: 2rem; 
+    height: 0.3rem; 
+    margin-left: -1rem; 
+}
+
+/* Elemento 4: Lista de 5 puntos */
+.guante-lista {
+    font-family: var(--fuente-principal); /* Montserrat */
+    color: var(--color-negro);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    list-style-type: disc; /* Punto sólido por defecto */
+    margin-left: 1.2rem; /* Necesario para que las viñetas sean visibles */
+    max-width: 12rem; /* Exactamente la mitad del max-width del subtítulo (20rem) */
+    margin-bottom: 2.2rem;
+    font-weight: 600;
+}
+
+/* Elemento 5: Texto colores */
+.guante-texto-colores {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-size: 0.7rem;
+    font-weight: 550;
+}
+
+/* Elemento 6: Imagen colores */
+.guante-img-colores {
+    height: 5.5rem; 
+    width: auto;
+    margin-bottom: 4rem;
+}
+
+/* Elemento 7: Botón modificado */
+.btn-guante {
+    border-color: #173456; /* Borde azul */
+}
+
+/* Hover específico para el botón azul */
+.btn-guante:hover {
+    background-color: #173456; 
+    color: var(--color-blanco);
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO GUANTE)
+========================================= */
+
+/* Adaptación Laptops */
+@media (max-width: 1024px) {
+    .guante-capa-3 {
+        width: 40%; /* Aumentamos ligeramente el espacio de texto */
+    }
+    .guante-titulo {
+        font-size: 2.8rem;
+    }
+}
+
+/* Adaptación Móviles (Stacking) */
+@media (max-width: 768px) {
+    .seccion-guante {
+        display: flex; /* CAMBIO: Restaurado para apilar en móvil */
+        flex-direction: column; 
+    }
+    
+    .guante-capa-1 {
+        position: relative; /* CAMBIO: Rompemos la posición absoluta para que vuelva al flujo */
+        width: 100%;
+        height: auto;
+    }
+
+    .guante-img-fondo {
+        height: auto; /* CAMBIO: Permite que la imagen se adapte natural en móvil */
+    }
+
+    .guante-capa-2 {
+        display: none; /* Ocultamos el guante central para no saturar el móvil */
+    }
+    
+    .guante-capa-3 {
+        position: relative; /* Rompemos la posición flotante para apilarlo debajo */
+        width: 100%;
+        padding: 3rem 5%;
+    }
+
+    .guante-subtitulo {
+        max-width: 100%; /* Dejamos que ocupe todo el ancho posible */
+    }
+
+    .guante-lista {
+        max-width: 100%; 
     }
 }
