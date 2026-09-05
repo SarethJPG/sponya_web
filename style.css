@@ -421,3 +421,225 @@ body {
         padding: 0.8rem 0.3rem;
     }
 }
+
+/* =========================================
+   SECCIÓN: COLECCIÓN DE FRAGANCIAS
+========================================= */
+.seccion-coleccion {
+    background-color: var(--color-blanco);
+    /* 5rem de espacio arriba y abajo, 10% a los lados para asegurar un margen lateral amplio */
+    padding: 5rem 10%; 
+    width: 100%;
+}
+
+/* --- Contenedor del Encabezado (Títulos) --- */
+.coleccion-encabezado {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los títulos horizontalmente */
+    gap: 0.5rem; /* Separación vertical entre el título y el subtítulo */
+    margin-bottom: 4rem; /* Separación entre el bloque de títulos y las imágenes */
+    text-align: center;
+}
+
+.coleccion-titulo {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: var(--color-negro); /* Ya configuraste esta variable a #3b3b3b */
+    font-size: 3.5rem;
+    font-weight: normal; /* Athelas luce mejor en pesos normales para encabezados */
+}
+
+.coleccion-subtitulo {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: var(--color-verde);
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+/* --- Contenedor de la Cuadrícula de 3 Imágenes --- */
+.coleccion-grid {
+    display: grid;
+    /* Crea 3 columnas del mismo ancho (1 fracción de espacio cada una) */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem; /* Espacio exacto entre cada tarjeta/imagen */
+}
+
+/* --- Cada Tarjeta (Imagen + Textos + Botón) --- */
+.coleccion-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alineación vertical al centro */
+    text-align: center;
+}
+
+.coleccion-img {
+    width: 100%;
+    /* Limitamos el tamaño para que no crezcan de forma desproporcionada en monitores gigantes */
+    max-width: 22rem; 
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 1.5rem; /* Separación entre la imagen y su título */
+}
+
+/* Título de la imagen (Floral, Frutal, Perfumado) */
+.card-titulo {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    -webkit-text-stroke: 0.3px var(--color-negro);
+}
+
+/* Subtítulo de la imagen */
+.card-subtitulo {
+    font-family: var(--fuente-principal); /* Montserrat */
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: 0.9rem; /* Mucho más pequeño */
+    margin-bottom: 2rem; /* Espacio para separar del botón */
+    margin-top: 1rem;
+}
+
+/* Ajuste específico para el botón de esta sección (reutiliza los colores y formas de .btn-hero) */
+.btn-coleccion {
+    /* Hacemos el texto un poco más pequeño y el padding ligeramente menor para ajustarse al bloque */
+    font-size: 1rem;
+    padding: 0.7rem 1.8rem;
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO COLECCIÓN)
+========================================= */
+
+/* Adaptación para pantallas medianas (Laptops) */
+@media (max-width: 1024px) {
+    .seccion-coleccion {
+        padding: 4rem 5%; /* Reducimos el margen lateral para aprovechar espacio */
+    }
+    .coleccion-titulo {
+        font-size: 2.8rem;
+    }
+    .coleccion-subtitulo {
+        font-size: 1.6rem;
+    }
+    .coleccion-grid {
+        gap: 1.5rem; /* Acercamos un poco más las imágenes */
+    }
+    .card-titulo {
+        font-size: 1.8rem;
+    }
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+    .seccion-coleccion {
+        padding: 3rem 5%;
+    }
+    .coleccion-titulo {
+        font-size: 2.2rem;
+    }
+    .coleccion-subtitulo {
+        font-size: 1.4rem;
+    }
+    .coleccion-grid {
+        /* Cambiamos de 3 columnas a 1 sola columna para apilar las imágenes */
+        grid-template-columns: 1fr;
+        gap: 3.5rem; /* Aumentamos la separación vertical entre cada grupo (imagen+textos+botón) */
+    }
+    .coleccion-img {
+        max-width: 18rem; /* Imágenes un poco más pequeñas en celular */
+    }
+}
+
+/* =========================================
+   SECCIÓN: CALIDAD QUE SE SIENTE
+========================================= */
+.seccion-calidad {
+    background-color: var(--color-blanco);
+    /* 10% de padding lateral asegura que el margen exterior sea mayor al gap interno (2rem) */
+    padding: 5rem 10%;
+    width: 100%;
+}
+
+.calidad-titulo-principal {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    font-weight: 500;
+    /* Agregamos el truco de contorno por si el 500 nativo no marca diferencia en esta fuente */
+    -webkit-text-stroke: 0.2px var(--color-negro); 
+    font-size: 2.7rem;
+    color: var(--color-negro);
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+/* --- Cuadrícula de 4 elementos --- */
+.calidad-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas del mismo ancho */
+    gap: 2rem; /* Separación interna entre las secciones */
+}
+
+/* --- Elementos individuales --- */
+.calidad-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alineación vertical centralizada */
+    text-align: center;
+}
+
+.calidad-icono {
+    width: 6rem; /* Tamaño uniforme para los SVG */
+    height: 6rem;
+    margin-bottom: 1.5rem;
+}
+
+.calidad-titulo {
+    font-family: var(--fuente-secundaria); /* Athelas para mantener jerarquía visual */
+    font-weight: 500;
+    font-size: 1.7rem;
+    color: var(--color-negro);
+    margin-bottom: 0.8rem;
+}
+
+.calidad-subtitulo {
+    font-family: var(--fuente-principal); /* Montserrat */
+    font-weight: 500;
+    font-size: 0.7rem;
+    color: var(--color-negro);
+    line-height: 1.5;
+    /* Límite de ancho para que sea uniforme y menor a la extensión visual del título */
+    max-width: 13rem; 
+    margin: 0 auto; /* Asegura que la caja de texto restringida se mantenga al centro */
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO CALIDAD)
+========================================= */
+
+/* Adaptación para pantallas medianas (Laptops y Tablets) */
+@media (max-width: 1024px) {
+    .seccion-calidad {
+        padding: 4rem 5%;
+    }
+    .calidad-grid {
+        /* Pasamos de 4 a 2 columnas para que no se aprieten los textos */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem 2rem; /* 3rem de separación vertical, 2rem horizontal */
+    }
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+    .seccion-calidad {
+        padding: 3rem 5%;
+    }
+    .calidad-titulo-principal {
+        font-size: 1.8rem;
+    }
+    .calidad-grid {
+        /* 1 sola columna para apilar todo hacia abajo */
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
