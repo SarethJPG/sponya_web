@@ -791,6 +791,38 @@ html {
 }
 
 /* =========================================
+   SECCIÓN: ENCABEZADO COLECCIÓN DE GUANTES
+========================================= */
+.seccion-encabezado-guantes {
+    background-color: var(--color-blanco);
+    width: 100%;
+    /* Padding amplio para darle respiro superior e inferior */
+    padding: 6rem 5%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
+}
+
+.titulo-guantes {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: var(--color-negro);
+    /* Escalado fluido: tamaño base en móvil, crece hasta 4rem en monitores */
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: normal;
+    margin-bottom: 0.5rem; /* Separación sutil con el subtítulo */
+}
+
+.subtitulo-guantes {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: #173456; /* Azul Sponya */
+    /* Escalado fluido proporcionalmente menor al título principal */
+    font-size: clamp(0.5rem, 3vw, 2rem);
+    font-weight: normal;
+}
+
+/* =========================================
    SECCIÓN: GUANTE DE DOBLE RESISTENCIA
 ========================================= */
 .seccion-guante {
