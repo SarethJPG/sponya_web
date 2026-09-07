@@ -1159,3 +1159,113 @@ html {
         font-size: 0.9rem;
     }
 }
+
+/* =========================================
+   SECCIÓN: PRECIOS DE MAYOREO
+========================================= */
+.seccion-mayoreo {
+    position: relative;
+    background-color: var(--color-blanco);
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+/* --- Capa 1: Imagen (Flujo normal, dicta la altura) --- */
+.mayoreo-capa-img {
+    width: 60%; /* Abarca desde la izquierda hasta el 60% */
+}
+
+.mayoreo-img {
+    width: 100%;
+    height: auto; /* Mantiene la proporción y establece la altura total de la sección */
+    display: block;
+    object-fit: cover;
+}
+
+/* --- Capa 2: Recuadro Azul (Flotante) --- */
+.mayoreo-capa-azul {
+    position: absolute;
+    right: 0; /* Anclado al borde derecho */
+    top: 50%;
+    transform: translateY(-50%); /* Centrado vertical para dejar 10% arriba y 10% abajo */
+    width: 50%; /* Abarca desde la derecha hasta la mitad, montándose 10% sobre la imagen */
+    height: 80%; /* 20% más pequeña que la imagen */
+    background-color: #69aecd;
+    display: flex;
+    align-items: center; /* Centra los textos verticalmente dentro del recuadro */
+    padding: 0 6%; /* Respiro lateral interno */
+}
+
+.mayoreo-textos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea el bloque completo a la izquierda */
+    width: 100%;
+}
+
+/* Título */
+.mayoreo-titulo {
+    font-family: var(--fuente-principal); /* Montserrat */
+    font-weight: 700;
+    color: var(--color-blanco);
+    /* Escalado fluido para el título */
+    font-size: clamp(1.8rem, 2.8vw, 3rem);
+    line-height: 1.1;
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+/* Párrafo */
+.mayoreo-parrafo {
+    font-family: var(--fuente-principal); /* Montserrat */
+    font-weight: 400;
+    color: var(--color-blanco);
+    /* Escalado fluido para el párrafo */
+    font-size: clamp(1rem, 1.2vw, 1.3rem);
+    line-height: 1.6;
+    text-align: justify; /* Texto justificado internamente */
+    max-width: 40rem; /* Limita el ancho para que no se estire demasiado en monitores gigantes */
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO MAYOREO)
+========================================= */
+
+/* Adaptación para Laptops */
+@media (max-width: 1024px) {
+    .mayoreo-capa-azul {
+        height: 90%; /* En laptops aprovechamos más la altura para que el texto no se asfixie */
+        padding: 0 4%;
+    }
+}
+
+/* Adaptación para Móviles */
+@media (max-width: 768px) {
+    .seccion-mayoreo {
+        flex-direction: column; /* Apila los elementos */
+    }
+
+    .mayoreo-capa-img {
+        width: 100%;
+    }
+
+    .mayoreo-capa-azul {
+        position: relative; /* Rompe el flotado para colocarse debajo de la imagen */
+        width: 100%;
+        height: auto;
+        top: 0;
+        transform: none;
+        /* Margen negativo para que el recuadro azul siga montándose sobre la imagen en celular */
+        margin-top: -15%; 
+        padding: 3rem 5%;
+    }
+
+    .mayoreo-titulo {
+        font-size: 2.2rem;
+    }
+
+    .mayoreo-parrafo {
+        max-width: 100%;
+    }
+}
