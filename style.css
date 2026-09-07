@@ -1269,3 +1269,75 @@ html {
         max-width: 100%;
     }
 }
+
+/* =========================================
+   SECCIÓN: MERCADO LIBRE
+========================================= */
+.seccion-mercadolibre {
+    background-color: var(--color-blanco);
+    width: 100%;
+    /* 6rem de margen vertical y 10% de margen lateral */
+    padding: 6rem 10%; 
+}
+
+.meli-contenedor {
+    display: flex;
+    align-items: center; /* Alinea ambos elementos a la misma altura verticalmente */
+    /* El gap aplica exactamente la misma distancia (10%) entre la imagen y el texto */
+    gap: 10%; 
+    width: 100%;
+}
+
+/* Columna Izquierda (25%) */
+.meli-columna-img {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+}
+
+.meli-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Columna Derecha (75%) */
+.meli-columna-texto {
+    width: 75%;
+}
+
+.meli-parrafo {
+    font-family: var(--fuente-principal); /* Montserrat */
+    font-weight: 550;
+    color: var(--color-negro);
+    /* Escalado fluido para mantener proporciones en monitores amplios */
+    font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+    line-height: 1.6;
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO MERCADO LIBRE)
+========================================= */
+
+@media (max-width: 1024px) {
+    .seccion-mercadolibre {
+        padding: 5rem 8%; 
+    }
+    .meli-contenedor {
+        gap: 8%; /* Reducimos la separación proporcionalmente en laptops */
+    }
+}
+
+@media (max-width: 768px) {
+    .meli-contenedor {
+        flex-direction: column; /* Apila la imagen arriba y el texto abajo */
+        text-align: center; /* Centra el texto en móviles */
+        gap: 3rem; 
+    }
+    .meli-columna-img {
+        width: 50%; /* La imagen toma más espacio en móvil para no verse minúscula */
+    }
+    .meli-columna-texto {
+        width: 100%; /* El texto toma el ancho completo disponible */
+    }
+}
