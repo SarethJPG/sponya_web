@@ -1341,3 +1341,162 @@ html {
         width: 100%; /* El texto toma el ancho completo disponible */
     }
 }
+
+/* =========================================
+   SECCIÓN: DIFUSORES Y FRAGANCIAS
+========================================= */
+.seccion-difusores {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Imagen de fondo que dicta la altura */
+.difusores-img-fondo {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Contenedor absoluto para distribuir el contenido con coordenadas */
+.difusores-contenedor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- Encabezado Superior Centrado --- */
+.difusores-encabezado {
+    position: absolute;
+    top: 5%; /* Separación desde arriba */
+    left: 50%;
+    transform: translateX(-50%); /* Centrado horizontal perfecto */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.difusores-titulo-principal {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: var(--color-negro);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: normal;
+    line-height: 1.1;
+    margin-bottom: 0.5rem; 
+}
+
+.difusores-subtitulo-principal {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: #173456; 
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: normal;
+}
+
+/* --- Bloque Inferior Derecho --- */
+.difusores-bloque-derecha {
+    position: absolute;
+    right: 10%; /* Margen del 10% al borde derecho de la página */
+    top: 45%; /* Subido ligeramente por encima de la mitad exacta (50%) */
+    transform: translateY(-50%); /* Centra el bloque entero respecto a ese 45% */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    text-align: right;
+}
+
+.difusores-titulo-secundario {
+    font-family: var(--fuente-secundaria); /* Cambiado a Athelas */
+    color: #5dae39; /* Verde */
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 0.8rem; 
+}
+
+.difusores-subtitulo-secundario {
+    font-family: var(--fuente-principal); /* Montserrat */
+    color: #173456; /* Azul */
+    font-weight: 600;
+    font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+    /* Incrementamos drásticamente el gap para separar los textos de los botones */
+    margin-bottom: 6rem; 
+}
+
+/* Contenedor de los botones */
+.difusores-botones {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2rem; 
+}
+
+/* Botones idénticos, transparentes por defecto */
+.btn-difusor {
+    width: 18rem; /* Forzamos a que ambos botones midan exactamente lo mismo */
+    text-align: center; /* Centramos el texto dentro del botón */
+    background-color: transparent; /* Fondo transparente */
+    color: #173456; /* Texto azul */
+    border: 2px solid #173456; /* Borde azul */
+    font-family: var(--fuente-principal);
+    font-weight: 700;
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    text-decoration: none;
+    padding: 0.9rem 0; /* Padding vertical, el horizontal lo define el width */
+    border-radius: 50px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover: Fondo sólido azul y letras blancas */
+.btn-difusor:hover {
+    background-color: #173456;
+    color: var(--color-blanco);
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO DIFUSORES)
+========================================= */
+
+@media (max-width: 1024px) {
+    .difusores-subtitulo-secundario {
+        margin-bottom: 4rem; /* Reducimos un poco el hueco en laptops */
+    }
+}
+
+@media (max-width: 768px) {
+    .difusores-contenedor {
+        /* En móviles rompemos la posición absoluta para que el texto empuje la caja si necesita espacio */
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        background-color: rgba(255, 255, 255, 0.7); 
+        padding: 3rem 5%;
+    }
+    
+    .difusores-encabezado, .difusores-bloque-derecha {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        transform: none;
+        width: 100%;
+        align-items: center; 
+        text-align: center;
+        padding-right: 0;
+    }
+
+    .difusores-subtitulo-secundario {
+        margin-bottom: 2.5rem; /* Ajuste del hueco para celular */
+    }
+
+    .difusores-botones {
+        align-items: center; 
+    }
+}
