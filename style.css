@@ -1043,14 +1043,15 @@ html {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    /* Obligamos a que todas las cards tengan la misma altura (la de la card más alta) */
+    height: 100%; 
 }
 
 .producto-img {
     width: 100%;
-    max-width: 20rem; /* Evita que crezcan demasiado en monitores gigantes */
+    max-width: 20rem; 
     height: auto;
     object-fit: cover;
-    /* Distancia entre la imagen y el título */
     margin-bottom: 1.8rem; 
 }
 
@@ -1059,7 +1060,6 @@ html {
     color: var(--color-negro);
     font-size: clamp(1.8rem, 2.5vw, 2.8rem);
     font-weight: 500;
-    /* Distancia entre el título y la descripción */
     margin-bottom: 1rem; 
 }
 
@@ -1069,9 +1069,16 @@ html {
     font-size: clamp(1rem, 1.2vw, 1.15rem);
     font-weight: 500;
     line-height: 1.4;
-    max-width: 23rem; /* Puede ser más ancho que el título natural */
-    /* Distancia entre la descripción y el botón */
+    max-width: 23rem; 
     margin-bottom: 2.5rem; 
+    /* Permite que la caja de texto absorba el espacio vacío si hay menos texto que en las otras cards */
+    flex-grow: 1; 
+}
+
+/* Apuntamos específicamente al botón dentro de esta card */
+.producto-card .btn-outline-azul {
+    /* El auto detecta todo el espacio sobrante arriba y empuja el botón hasta el fondo, alineándolos todos */
+    margin-top: auto; 
 }
 
 /* Reutilización del botón transparente con borde azul */
