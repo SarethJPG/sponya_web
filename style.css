@@ -1009,3 +1009,146 @@ html {
         max-width: 100%; 
     }
 }
+
+/* =========================================
+   SECCIÓN: NUESTROS PRODUCTOS
+========================================= */
+.seccion-productos {
+    background-color: var(--color-blanco);
+    width: 100%;
+    /* 6rem arriba/abajo, 10% a los lados para la separación lateral de toda la sección */
+    padding: 6rem 10%; 
+}
+
+.productos-titulo-principal {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-negro);
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    text-align: center;
+    font-weight: normal;
+    margin-bottom: 5rem;
+}
+
+/* --- Cuadrícula de Cards --- */
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Ajusta este gap si necesitas acercar o alejar las cards lateralmente */
+    gap: clamp(2rem, 4vw, 5rem); 
+}
+
+/* --- Contenido de cada Card --- */
+.producto-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.producto-img {
+    width: 100%;
+    max-width: 20rem; /* Evita que crezcan demasiado en monitores gigantes */
+    height: auto;
+    object-fit: cover;
+    /* Distancia entre la imagen y el título */
+    margin-bottom: 1.8rem; 
+}
+
+.producto-titulo {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-negro);
+    font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+    font-weight: 500;
+    /* Distancia entre el título y la descripción */
+    margin-bottom: 1rem; 
+}
+
+.producto-desc {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    font-weight: 500;
+    line-height: 1.4;
+    max-width: 23rem; /* Puede ser más ancho que el título natural */
+    /* Distancia entre la descripción y el botón */
+    margin-bottom: 2.5rem; 
+}
+
+/* Reutilización del botón transparente con borde azul */
+.btn-outline-azul {
+    border: 2px solid #173456;
+    color: #173456;
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    padding: 0.8rem 2.2rem;
+}
+
+.btn-outline-azul:hover {
+    background-color: #173456;
+    color: var(--color-blanco);
+}
+
+/* --- Separador Inferior (Líneas y Botón) --- */
+.productos-separador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Gap controla la separación para que las líneas NO toquen el botón */
+    gap: 3rem; 
+    margin-top: 6rem;
+    width: 100%;
+}
+
+.linea-lateral {
+    /* flex: 1 permite que la línea ocupe todo el espacio sobrante horizontalmente */
+    flex: 1; 
+    height: 3px; /* Grosor de la línea */
+    background-color: #173456; /* Color gris suave para la línea (cámbialo si prefieres otro) */
+}
+
+/* Botón especial del separador */
+.btn-solido-azul {
+    background-color: #173456;
+    color: var(--color-blanco);
+    font-family: var(--fuente-principal);
+    font-weight: 500;
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    text-decoration: none;
+    padding: 1rem 3.5rem;
+    border-radius: 50px; /* Forma de pastilla/redondeada */
+    border: 2px solid #173456;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+}
+
+.btn-solido-azul:hover {
+    background-color: transparent;
+    color: #173456;
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO PRODUCTOS)
+========================================= */
+
+@media (max-width: 1024px) {
+    .seccion-productos {
+        padding: 5rem 5%; /* Reducimos el padding lateral para ganar espacio en laptops */
+    }
+    .productos-separador {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .productos-grid {
+        grid-template-columns: 1fr; /* Apilamos las cards en una sola columna */
+        gap: 4rem; /* Separación vertical entre grupo de cards */
+    }
+    .productos-separador {
+        /* En celulares, la línea puede verse muy apretada, ajustamos el gap */
+        gap: 1rem;
+    }
+    .btn-solido-azul {
+        padding: 1rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
