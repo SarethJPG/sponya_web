@@ -1619,7 +1619,7 @@ html {
     font-weight: 600;
     font-size: clamp(1rem, 1.2vw, 1.1rem);
     color: var(--color-blanco);
-    background-color: #173456;
+    background-color: #206ab5;
     border: none;
     border-radius: 6px;
     padding: 0.9rem 4rem;
@@ -1697,5 +1697,172 @@ html {
     .visual-wrapper {
         max-width: 20rem; /* Imagen más pequeña en celular */
         margin-top: 1rem;
+    }
+}
+
+/* =========================================
+   ESTILOS DEL FOOTER SPONYA (ACTUALIZADOS)
+========================================= */
+.footer-sponya {
+    background-color: #206ab5;
+    width: 100%;
+    padding: 4rem 0 2rem 0;
+    color: var(--color-blanco);
+}
+
+.footer-contenedor {
+    width: 100%;
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Logo Superior Izquierdo --- */
+.footer-logo-box {
+    width: 100%;
+    padding-left: 2rem;
+    margin-bottom: 3rem;
+}
+
+.footer-logo {
+    height: 4.5rem;
+    width: auto;
+    /* Quitamos el filtro blanco para que el logo conserve sus colores y diseño original */
+}
+
+/* --- Cuadrícula de la Fila 2 --- */
+.footer-grid-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+/* --- Columna Izquierda --- */
+.footer-col-izq {
+    display: flex;
+    flex-direction: column;
+    max-width: 28rem;
+}
+
+.footer-direccion {
+    font-family: var(--fuente-principal);
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--color-blanco);
+    text-align: left;
+    margin-bottom: 1.8rem;
+}
+
+.footer-lista-contacto {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+}
+
+.footer-lista-contacto li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--fuente-principal);
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--color-blanco);
+}
+
+.footer-icono-lista {
+    width: 1.2rem;
+    height: 1.2rem;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* Mantiene los iconos de contacto blancos */
+}
+
+/* --- Columna Central: Navegación (Centrada y alineada a la izquierda internamente) --- */
+.footer-col-centro {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-start; /* Alinea los elementos a la misma altura en bloque */
+}
+
+.footer-lista-nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left; /* Alineación interna a la izquierda para que los textos guarden simetría */
+}
+
+.footer-lista-nav li a {
+    font-family: var(--fuente-principal);
+    font-weight: 600; /* Montserrat font weight 600 */
+    font-size: 1.1rem;
+    color: var(--color-blanco);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.footer-lista-nav li a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* --- Línea Divisora HR --- */
+.footer-hr {
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-blanco);
+    border: none;
+    margin-bottom: 2rem;
+}
+
+/* --- Copyright Inferior --- */
+.footer-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.footer-copyright {
+    font-family: var(--fuente-principal);
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: var(--color-blanco);
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO FOOTER)
+========================================= */
+@media (max-width: 900px) {
+    .footer-grid-principal {
+        flex-direction: column;
+        gap: 3rem;
+        position: relative;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .footer-logo-box {
+        padding-left: 1rem;
+    }
+
+    .footer-col-centro {
+        position: relative;
+        left: auto;
+        transform: none;
+        align-items: flex-start;
+    }
+
+    .footer-lista-nav {
+        text-align: left;
     }
 }
