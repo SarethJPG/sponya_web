@@ -162,3 +162,82 @@ window.addEventListener('resize', () => {
     track.style.transition = 'none';
     moverCarrusel();
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("form-contacto");
+
+    if (form) {
+        form.addEventListener("submit", function(e) {
+            e.preventDefault(); // Detiene el envío por defecto para validar primero
+
+            let isFormValid = true;
+
+            // Función auxiliar para validar, sanear y mostrar errores
+            const validateField = (id, regex) => {
+                const input = document.getElementById(id);
+                const errorMsg = input.nextElementSibling; // Selecciona el span de error debajo del input
+                let value = input.value.trim();
+
+                // 1. Filtro de seguridad: Elimina etiquetas HTML (<, >) para evitar inyección de scripts
+                value = value.replace(/[<>]/g, "");
+                input.value = value; // Devuelve el valor limpio al campo
+
+                let isValid = true;
+
+                // 2. Comprueba si está vacío o si falla la regla específica (Regex)
+                if (value === "") {
+                    isValid = false;
+                } else if (regex && !regex.test(value)) {
+                    isValid = false;
+                }
+
+                // 3. Aplica estilos visuales de error o éxito
+                if (isValid) {
+                    errorMsg.style.display = "none";
+                    input.style.borderColor = "#d1d1d1"; // Vuelve al color original
+                } else {
+                    errorMsg.style.display = "block";
+                    input.style.borderColor = "red"; // Pinta el borde de rojo
+                    isFormValid = false;
+                }
+            };
+
+            // Ejecutamos validaciones con Expresiones Regulares (Regex)
+            // Nombre: Solo letras (incluyendo acentos y ñ) y espacios
+            validateField("nombre", /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/);
+            
+            // Ciudad: Cualquier texto, pero no vacío
+            validateField("ciudad", null);
+            
+            // Teléfono: Solo números y espacios
+            validateField("telefono", /^[0-9\s]+$/);
+            
+            // Correo: Valida que contenga un "@" y algo después
+            validateField("correo", /^.+@.+$/);
+            
+            // Mensaje: Cualquier texto, pero no vacío
+            validateField("mensaje", null);
+
+            // Si pasa todos los filtros de seguridad y reglas, envía por EmailJS
+            if (isFormValid) {
+                const templateParams = {
+                    nombre: document.getElementById("nombre").value,
+                    ciudad: document.getElementById("ciudad").value,
+                    telefono: document.getElementById("telefono").value,
+                    correo: document.getElementById("correo").value,
+                    mensaje: document.getElementById("mensaje").value
+                };
+
+                emailjs.send('service_h3i2lva', 'template_ue12uqm', templateParams)
+                    .then(function(response) {
+                        alert("¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.");
+                        form.reset();
+                    }, function(error) {
+                        alert("Ocurrió un error al enviar el mensaje. Inténtalo de nuevo.");
+                        console.log("FAILED...", error);
+                    });
+            }
+        });
+    }
+});
