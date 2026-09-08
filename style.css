@@ -1500,3 +1500,202 @@ html {
         align-items: center; 
     }
 }
+
+/* =========================================
+   SECCIÓN: CONTACTO Y FORMULARIO
+========================================= */
+.seccion-contacto {
+    background-color: #efefef;
+    width: 100%;
+    padding: 6rem 10%;
+}
+
+.contacto-contenedor {
+    display: flex;
+    align-items: center; /* Centra ambas columnas verticalmente */
+    width: 100%;
+    gap: 4rem; /* Separación entre el formulario y la imagen */
+}
+
+/* --- MITAD IZQUIERDA: Formulario (55%) --- */
+.contacto-columna-izq {
+    width: 55%;
+    display: flex;
+    justify-content: center; /* Centra el formulario en su 55% */
+}
+
+.formulario-wrapper {
+    width: 100%;
+    /* Aumentamos el ancho máximo de 32rem a 40rem para hacerlo más amplio */
+    max-width: 60rem; 
+}
+
+.contacto-titulo {
+    font-family: var(--fuente-principal); 
+    font-weight: 700;
+    color: #000000; /* Negro puro forzado */
+    font-size: clamp(2rem, 3.5vw, 2.5rem);
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.contacto-subtitulo {
+    font-family: var(--fuente-principal); 
+    font-weight: 500;
+    color: #000000; /* Negro puro forzado */
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    margin-bottom: 4rem;
+    text-align: left;
+}
+
+/* --- Elementos del Formulario --- */
+.form-sponya {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-grupo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+.form-fila-doble {
+    display: flex;
+    gap: 0.5rem; /* Separación entre Ciudad y Tels */
+}
+
+/* En la fila doble, cada grupo ocupa el 50% */
+.form-fila-doble .form-grupo {
+    flex: 1;
+}
+
+.form-label {
+    font-family: var(--fuente-principal);
+    font-weight: 500;
+    color: #000000; /* Negro puro forzado */
+    font-size: clamp(0.85rem, 1vw, 0.95rem);
+    margin-left: 0.5rem; 
+    margin-bottom: 0.4rem;
+}
+
+/* Campos de entrada */
+.form-input, .form-textarea {
+    width: 100%;
+    font-family: var(--fuente-principal);
+    font-size: 1rem;
+    color: #000000; /* Negro puro forzado */
+    padding: 0.8rem 1rem;
+    background-color: var(--color-blanco);
+    border: 1px solid #d1d1d1;
+    border-radius: 4px; 
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus, .form-textarea:focus {
+    border-color: #173456; /* Borde azul al escribir */
+}
+
+/* Textarea específico */
+.form-textarea {
+    resize: vertical; /* Permite estirar solo hacia abajo */
+}
+
+/* Mensajes de Error (Ocultos por defecto) */
+.error-msg {
+    color: red;
+    font-family: var(--fuente-principal);
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin-top: 0.3rem;
+    margin-left: 0.5rem;
+    display: none; /* Se activará con JS */
+}
+
+/* Botón Enviar */
+.btn-enviar-form {
+    font-family: var(--fuente-principal);
+    font-weight: 600;
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    color: var(--color-blanco);
+    background-color: #173456;
+    border: none;
+    border-radius: 6px;
+    padding: 0.9rem 4rem;
+    /* Cambiamos margin: auto por margin-left: 0 para alinearlo perfectamente a la izquierda */
+    margin: 1rem auto 0 0; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-enviar-form:hover {
+    background-color: #112640; /* Azul ligeramente más oscuro */
+}
+
+/* --- MITAD DERECHA: Visuales (45%) --- */
+.contacto-columna-der {
+    width: 45%;
+    display: flex;
+    /* Cambiamos de center a flex-end para pegar la imagen a la derecha */
+    justify-content: flex-end; 
+    align-items: center;
+}
+
+.visual-wrapper {
+    position: relative;
+    width: 100%;
+    /* Aumentamos el límite de 30rem a 38rem para que crezca la imagen y la sombra */
+    max-width: 38rem; 
+}
+
+.img-guante-contacto {
+    position: relative;
+    z-index: 2; 
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Sombra sólida desfasada */
+.visual-wrapper::after {
+    content: '';
+    position: absolute;
+    /* Mantenemos el mismo desfase proporcional */
+    top: 2rem; 
+    left: 2rem; 
+    width: 100%;
+    height: 100%;
+    background-color: #173456; 
+    z-index: 1; 
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO CONTACTO)
+========================================= */
+@media (max-width: 1024px) {
+    .seccion-contacto {
+        padding: 5rem 5%;
+    }
+    .contacto-contenedor {
+        gap: 2rem;
+    }
+    .visual-wrapper::after {
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contacto-contenedor {
+        flex-direction: column-reverse; /* Pone la imagen arriba y el formulario abajo en móviles */
+        gap: 4rem;
+    }
+    .contacto-columna-izq, .contacto-columna-der {
+        width: 100%;
+    }
+    .visual-wrapper {
+        max-width: 20rem; /* Imagen más pequeña en celular */
+        margin-top: 1rem;
+    }
+}
