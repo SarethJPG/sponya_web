@@ -1866,3 +1866,127 @@ html {
         text-align: left;
     }
 }
+
+/* =========================================
+   AJUSTES ESPECÍFICOS: BANNER AEROSOLES 
+   (Sección Transforma tu Espacio)
+========================================= */
+
+#transforma-espacio .ambientes-caja-textos {
+    align-items: flex-start;
+    text-align: left;
+    /* max-width fluido: mínimo 30rem, ideal 40vw, máximo 45rem */
+    max-width: clamp(30rem, 40vw, 45rem);
+    gap: 1.5rem;
+    padding-left: 5%;
+}
+
+#transforma-espacio .ambientes-subtitulo {
+    font-weight: 700;
+    /* font-size fluido: mínimo 1.2rem, ideal 2vw, máximo 1.5rem */
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    margin-bottom: 0;
+}
+
+#transforma-espacio .ambientes-titulo {
+    color: var(--color-verde);
+    /* font-size fluido para que el título no rompa la caja en móviles */
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+#transforma-espacio .ambientes-parrafo {
+    font-family: var(--fuente-secundaria);
+    /* font-size fluido: mínimo 1.2rem, ideal 2vw, máximo 1.9rem */
+    font-size: clamp(1.2rem, 2vw, 1.9rem);
+    color: var(--color-negro);
+    margin-top: 0;
+    /* Ancho máximo fluido para el párrafo */
+    max-width: clamp(25rem, 35vw, 35rem);
+    line-height: 1.4; /* Cambiado a un valor relativo en lugar de 2rem para escalar mejor */
+}
+
+/* =========================================
+   SECCIÓN: TECNOLOGÍA LIMPIA (AEROSOLES)
+========================================= */
+.seccion-tecnologia {
+    background-color: var(--color-blanco);
+    padding: 6rem 10%; /* Mantiene los márgenes laterales del sitio */
+    width: 100%;
+}
+
+.tecnologia-titulo {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: #000000;
+    text-align: center;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 500;
+    margin-bottom: 5rem;
+}
+
+.tecnologia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* align-items: stretch fuerza a que las 4 columnas midan exactamente lo mismo de alto */
+    align-items: stretch;
+}
+
+.tecnologia-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* El padding lateral empuja el contenido hacia adentro para que no toque la línea gris */
+    padding: 0 2rem;
+    border-right: 2px solid #e1e1e1; /* Crea las líneas divisorias */
+}
+
+/* Ocultamos la línea derecha del último elemento para que sean solo 3 líneas en total */
+.tecnologia-item:last-child {
+    border-right: none;
+}
+
+.tecnologia-icono {
+    width: 6rem;
+    height: 6rem;
+    object-fit: contain;
+    margin-bottom: 2rem;
+}
+
+.tecnologia-texto {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: #000000;
+    font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+    text-align: center;
+    line-height: 1.4;
+    /* Las siguientes 3 propiedades garantizan el centrado vertical perfecto del texto dentro de la caja */
+    display: flex;
+    align-items: center; 
+    flex-grow: 1; /* Permite que la caja de texto absorba el espacio sobrante si un texto es más corto que otro */
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO TECNOLOGÍA)
+========================================= */
+@media (max-width: 1024px) {
+    .tecnologia-item {
+        padding: 0 1rem; /* Reducimos el respiro lateral en pantallas medianas */
+    }
+}
+
+@media (max-width: 768px) {
+    .tecnologia-grid {
+        grid-template-columns: 1fr; /* Apilamos a 1 sola columna en celulares */
+        gap: 3rem;
+    }
+    .tecnologia-item {
+        border-right: none;
+        /* Cambiamos las líneas divisorias verticales por horizontales en la versión móvil */
+        border-bottom: 2px solid #e1e1e1;
+        padding: 0 0 3rem 0;
+    }
+    .tecnologia-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+}

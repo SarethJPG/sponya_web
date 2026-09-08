@@ -251,6 +251,141 @@
     </section>
     <!-- Fin de la Sección Colección Perfumado -->
 
+    <!-- =========================================
+         SECCIÓN: BANNER TRANSFORMA TU ESPACIO
+    ========================================= -->
+    <section class="seccion-ambientes" id="transforma-espacio">
+        
+        <img src="imgs/banner_5.webp" alt="Transforma tu espacio" class="ambientes-img-fondo" loading="lazy">
+        
+        <div class="ambientes-contenedor">
+            <div class="ambientes-mitad-izq"></div>
+            
+            <div class="ambientes-mitad-der">
+                <!-- HTML completamente limpio, sin estilos en línea -->
+                <div class="ambientes-caja-textos">
+                    <h3 class="ambientes-subtitulo">Transforma tu espacio</h3>
+                    <h2 class="ambientes-titulo">Aromas que distinguen,<br>espacios que inspiran.</h2>
+                    <p class="ambientes-parrafo">Sponya Air transforma cada espacio con una fragancia sofisticada, creando ambientes de frescura, armonía y distinción.</p>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    <!-- Fin de la Sección Transforma tu Espacio -->
+
+    <!-- =========================================
+         SECCIÓN: TECNOLOGÍA LIMPIA
+    ========================================= -->
+    <section class="seccion-tecnologia" id="tecnologia">
+        
+        <h2 class="tecnologia-titulo">Tecnología Limpia Sponya</h2>
+
+        <div class="tecnologia-grid">
+            
+            <!-- Elemento 1 -->
+            <div class="tecnologia-item">
+                <img src="imgs/planeta.svg" alt="Planeta" class="tecnologia-icono" loading="lazy">
+                <p class="tecnologia-texto">No daña la capa de ozono.</p>
+            </div>
+
+            <!-- Elemento 2 -->
+            <div class="tecnologia-item">
+                <img src="imgs/mascotas.svg" alt="Mascotas" class="tecnologia-icono" loading="lazy">
+                <p class="tecnologia-texto">Amable con tu hogar, tus mascotas.</p>
+            </div>
+
+            <!-- Elemento 3 -->
+            <div class="tecnologia-item">
+                <img src="imgs/aerosol.svg" alt="Aerosol reciclado" class="tecnologia-icono" loading="lazy">
+                <p class="tecnologia-texto">Envase y tapa fabricados con material reciclado.</p>
+            </div>
+
+            <!-- Elemento 4 -->
+            <div class="tecnologia-item">
+                <img src="imgs/puntos.svg" alt="Dispersión fina" class="tecnologia-icono" loading="lazy">
+                <p class="tecnologia-texto">Logra una dispersión más fina y eficiente.</p>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Fin de la Sección Tecnología Limpia -->
+
+    <!-- =========================================
+         SECCIÓN: CONTACTO Y FORMULARIO
+    ========================================= -->
+    <section class="seccion-contacto" id="contacto">
+        
+        <div class="contacto-contenedor">
+            
+            <!-- MITAD IZQUIERDA: Formulario (55%) -->
+            <div class="contacto-columna-izq">
+                <div class="formulario-wrapper">
+                    
+                    <h2 class="contacto-titulo">ENVÍANOS UN MENSAJE</h2>
+                    <h3 class="contacto-subtitulo">Un ejecutivo se pondrá en contacto</h3>
+                    
+                    <form id="form-contacto" class="form-sponya" novalidate>
+                        
+                        <!-- Fila 1: Nombre (Ancho completo) -->
+                        <div class="form-grupo">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <!-- El pattern rechaza números -->
+                            <input type="text" id="nombre" name="nombre" class="form-input" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" required>
+                            <span class="error-msg">Por favor ingresa un nombre válido (sin números).</span>
+                        </div>
+
+                        <!-- Fila 2: Ciudad y Teléfonos (Mitad y mitad) -->
+                        <div class="form-fila-doble">
+                            <div class="form-grupo">
+                                <label for="ciudad" class="form-label">Ciudad</label>
+                                <input type="text" id="ciudad" name="ciudad" class="form-input" required>
+                                <span class="error-msg">Campo requerido.</span>
+                            </div>
+                            
+                            <div class="form-grupo">
+                                <label for="telefono" class="form-label">Tels.</label>
+                                <!-- El pattern solo acepta números y espacios -->
+                                <input type="tel" id="telefono" name="telefono" class="form-input" pattern="[0-9\s]+" required>
+                                <span class="error-msg">Solo se permiten números.</span>
+                            </div>
+                        </div>
+
+                        <!-- Fila 3: Correo (Ancho completo) -->
+                        <div class="form-grupo">
+                            <label for="correo" class="form-label">Correo electrónico</label>
+                            <input type="email" id="correo" name="correo" class="form-input" required>
+                            <span class="error-msg">Por favor ingresa un correo válido con "@".</span>
+                        </div>
+
+                        <!-- Fila 4: Mensaje (Textarea alto) -->
+                        <div class="form-grupo">
+                            <label for="mensaje" class="form-label">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" class="form-textarea" rows="5" required></textarea>
+                            <span class="error-msg">El mensaje no puede estar vacío.</span>
+                        </div>
+
+                        <!-- Botón Enviar -->
+                        <button type="submit" class="btn-enviar-form">Enviar</button>
+                    </form>
+
+                </div>
+            </div>
+
+            <!-- MITAD DERECHA: Visuales (45%) -->
+            <div class="contacto-columna-der">
+                <div class="visual-wrapper">
+                    <!-- Imagen actualizada para la sección de Aerosoles -->
+                    <img src="imgs/aerosol_2.webp" alt="Contacto Sponya Aerosoles" class="img-guante-contacto" loading="lazy">
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Fin de la Sección Contacto -->
+
 
     <!-- INICIO DEL FOOTER COMPARTIDO -->
     <footer class="footer-sponya">
