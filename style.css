@@ -224,7 +224,7 @@ html {
     /* Ocultamos lo que desborde para no mostrar las otras cards a los lados */
     overflow: hidden; 
     /* Margen superior para que la navbar fija (que mide aprox 100px) no lo tape */
-    margin-top: 100px; 
+    margin-top: 6.5rem; 
 }
 
 /* Pista que contiene todas las cards (se moverá horizontalmente con JS) */
