@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponya - Inicio</title>
+    
+    <!-- Importación de la fuente Montserrat desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Vinculación del archivo de estilos CSS (Todo en minúsculas) -->
+    <link rel="stylesheet" href="style.css">
+    <!-- SDK de EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+            publicKey: "gTenyf6EX_CI6FkZh",
+            });
+        })();
+    </script>
+</head>
+
+<body>
+
+    <!-- Inicio del cuerpo de la Navbar -->
+    <nav class="navbar" id="navbar">
+        <!-- Sección A: Contenedor principal de la navbar que abarca todo el ancho -->
+        <div class="seccion-a">
+            
+            <!-- Sección B: Contenedor alineado a la izquierda -->
+            <div class="seccion-b">
+                <!-- Sección 1: Logo de la empresa -->
+                <a href="index.html" class="enlace-logo">
+                    <img src="imgs/logo.webp" alt="Logo Sponya" class="logo" loading="lazy">
+                </a>
+            </div>
+
+            <!-- Sección D: Contenedor alineado a la derecha -->
+            <div class="seccion-d">
+                <!-- Sección 2: Pestañas/Enlaces de navegación -->
+                <div class="seccion-2">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                    <a href="guantes.html" class="nav-link">Guantes</a>
+                    <a href="aerosoles.html" class="nav-link">Aerosoles</a>
+                    <a href="difusores.html" class="nav-link">Difusores</a>
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                </div>
+                
+                <!-- Sección 3: Información de Contacto (Teléfono) -->
+                <div class="seccion-3">
+                    <img src="imgs/telefono.svg" alt="Icono Teléfono" class="icono-telefono" loading="lazy">
+                    <span class="texto-telefono">55 55 76 67 09 / 55 55 76 00 04</span>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <!-- Fin de la Navbar -->
+    <!-- =========================================
+         SECCIÓN HERO: CARRUSEL DE BANNERS
+    ========================================= -->
+    <section class="hero-carrusel" id="hero">
+        
+        <!-- Contenedor de la pista donde se deslizarán los banners -->
+        <div class="carrusel-track" id="carrusel-track">
+            
+            <!-- ================= CARD 1 ================= -->
+            <div class="carrusel-slide">
+                <!-- Imagen de fondo del banner que dictará la altura -->
+                <img src="imgs/banner_1.webp" alt="Banner Perfuma tu espacio" class="img-fondo" loading="lazy">
+                
+                <!-- Sección 1: Contenedor absoluto de los textos -->
+                <div class="seccion-1">
+                    <!-- Elemento 1: Título Principal -->
+                    <h1 class="titulo-banner">
+                        <span class="texto-azul">Perfuma</span><br>
+                        <span class="texto-verde">tu espacio</span>
+                    </h1>
+                    
+                    <!-- Elemento 2: Pequeña línea sobresaliente -->
+                    <div class="linea-decorativa"></div>
+                    
+                    <!-- Elemento 3: Subtítulo -->
+                    <h2 class="subtitulo-premium">NUEVA LINEA PREMIUM DE AROMATIZANTES</h2>
+                    
+                    <!-- Elemento 4: Párrafo -->
+                    <p class="parrafo-banner">Fragancias exclusivas que transforman tus ambientes y crean experiencias inolvidables</p>
+                    
+                    <!-- Elemento 5: Botón -->
+                    <a href="#" class="btn-hero">Conoce la selección</a>
+                </div>
+            </div>
+
+            <!-- ================= CARD 2 (Duplicada) ================= -->
+            <div class="carrusel-slide">
+                <img src="imgs/banner_1.webp" alt="Banner Perfuma tu espacio 2" class="img-fondo" loading="lazy">
+                <div class="seccion-1">
+                    <h1 class="titulo-banner">
+                        <span class="texto-azul">Perfuma</span><br>
+                        <span class="texto-verde">tu espacio</span>
+                    </h1>
+                    <div class="linea-decorativa"></div>
+                    <h2 class="subtitulo-premium">NUEVA LINEA PREMIUM DE AROMATIZANTES</h2>
+                    <p class="parrafo-banner">Fragancias exclusivas que transforman tus ambientes y crean experiencias inolvidables</p>
+                    <a href="#" class="btn-hero">Conoce la selección</a>
+                </div>
+            </div>
+
+            <!-- ================= CARD 3 (Duplicada) ================= -->
+            <div class="carrusel-slide">
+                <img src="imgs/banner_1.webp" alt="Banner Perfuma tu espacio 3" class="img-fondo" loading="lazy">
+                <div class="seccion-1">
+                    <h1 class="titulo-banner">
+                        <span class="texto-azul">Perfuma</span><br>
+                        <span class="texto-verde">tu espacio</span>
+                    </h1>
+                    <div class="linea-decorativa"></div>
+                    <h2 class="subtitulo-premium">NUEVA LINEA PREMIUM DE AROMATIZANTES</h2>
+                    <p class="parrafo-banner">Fragancias exclusivas que transforman tus ambientes y crean experiencias inolvidables</p>
+                    <a href="#" class="btn-hero">Conoce la selección</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Botones de navegación (Flechas) -->
+        <button class="carrusel-flecha flecha-izq" id="flecha-izq">&lt;</button>
+        <button class="carrusel-flecha flecha-der" id="flecha-der">&gt;</button>
+
+        <!-- Indicadores (Puntos) -->
+        <div class="carrusel-puntos" id="carrusel-puntos">
+            <!-- El primer punto inicia con la clase "activo" -->
+            <span class="punto activo" data-index="0"></span>
+            <span class="punto" data-index="1"></span>
+            <span class="punto" data-index="2"></span>
+        </div>
+        
+    </section>
+    <!-- Fin de la Sección Hero -->
+
+    <!-- ===================SECCIÓN: COLECCIÓN DE FRAGANCIAS  ===============================-->
+
+    <section class="seccion-coleccion" id="coleccion">
+        
+        <!-- Contenedor del encabezado para ajustar la separación vertical de los textos -->
+        <div class="coleccion-encabezado">
+            <h2 class="coleccion-titulo">Colección de Fragancias</h2>
+            <h3 class="coleccion-subtitulo">Aromas que inspiran</h3>
+        </div>
+
+        <!-- Bloque principal que agrupa las 3 imágenes/tarjetas -->
+        <div class="coleccion-grid">
+            
+            <!-- Tarjeta 1: Lavanda -->
+            <div class="coleccion-card">
+                <img src="imgs/lavanda_home.webp" alt="Fragancia Floral Lavanda" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Floral</h4>
+                <p class="card-subtitulo">Suave - Delicado - Envolvente</p>
+                <!-- Reutilizamos la clase btn-hero base y agregamos btn-coleccion por si requiere ajustes de tamaño -->
+                <a href="#" class="btn-hero btn-coleccion">Conoce la colección</a>
+            </div>
+
+            <!-- Tarjeta 2: Frutos Rojos -->
+            <div class="coleccion-card">
+                <img src="imgs/frutos_rojos_home.webp" alt="Fragancia Frutal Frutos Rojos" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Frutal</h4>
+                <p class="card-subtitulo">Fresco - Vibrante - Energizante</p>
+                <a href="#" class="btn-hero btn-coleccion">Conoce la colección</a>
+            </div>
+
+            <!-- Tarjeta 3: Brisa del Amanecer -->
+            <div class="coleccion-card">
+                <img src="imgs/brisa_del_amanecer_home.webp" alt="Fragancia Brisa del Amanecer" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Perfumado</h4>
+                <p class="card-subtitulo">Perfumado - Cálido - Refinado</p>
+                <a href="#" class="btn-hero btn-coleccion">Conoce la colección</a>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Fin de la Sección Colección -->
+
+     <!-- =========================================
+         SECCIÓN: CALIDAD QUE SE SIENTE
+    ========================================= -->
+    <section class="seccion-calidad" id="calidad">
+        
+        <!-- Título principal centrado -->
+        <h2 class="calidad-titulo-principal">Calidad que se siente</h2>
+
+        <!-- Contenedor de la cuadrícula de 4 beneficios -->
+        <div class="calidad-grid">
+            
+            <!-- Beneficio 1: Duración -->
+            <div class="calidad-item">
+                <img src="imgs/duracion.svg" alt="Icono Larga duración" class="calidad-icono" loading="lazy">
+                <h3 class="calidad-titulo">Larga duración</h3>
+                <p class="calidad-subtitulo">Fragancias de alta calidad que perduran por más tiempo.</p>
+            </div>
+
+            <!-- Beneficio 2: Olores -->
+            <div class="calidad-item">
+                <img src="imgs/olores.svg" alt="Icono Elimina olores" class="calidad-icono" loading="lazy">
+                <h3 class="calidad-titulo">Elimina olores</h3>
+                <p class="calidad-subtitulo">Neutraliza los malos olores, deja un ambiente fresco y agradable.</p>
+            </div>
+
+            <!-- Beneficio 3: Perfume -->
+            <div class="calidad-item">
+                <img src="imgs/perfume.svg" alt="Icono Fragancias premium" class="calidad-icono" loading="lazy">
+                <h3 class="calidad-titulo">Fragancias premium</h3>
+                <p class="calidad-subtitulo">Aromas exclusivos elaborados con esencias seleccionadas.</p>
+            </div>
+
+            <!-- Beneficio 4: Calidad -->
+            <div class="calidad-item">
+                <img src="imgs/calidad.svg" alt="Icono Calidad Sponya" class="calidad-icono" loading="lazy">
+                <h3 class="calidad-titulo">Calidad Sponya</h3>
+                <p class="calidad-subtitulo">Con la confianza y experiencia de una marca líder en limpieza.</p>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Fin de la Sección Calidad -->
+
+    <!-- =========================================
+         SECCIÓN: BANNER AMBIENTES
+    ========================================= -->
+    <section class="seccion-ambientes" id="ambientes">
+        
+        <!-- Imagen de fondo que dictará la altura total de la sección -->
+        <img src="imgs/banner_2.webp" alt="Ambientes que te hacen sentir bien" class="ambientes-img-fondo" loading="lazy">
+        
+        <!-- Contenedor superpuesto dividido en 2 mitades -->
+        <div class="ambientes-contenedor">
+            
+            <!-- Mitad izquierda vacía -->
+            <div class="ambientes-mitad-izq"></div>
+            
+            <!-- Mitad derecha con el contenido centrado -->
+            <div class="ambientes-mitad-der">
+                <div class="ambientes-caja-textos">
+                    <!-- Elemento 1: Subtítulo -->
+                    <h3 class="ambientes-subtitulo">Transforma cada momento</h3>
+                    <!-- Elemento 2: Título principal -->
+                    <h2 class="ambientes-titulo">Ambientes que te hacen sentir bien</h2>
+                    <!-- Elemento 3: Párrafo -->
+                    <p class="ambientes-parrafo">Sponya Air está diseñado para acompañarte en tu día a día, creando espacios más agradables, acogedores y llenos de frescura.</p>
+                </div>
+            </div>
+
+        </div>
+        
+    </section>
+    <!-- Fin de la Sección Ambientes -->
+
+    <!-- =========================================
+         SECCIÓN: ENCABEZADO COLECCIÓN DE GUANTES
+    ========================================= -->
+    <section class="seccion-encabezado-guantes">
+        <h2 class="titulo-guantes">Colección de Guantes</h2>
+        <h3 class="subtitulo-guantes">Cuida tu hogar, cuidamos tus manos</h3>
+    </section>
+
+    <!-- =========================================
+         SECCIÓN: GUANTE DE DOBLE RESISTENCIA (3 CAPAS)
+    ========================================= -->
+    <section class="seccion-guante" id="guante-resistencia">
+        
+        <!-- CAPA 1: Fondo Derecho (Dicta la altura de la sección) -->
+        <div class="guante-capa-1">
+            <img src="imgs/mujer_guante.webp" alt="Mujer usando guante" class="guante-img-fondo" loading="lazy">
+        </div>
+
+        <!-- CAPA 2: Guante Central superpuesto -->
+        <div class="guante-capa-2">
+            <img src="imgs/guante_rojo.webp" alt="Guante rojo" class="guante-img-central" loading="lazy">
+        </div>
+
+        <!-- CAPA 3: Textos alineados al tercio izquierdo -->
+        <div class="guante-capa-3">
+            <div class="guante-textos">
+                
+                <!-- Elemento 1: Título con salto de línea forzado -->
+                <h2 class="guante-titulo">Guante de<br>doble resistencia</h2>
+                
+                <!-- Elemento 2: Subtítulo con negritas parciales -->
+                <p class="guante-subtitulo"><strong>PROTEGE TUS MANOS</strong> PARA USO COTIDIANO, SECO O HÚMEDO</p>
+                
+                <!-- Elemento 3: Línea decorativa azul (sobresaliente) -->
+                <div class="linea-decorativa linea-azul"></div>
+                
+                <!-- Elemento 4: Lista -->
+                <ul class="guante-lista">
+                    <li>Económico</li>
+                    <li>Multifuncional</li>
+                    <li>Antiderrapante</li>
+                    <li>Satinado por dentro por fuera</li>
+                    <li>Ajuste perfecto</li>
+                </ul>
+                
+                <!-- Elemento 5: Texto pequeño -->
+                <p class="guante-texto-colores">Colores disponibles</p>
+                
+                <!-- Elemento 6: Imagen de colores -->
+                <img src="imgs/colores.webp" alt="Colores disponibles" class="guante-img-colores" loading="lazy">
+                
+                <!-- Elemento 7: Botón -->
+                <a href="#" class="btn-hero btn-guante">Conoce la colección</a>
+                
+            </div>
+        </div>
+        
+    </section>
+    <!-- Fin de la Sección Guante -->
+    
+    <!-- =========================================
+         SECCIÓN: NUESTROS PRODUCTOS
+    ========================================= -->
+    <section class="seccion-productos" id="productos">
+        
+        <!-- Título de la sección -->
+        <h2 class="productos-titulo-principal">Nuestros productos</h2>
+
+        <!-- Cuadrícula de 3 tarjetas -->
+        <div class="productos-grid">
+            
+            <!-- Card 1 -->
+            <div class="producto-card">
+                <img src="imgs/guante_ultra_home.webp" alt="Guante Ultra" class="producto-img" loading="lazy">
+                <h3 class="producto-titulo">Guante Ultra</h3>
+                <p class="producto-desc">Para trabajo rudo con palma reforzada</p>
+                <a href="#" class="btn-hero btn-outline-azul">Conoce la colección</a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="producto-card">
+                <img src="imgs/nitrilo_home.webp" alt="Guante Nitrilo" class="producto-img" loading="lazy">
+                <h3 class="producto-titulo">Nitrilo</h3>
+                <p class="producto-desc">Para ensamblado pintado de automóviles, refinería y petroquímica</p>
+                <a href="#" class="btn-hero btn-outline-azul">Conoce la colección</a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="producto-card">
+                <img src="imgs/desechable_home.webp" alt="Nitrilo Desechable" class="producto-img" loading="lazy">
+                <h3 class="producto-titulo">Nitrilo Desechable</h3>
+                <p class="producto-desc">Color negro para uso diario económico ideal para el uso diario</p>
+                <a href="#" class="btn-hero btn-outline-azul">Conoce la colección</a>
+            </div>
+
+        </div>
+
+        <!-- Línea separadora inferior con botón central -->
+        <div class="productos-separador">
+            <div class="linea-lateral"></div>
+            <a href="#" class="btn-solido-azul">Ver todos los productos</a>
+            <div class="linea-lateral"></div>
+        </div>
+
+    </section>
+    <!-- Fin de la Sección Productos -->
+
+    <!-- =========================================
+         SECCIÓN: PRECIOS DE MAYOREO (2 CAPAS)
+    ========================================= -->
+    <section class="seccion-mayoreo" id="mayoreo">
+        
+        <!-- Capa 1: Imagen lateral izquierda (Abarca 60%) -->
+        <div class="mayoreo-capa-img">
+            <img src="imgs/imagen_guantes_home.webp" alt="Guantes de mayoreo" class="mayoreo-img" loading="lazy">
+        </div>
+
+        <!-- Capa 2: Recuadro azul superpuesto (Abarca 50% desde la derecha) -->
+        <div class="mayoreo-capa-azul">
+            <div class="mayoreo-textos">
+                <!-- Título con salto de línea -->
+                <h2 class="mayoreo-titulo">CONTAMOS CON SUPER<br>PRECIOS DE MAYOREO</h2>
+                <!-- Párrafo justificado -->
+                <p class="mayoreo-parrafo">Explora nuestra amplia gama de paquetes de guantes, disponibles en diversos modelos y tamaños. Ofrecemos opciones que van desde paquetes individuales hasta lotes de 3, 6, 10, 12, 20 y 120 unidades. Perfecto para minoristas y mayoristas por igual.</p>
+            </div>
+        </div>
+
+    </section>
+    <!-- Fin de la Sección Mayoreo -->
+
+    <!-- =========================================
+         SECCIÓN: MERCADO LIBRE
+    ========================================= -->
+    <section class="seccion-mercadolibre" id="mercadolibre">
+        <div class="meli-contenedor">
+            
+            <!-- Columna Izquierda: Imagen (25%) -->
+            <div class="meli-columna-img">
+                <img src="imgs/meli.webp" alt="Disponible en Mercado Libre" class="meli-img" loading="lazy">
+            </div>
+
+            <!-- Columna Derecha: Párrafo (75%) -->
+            <div class="meli-columna-texto">
+                <p class="meli-parrafo">Encuentra todos nuestros paquetes en Mercado Libre, donde podrás elegir la opción que mejor se adapte a tus necesidades y aprovechar nuestras ofertas. ¡Haz clic aquí para ver nuestros paquetes y realizar tu pedido hoy mismo!</p>
+            </div>
+
+        </div>
+    </section>
+    <!-- Fin de la Sección Mercado Libre -->
+
+    <!-- =========================================
+         SECCIÓN: DIFUSORES Y FRAGANCIAS
+    ========================================= -->
+    <section class="seccion-difusores" id="difusores">
+        
+        <!-- Imagen de fondo que dicta la altura -->
+        <img src="imgs/banner_3.webp" alt="Fondo de difusores y fragancias" class="difusores-img-fondo" loading="lazy">
+        
+        <!-- Contenedor absoluto para los textos superpuestos -->
+        <div class="difusores-contenedor">
+            
+            <!-- Encabezado superior centrado -->
+            <div class="difusores-encabezado">
+                <h2 class="difusores-titulo-principal">Difusores y fragancias</h2>
+                <h3 class="difusores-subtitulo-principal">Aromas exclusivos</h3>
+            </div>
+            
+            <!-- Bloque inferior alineado a la derecha -->
+            <div class="difusores-bloque-derecha">
+                <h2 class="difusores-titulo-secundario">DIFUSORES<br>INTELIGENTES</h2>
+                <p class="difusores-subtitulo-secundario">ESENCIAS 100% PURAS</p>
+                
+                <!-- Contenedor de botones en columna -->
+                <div class="difusores-botones">
+                    <a href="#" class="btn-difusor">Ver difusores</a>
+                    <a href="#" class="btn-difusor">Ver fragancias</a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Fin de la Sección Difusores -->
+
+    <!-- =========================================
+         SECCIÓN: CONTACTO Y FORMULARIO
+    ========================================= -->
+    <section class="seccion-contacto" id="contacto">
+        
+        <div class="contacto-contenedor">
+            
+            <!-- MITAD IZQUIERDA: Formulario (55%) -->
+            <div class="contacto-columna-izq">
+                <div class="formulario-wrapper">
+                    
+                    <h2 class="contacto-titulo">ENVÍANOS UN MENSAJE</h2>
+                    <h3 class="contacto-subtitulo">Un ejecutivo se pondrá en contacto</h3>
+                    
+                    <form id="form-contacto" class="form-sponya" novalidate>
+                        
+                        <!-- Fila 1: Nombre (Ancho completo) -->
+                        <div class="form-grupo">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <!-- El pattern rechaza números -->
+                            <input type="text" id="nombre" name="nombre" class="form-input" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" required>
+                            <span class="error-msg">Por favor ingresa un nombre válido (sin números).</span>
+                        </div>
+
+                        <!-- Fila 2: Ciudad y Teléfonos (Mitad y mitad) -->
+                        <div class="form-fila-doble">
+                            <div class="form-grupo">
+                                <label for="ciudad" class="form-label">Ciudad</label>
+                                <input type="text" id="ciudad" name="ciudad" class="form-input" required>
+                                <span class="error-msg">Campo requerido.</span>
+                            </div>
+                            
+                            <div class="form-grupo">
+                                <label for="telefono" class="form-label">Tels.</label>
+                                <!-- El pattern solo acepta números y espacios -->
+                                <input type="tel" id="telefono" name="telefono" class="form-input" pattern="[0-9\s]+" required>
+                                <span class="error-msg">Solo se permiten números.</span>
+                            </div>
+                        </div>
+
+                        <!-- Fila 3: Correo (Ancho completo) -->
+                        <div class="form-grupo">
+                            <label for="correo" class="form-label">Correo electrónico</label>
+                            <input type="email" id="correo" name="correo" class="form-input" required>
+                            <span class="error-msg">Por favor ingresa un correo válido con "@".</span>
+                        </div>
+
+                        <!-- Fila 4: Mensaje (Textarea alto) -->
+                        <div class="form-grupo">
+                            <label for="mensaje" class="form-label">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" class="form-textarea" rows="5" required></textarea>
+                            <span class="error-msg">El mensaje no puede estar vacío.</span>
+                        </div>
+
+                        <!-- Botón Enviar -->
+                        <button type="submit" class="btn-enviar-form">Enviar</button>
+                    </form>
+
+                </div>
+            </div>
+
+            <!-- MITAD DERECHA: Visuales (45%) -->
+            <div class="contacto-columna-der">
+                <div class="visual-wrapper">
+                    <img src="imgs/guante_amarillo.webp" alt="Contacto Sponya" class="img-guante-contacto" loading="lazy">
+                    <!-- El recuadro de la sombra se generará mediante CSS con pseudo-elementos o box-shadow en esta imagen -->
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Fin de la Sección Contacto -->
+
+    <!-- =========================================
+         SECCIÓN: FOOTER DEL SITIO
+    ========================================= -->
+    <footer class="footer-sponya">
+        <!-- Contenedor general del footer -->
+        <div class="footer-contenedor">
+            
+            <!-- Fila 1: Logo alineado a la izquierda con un pequeño margen -->
+            <div class="footer-logo-box">
+                <img src="imgs/logo.webp" alt="Logo Sponya" class="footer-logo" loading="lazy">
+            </div>
+
+            <!-- Fila 2: Contenedores principales (Izquierda y Centro) -->
+            <div class="footer-grid-principal">
+                
+                <!-- Columna Izquierda: Dirección y Lista de Contacto -->
+                <div class="footer-col-izq">
+                    <p class="footer-direccion">
+                        Blvd Manuel Avila Camacho Joselillo 6a Naucalpan Col. El Parque Edo. de México.
+                    </p>
+                    
+                    <ul class="footer-lista-contacto">
+                        <li>
+                            <img src="imgs/telefono.svg" alt="Teléfono" class="footer-icono-lista">
+                            <span>55 55 76 67 09 / 55 55 76 00 04</span>
+                        </li>
+                        <li>
+                            <img src="imgs/whatsapp.svg" alt="WhatsApp" class="footer-icono-lista">
+                            <span>55 2480 5342</span>
+                        </li>
+                        <li>
+                            <img src="imgs/correo.svg" alt="Correo" class="footer-icono-lista">
+                            <span>isaac@sponya.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Columna Central: Navegación de 5 elementos -->
+                <div class="footer-col-centro">
+                    <ul class="footer-lista-nav">
+                        <li><a href="index.html">inicio</a></li>
+                        <li><a href="guantes.html">Productos</a></li>
+                        <li><a href="aerosoles.html">Aerosoles</a></li>
+                        <li><a href="difusores.html">Difusores</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Línea divisora blanca de 3px -->
+            <hr class="footer-hr">
+
+            <!-- Fila Final: Copyright centrado -->
+            <div class="footer-bottom">
+                <p class="footer-copyright">Copyright © 2026 SPONYA todos los derechos reservados</p>
+            </div>
+
+        </div>
+    </footer>
+    <!-- Fin del Footer -->
+
+    <!-- Vinculación del archivo JavaScript (Todo en minúsculas) -->
+    <script src="script.js"></script>
+</body>
+</html>

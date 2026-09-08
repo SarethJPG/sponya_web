@@ -1,0 +1,1868 @@
+/* =========================================
+   VARIABLES GLOBALES Y RESETEO BÁSICO
+========================================= */
+:root {
+    --color-blanco: #ffffff;
+    --color-negro: #3b3b3b;
+    --color-verde: #5faf3c;
+    /* Familias tipográficas */
+    --fuente-principal: 'Montserrat', sans-serif;
+    --fuente-secundaria: 'Athelas', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    background-color: #f4f4f4; /* Color de fondo temporal para contraste */
+}
+
+/* =========================================
+   ESCALADO 100% FLUIDO (Monitores y Laptops)
+========================================= */
+html {
+    /* La fuente base será fluida: 
+       Mínimo 9px, escalado ideal basado en el ancho (0.833vw), Máximo 16px */
+    font-size: clamp(9px, 0.833vw, 16px); 
+}
+
+/* En celulares y tablets pequeñas (768px o menos), congelamos el tamaño 
+   en 14px porque el diseño ya se apila hacia abajo y no necesita encogerse más */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+/* =========================================
+   ESTILOS DE LA NAVBAR (BARRA DE NAVEGACIÓN)
+========================================= */
+.navbar {
+    background-color: var(--color-blanco);
+    width: 100%;
+    position: fixed; /* Mantiene la navbar fija en la pantalla */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Asegura que esté por encima de todo el contenido */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Transición suave para cuando la ocultemos/mostremos con JS */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Clase dinámica que agregaremos con JS para ocultar la navbar hacia arriba */
+.navbar-oculta {
+    transform: translateY(-100%);
+}
+
+/* SECCIÓN A: Contenedor principal */
+.seccion-a {
+    display: flex;
+    justify-content: space-between; /* Separa Sección B (izq) y Sección D (der) */
+    align-items: center;
+    padding: 0 5%; /* El 5% genera los márgenes iguales a izquierda y derecha */
+    height: 6.5rem; /* Altura base que se ajustará según el logo */
+}
+
+/* SECCIÓN B: Lado Izquierdo (Logo) */
+.seccion-b {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 5rem; /* Define la altura del logo (y por ende, afecta la navbar) */
+    width: auto;
+}
+
+/* SECCIÓN D: Lado Derecho (Pestañas y Teléfono) */
+.seccion-d {
+    display: flex;
+    align-items: center;
+    gap: 90px; /* Separación entre la Sección 2 (Pestañas) y la Sección 3 (Contacto) */
+}
+
+/* =========================================
+   SECCIÓN 2: PESTAÑAS (ENLACES)
+========================================= */
+.seccion-2 {
+    display: flex;
+    gap: 25px; /* Separación entre cada palabra/pestaña */
+}
+
+.nav-link {
+    font-family: var(--fuente-principal);
+    font-weight: 550; /* Ancho de letra por defecto */
+    color: var(--color-negro);
+    text-decoration: none;
+    font-size: 1.2rem;
+    position: relative; /* Necesario para posicionar la línea verde debajo */
+    transition: color 0.3s ease, transform 0.3s ease; /* Suaviza el cambio de color y tamaño */
+    display: inline-block; /* Permite que el 'transform: scale' funcione correctamente */
+}
+
+/* Efecto Hover: Cambio a verde y aumento de tamaño (5%) */
+.nav-link:hover {
+    color: var(--color-verde);
+    transform: scale(1.05); 
+}
+
+/* Línea verde inferior animada desde el centro */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* Distancia entre la palabra y la línea */
+    left: 0;
+    width: 100%;
+    height: 4px; /* Grosor de la línea */
+    background-color: var(--color-verde);
+    transform: scaleX(0); /* Inicialmente la línea tiene ancho 0 */
+    transform-origin: center; /* Hace que crezca desde el centro hacia los lados */
+    transition: transform 0.3s ease; /* Suaviza la animación de la línea */
+}
+
+/* Al pasar el cursor, la línea se expande al 100% de la palabra */
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* =========================================
+   SECCIÓN 3: CONTACTO (TELÉFONO)
+========================================= */
+.seccion-3 {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Separación entre el icono y el texto */
+}
+
+.icono-telefono {
+    height: 1.2em; /* Toma la misma altura proporcional al texto que lo acompaña */
+    width: auto;
+}
+
+.texto-telefono {
+    font-family: var(--fuente-principal);
+    font-weight: 700; /* Letra negrita */
+    color: var(--color-verde);
+    font-size: 1.2rem;
+}
+
+/* =========================================
+   ESTILOS DE PRUEBA PARA LAS SECCIONES (HERO Y SCROLL)
+========================================= */
+.seccion-prueba {
+    min-height: 100vh; /* Cada sección ocupa al menos el alto completo de la pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero1 {
+    background-color: #e0e0e0;
+    /* Añadimos un padding-top para que el contenido no quede oculto detrás de la navbar fija al inicio */
+    padding-top: 100px; 
+}
+
+.contenido-prueba {
+    background-color: #d1d1d1;
+}
+
+.final-prueba {
+    background-color: #c2c2c2;
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO PARA LAPTOPS Y MÓVILES)
+========================================= */
+
+/* Adaptación para pantallas medianas (Laptops pequeñas / Tablets en horizontal) */
+@media (max-width: 1024px) {
+    .seccion-d {
+        gap: 20px;
+    }
+    .seccion-2 {
+        gap: 15px;
+    }
+    .nav-link, .texto-telefono {
+        font-size: 14px; /* Reducimos un poco el texto */
+    }
+}
+
+/* Adaptación para móviles (Por ahora ajustamos para que no se rompa, luego podemos implementar un menú hamburguesa si lo requieres) */
+@media (max-width: 768px) {
+    .seccion-a {
+        flex-direction: column; /* Apila el logo y los enlaces */
+        height: auto;
+        padding: 15px 5%;
+        gap: 15px;
+    }
+    .seccion-d {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .seccion-2 {
+        flex-wrap: wrap; /* Permite que las pestañas bajen a la siguiente línea si no caben */
+        justify-content: center;
+    }
+    .hero1 {
+        padding-top: 180px; /* Ajuste para el nuevo alto de la navbar apilada */
+    }
+}
+
+/* =========================================
+   SECCIÓN HERO: CARRUSEL DE BANNERS
+========================================= */
+.hero-carrusel {
+    position: relative;
+    width: 100%;
+    /* Ocultamos lo que desborde para no mostrar las otras cards a los lados */
+    overflow: hidden; 
+    /* Margen superior para que la navbar fija (que mide aprox 100px) no lo tape */
+    margin-top: 100px; 
+}
+
+/* Pista que contiene todas las cards (se moverá horizontalmente con JS) */
+.carrusel-track {
+    display: flex;
+    width: 100%;
+    /* Transición fluida para el efecto de desplazamiento que activaremos con JS */
+    transition: transform 0.5s ease-in-out; 
+}
+
+/* Cada tarjeta del carrusel */
+.carrusel-slide {
+    min-width: 100%; /* Cada card ocupa obligatoriamente el 100% del ancho */
+    position: relative;
+    display: flex;
+    align-items: center; /* Centra el contenido interior (la seccion-1) */
+}
+
+/* Imagen de fondo de la card */
+.img-fondo {
+    width: 100%;
+    height: auto; /* Mantiene la proporción y dicta la altura final de la section */
+    display: block;
+}
+
+/* =========================================
+   CONTENIDO INTERNO DEL BANNER (SECCIÓN 1)
+========================================= */
+.seccion-1 {
+    position: absolute;
+    left: 10%; 
+    /* Cambiamos de 50% a 60% para bajar todos los textos juntos */
+    top: 60%; 
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Elemento 1: Título Principal */
+.titulo-banner {
+    font-family: var(--fuente-secundaria); /* Aplica Athelas */
+    font-size: 5.9rem;
+    line-height: 0.85; /* Reduce el espacio vertical entre "Perfuma" y "tu espacio" */
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.texto-azul {
+    color: #153e6d;
+}
+
+.texto-verde {
+    color: #5dae39;
+}
+
+/* Elemento 2: Línea decorativa */
+.linea-decorativa {
+    width: 2rem; 
+    height: 0.2rem; 
+    background-color: #5dae39;
+    /* Al usar margen negativo a la izquierda, sobresale artificialmente de la alineación */
+    margin-left: -0.7rem; 
+    margin-bottom: 1.3rem;
+    margin-top: 0.5rem;
+}
+
+/* Elemento 3: Subtítulo Premium */
+.subtitulo-premium {
+    font-family: var(--fuente-principal); /* Aplica Montserrat */
+    font-weight: 800;
+    color: var(--color-negro);
+    font-size: 1.2rem;
+    letter-spacing: -0.01rem; /* Pequeño espaciado para mejor lectura */
+    margin-bottom: 0.8rem;
+}
+
+/* Elemento 4: Párrafo */
+.parrafo-banner {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-size: 1.3rem;
+    line-height: 1.5;
+    /* Limitamos el ancho de la caja (aprox. lo que mide el texto "tu espacio" en tamaño 5rem) */
+    max-width: 27rem; 
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+}
+
+/* Elemento 5: Botón */
+.btn-hero {
+    font-family: var(--fuente-principal);
+    font-weight: 400;
+    color: var(--color-negro);
+    text-decoration: none;
+    font-size: 1.1rem;
+    background-color: transparent;
+    border: 2px solid #5dae39;
+    /* Un radio muy alto (50px) crea laterales completamente redondos (estilo pastilla) */
+    border-radius: 50px; 
+    padding: 0.8rem 2.2rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover opcional para mejorar la experiencia */
+.btn-hero:hover {
+    background-color: #5dae39;
+    color: var(--color-blanco);
+}
+
+/* =========================================
+   CONTROLES DEL CARRUSEL (FLECHAS Y PUNTOS)
+========================================= */
+
+/* Flechas Laterales */
+.carrusel-flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.2); 
+    color: var(--color-blanco); 
+    border: none;
+    font-size: 2rem;
+    font-family: monospace; 
+    /* Ancho y alto iguales para formar el cuadrado */
+    width: 2rem;
+    height: 2rem;
+    /* Centramos el símbolo < > dentro del cuadrado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10; 
+    transition: background-color 0.3s ease;
+}
+
+.carrusel-flecha:hover {
+    background-color: rgba(0, 0, 0, 0.3); /* Se oscurece al pasar el cursor */
+}
+
+.flecha-izq {
+    left: 2rem;
+}
+
+.flecha-der {
+    right: 2rem;
+}
+
+/* Puntos Indicadores */
+.carrusel-puntos {
+    position: absolute;
+    bottom: 2rem; /* Casi pegados al borde inferior */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+}
+
+.punto {
+    width: 0.7rem;
+    height: 0.7rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 50%; /* Círculo perfecto */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Estado del punto activo (Card que se está viendo) */
+.punto.activo {
+    background-color: #5dae39;
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO HERO)
+========================================= */
+@media (max-width: 1024px) {
+    .titulo-banner {
+        font-size: 4rem;
+    }
+    .parrafo-banner {
+        max-width: 18rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .seccion-1 {
+        left: 5%; /* Acercamos un poco más el contenido al borde en móviles */
+    }
+    .titulo-banner {
+        font-size: 2.5rem;
+    }
+    .linea-decorativa {
+        margin-left: -0.25rem; /* Adaptamos el sobresaliente */
+    }
+    .subtitulo-premium {
+        font-size: 0.8rem;
+    }
+    .parrafo-banner {
+        font-size: 0.9rem;
+        max-width: 14rem;
+    }
+    .btn-hero {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    /* Ocultamos las flechas en celular si queremos priorizar táctil, 
+       o las achicamos. Por ahora las achicamos. */
+    .carrusel-flecha {
+        font-size: 1.5rem;
+        padding: 0.8rem 0.3rem;
+    }
+}
+
+/* =========================================
+   SECCIÓN: COLECCIÓN DE FRAGANCIAS
+========================================= */
+.seccion-coleccion {
+    background-color: var(--color-blanco);
+    /* 5rem de espacio arriba y abajo, 10% a los lados para asegurar un margen lateral amplio */
+    padding: 5rem 10%; 
+    width: 100%;
+}
+
+/* --- Contenedor del Encabezado (Títulos) --- */
+.coleccion-encabezado {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los títulos horizontalmente */
+    gap: 0.5rem; /* Separación vertical entre el título y el subtítulo */
+    margin-bottom: 4rem; /* Separación entre el bloque de títulos y las imágenes */
+    text-align: center;
+}
+
+.coleccion-titulo {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: var(--color-negro); /* Ya configuraste esta variable a #3b3b3b */
+    font-size: 3.5rem;
+    font-weight: normal; /* Athelas luce mejor en pesos normales para encabezados */
+}
+
+.coleccion-subtitulo {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: var(--color-verde);
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+/* --- Contenedor de la Cuadrícula de 3 Imágenes --- */
+.coleccion-grid {
+    display: grid;
+    /* Crea 3 columnas del mismo ancho (1 fracción de espacio cada una) */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem; /* Espacio exacto entre cada tarjeta/imagen */
+}
+
+/* --- Cada Tarjeta (Imagen + Textos + Botón) --- */
+.coleccion-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alineación vertical al centro */
+    text-align: center;
+}
+
+.coleccion-img {
+    width: 100%;
+    /* Limitamos el tamaño para que no crezcan de forma desproporcionada en monitores gigantes */
+    max-width: 22rem; 
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 1.5rem; /* Separación entre la imagen y su título */
+}
+
+/* Título de la imagen (Floral, Frutal, Perfumado) */
+.card-titulo {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    -webkit-text-stroke: 0.3px var(--color-negro);
+}
+
+/* Subtítulo de la imagen */
+.card-subtitulo {
+    font-family: var(--fuente-principal); /* Montserrat */
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: 0.9rem; /* Mucho más pequeño */
+    margin-bottom: 2rem; /* Espacio para separar del botón */
+    margin-top: 1rem;
+}
+
+/* Ajuste específico para el botón de esta sección (reutiliza los colores y formas de .btn-hero) */
+.btn-coleccion {
+    /* Hacemos el texto un poco más pequeño y el padding ligeramente menor para ajustarse al bloque */
+    font-size: 1rem;
+    padding: 0.7rem 1.8rem;
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO COLECCIÓN)
+========================================= */
+
+/* Adaptación para pantallas medianas (Laptops) */
+@media (max-width: 1024px) {
+    .seccion-coleccion {
+        padding: 4rem 5%; /* Reducimos el margen lateral para aprovechar espacio */
+    }
+    .coleccion-titulo {
+        font-size: 2.8rem;
+    }
+    .coleccion-subtitulo {
+        font-size: 1.6rem;
+    }
+    .coleccion-grid {
+        gap: 1.5rem; /* Acercamos un poco más las imágenes */
+    }
+    .card-titulo {
+        font-size: 1.8rem;
+    }
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+    .seccion-coleccion {
+        padding: 3rem 5%;
+    }
+    .coleccion-titulo {
+        font-size: 2.2rem;
+    }
+    .coleccion-subtitulo {
+        font-size: 1.4rem;
+    }
+    .coleccion-grid {
+        /* Cambiamos de 3 columnas a 1 sola columna para apilar las imágenes */
+        grid-template-columns: 1fr;
+        gap: 3.5rem; /* Aumentamos la separación vertical entre cada grupo (imagen+textos+botón) */
+    }
+    .coleccion-img {
+        max-width: 18rem; /* Imágenes un poco más pequeñas en celular */
+    }
+}
+
+/* =========================================
+   SECCIÓN: CALIDAD QUE SE SIENTE
+========================================= */
+.seccion-calidad {
+    background-color: var(--color-blanco);
+    /* 10% de padding lateral asegura que el margen exterior sea mayor al gap interno (2rem) */
+    padding: 5rem 10%;
+    width: 100%;
+}
+
+.calidad-titulo-principal {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    font-weight: 500;
+    /* Agregamos el truco de contorno por si el 500 nativo no marca diferencia en esta fuente */
+    -webkit-text-stroke: 0.2px var(--color-negro); 
+    font-size: 2.7rem;
+    color: var(--color-negro);
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+/* --- Cuadrícula de 4 elementos --- */
+.calidad-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas del mismo ancho */
+    gap: 2rem; /* Separación interna entre las secciones */
+}
+
+/* --- Elementos individuales --- */
+.calidad-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alineación vertical centralizada */
+    text-align: center;
+}
+
+.calidad-icono {
+    width: 6rem; /* Tamaño uniforme para los SVG */
+    height: 6rem;
+    margin-bottom: 1.5rem;
+}
+
+.calidad-titulo {
+    font-family: var(--fuente-secundaria); /* Athelas para mantener jerarquía visual */
+    font-weight: 500;
+    font-size: 1.7rem;
+    color: var(--color-negro);
+    margin-bottom: 0.8rem;
+}
+
+.calidad-subtitulo {
+    font-family: var(--fuente-principal); /* Montserrat */
+    font-weight: 500;
+    font-size: 0.7rem;
+    color: var(--color-negro);
+    line-height: 1.5;
+    /* Límite de ancho para que sea uniforme y menor a la extensión visual del título */
+    max-width: 13rem; 
+    margin: 0 auto; /* Asegura que la caja de texto restringida se mantenga al centro */
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO CALIDAD)
+========================================= */
+
+/* Adaptación para pantallas medianas (Laptops y Tablets) */
+@media (max-width: 1024px) {
+    .seccion-calidad {
+        padding: 4rem 5%;
+    }
+    .calidad-grid {
+        /* Pasamos de 4 a 2 columnas para que no se aprieten los textos */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem 2rem; /* 3rem de separación vertical, 2rem horizontal */
+    }
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+    .seccion-calidad {
+        padding: 3rem 5%;
+    }
+    .calidad-titulo-principal {
+        font-size: 1.8rem;
+    }
+    .calidad-grid {
+        /* 1 sola columna para apilar todo hacia abajo */
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+/* =========================================
+   SECCIÓN: BANNER AMBIENTES
+========================================= */
+.seccion-ambientes {
+    position: relative;
+    width: 100%;
+    /* Ocultamos cualquier desbordamiento */
+    overflow: hidden; 
+}
+
+/* Imagen de fondo que determina la altura */
+.ambientes-img-fondo {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* max-height opcional por si en pantallas ultranchas se hace muy alta */
+    max-height: 80vh;
+    object-fit: cover;
+}
+
+/* Contenedor superpuesto que ocupa el 100% del banner */
+.ambientes-contenedor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex; /* Divide el contenedor en columnas */
+}
+
+/* Mitad Izquierda: Vacía, solo empuja el contenido a la derecha */
+.ambientes-mitad-izq {
+    width: 40%;
+}
+
+/* Mitad Derecha: Contiene los textos centrados */
+.ambientes-mitad-der {
+    width: 60%;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente dentro de su mitad */
+    align-items: center; /* Centra verticalmente */
+    padding: 0 5%; /* Respiro lateral por si la pantalla se reduce */
+}
+
+/* Caja que agrupa los textos para controlar su ancho */
+.ambientes-caja-textos {
+    max-width: 30rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5rem;
+}
+
+/* Elemento 1: Subtítulo (Montserrat) */
+.ambientes-subtitulo {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-weight: 650;
+    font-size: 1.5rem;
+    /* Ajusta este valor para separar el subtítulo del título */
+    margin-bottom: 1.9rem; 
+}
+
+/* Elemento 2: Título principal (Athelas) */
+.ambientes-titulo {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-verde);
+    font-weight: 500;
+    font-size: 3.5rem;
+    line-height: 1;
+    /* Ajusta este valor para separar el título del párrafo */
+    margin-bottom: 1.5rem; 
+    margin-top: 0.5;
+}
+
+/* Elemento 3: Párrafo (Athelas) */
+.ambientes-parrafo {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-negro);
+    font-size: 1.7rem;
+    line-height: 1;
+    max-width: 26rem;
+    margin-top: 1rem;
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO AMBIENTES)
+========================================= */
+
+/* Adaptación para pantallas medianas (Laptops) */
+@media (max-width: 1024px) {
+    .ambientes-titulo {
+        font-size: 2.5rem;
+    }
+    .ambientes-subtitulo, .ambientes-parrafo {
+        font-size: 1rem;
+    }
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+    .ambientes-contenedor {
+        /* En móvil, la distribución 50/50 suele apretar mucho el texto, 
+           así que dejamos que la caja ocupe casi todo el ancho */
+        justify-content: center; 
+    }
+    
+    .ambientes-mitad-izq {
+        display: none; /* Ocultamos la mitad vacía en móviles */
+    }
+    
+    .ambientes-mitad-der {
+        width: 90%; /* Toma casi todo el ancho */
+        text-align: center; /* Centramos el texto para mejor estética en móvil */
+    }
+    
+    .ambientes-caja-textos {
+        align-items: center; /* Asegura el centrado de los bloques de texto */
+        /* Agregamos un fondo semitransparente blanco opcional si la imagen 
+           interfiere con la lectura en celular al abarcar toda la pantalla */
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 2rem;
+        border-radius: 1rem;
+    }
+
+    .ambientes-titulo {
+        font-size: 2rem;
+    }
+}
+
+/* =========================================
+   SECCIÓN: ENCABEZADO COLECCIÓN DE GUANTES
+========================================= */
+.seccion-encabezado-guantes {
+    background-color: var(--color-blanco);
+    width: 100%;
+    /* Padding amplio para darle respiro superior e inferior */
+    padding: 6rem 5%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
+}
+
+.titulo-guantes {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: var(--color-negro);
+    /* Escalado fluido: tamaño base en móvil, crece hasta 4rem en monitores */
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: normal;
+    margin-bottom: 0.5rem; /* Separación sutil con el subtítulo */
+}
+
+.subtitulo-guantes {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: #173456; /* Azul Sponya */
+    /* Escalado fluido proporcionalmente menor al título principal */
+    font-size: clamp(0.5rem, 3vw, 2rem);
+    font-weight: normal;
+}
+
+/* =========================================
+   SECCIÓN: GUANTE DE DOBLE RESISTENCIA
+========================================= */
+.seccion-guante {
+    position: relative;
+    background-color: var(--color-blanco);
+    width: 100%;
+    overflow: hidden;
+    /* Altura mínima de seguridad para que el texto nunca se corte en pantallas raras */
+    min-height: 38rem; 
+}
+
+/* --- CAPA 1: Imagen de fondo (Mitad derecha) --- */
+.guante-capa-1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%; /* Corregido al 100% para llenar el fondo */
+}
+
+.guante-img-fondo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left; /* Asegura que la mujer no se recorte al comprimir la pantalla */
+    display: block;
+}
+
+/* --- CAPA 2: Guante central (Flotante y dicta altura) --- */
+.guante-capa-2 {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.guante-img-central {
+    /* 10% más grande (pasamos de 50vw a 55vw) */
+    height: 55vw; 
+    /* Aumentamos el max-height para permitir que el guante crezca libremente */
+    max-height: 95vh; 
+    width: auto;
+    object-fit: contain;
+    /* Desplaza la imagen exactamente un 10% del ancho de la pantalla hacia la izquierda */
+    transform: translateX(-1vw); 
+}
+
+/* --- CAPA 3: Textos (Izquierda) --- */
+.guante-capa-3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45%; 
+    height: 100%;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    /* Reducimos de 15% a 11% para pegarlo un poquito más a la izquierda */
+    padding-left: 11%; 
+}
+
+.guante-textos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Reducimos el 5% a 0% para regresarlo a su centro natural, subiéndolo un poco. 
+       (Si aún lo quieres más arriba, puedes usar un valor negativo como -3%) */
+    transform: translateY(0%); 
+}
+
+/* Elemento 1: Título */
+.guante-titulo {
+    font-family: var(--fuente-secundaria);
+    color: #173456;
+    /* Aumentamos el escalado: mínimo 2.5rem, ideal 4.5vw, máximo 4.5rem */
+    font-size: clamp(2.5rem, 4.5vw, 4.5rem); 
+    line-height: 0.95;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+}
+
+/* Elemento 2: Subtítulo */
+.guante-subtitulo {
+    font-family: var(--fuente-principal); 
+    color: var(--color-negro);
+    font-weight: 600;
+    /* Fuente aumentada */
+    font-size: 1.15rem; 
+    line-height: 1.3;
+    /* Ampliamos el contenedor para evitar saltos de línea indeseados */
+    max-width: 28rem; 
+    margin-bottom: 1rem;
+}
+
+/* Elemento 3: Línea azul */
+.linea-azul {
+    background-color: #173456;
+    margin-bottom: 1.5rem;
+    /* Línea más ancha y gruesa para mantener proporción */
+    width: 2.5rem; 
+    height: 0.4rem; 
+    margin-left: -1.2rem; 
+}
+
+/* Elemento 4: Lista de 5 puntos */
+.guante-lista {
+    font-family: var(--fuente-principal); 
+    color: var(--color-negro);
+    /* Fuente aumentada */
+    font-size: 1.3rem; 
+    line-height: 1.6;
+    list-style-type: disc; 
+    margin-left: 1.2rem; 
+    /* Ampliamos el contenedor al crecer la letra */
+    max-width: 17rem; 
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+/* Elemento 5: Texto colores */
+.guante-texto-colores {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    /* Fuente aumentada */
+    font-size: 0.9rem; 
+    font-weight: 550;
+    margin-bottom: 0.5rem;
+}
+
+/* Elemento 6: Imagen colores */
+.guante-img-colores {
+    /* Imagen más grande */
+    height: 5.5rem; 
+    width: auto;
+    margin-bottom: 3rem;
+}
+
+/* Elemento 7: Botón modificado (Recuperado) */
+.btn-guante {
+    border: 2px solid #173456; 
+    color: #173456; 
+}
+
+.btn-guante:hover {
+    background-color: #173456; 
+    color: var(--color-blanco);
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO GUANTE)
+========================================= */
+@media (max-width: 1024px) {
+    .guante-capa-3 {
+        width: 45%; 
+    }
+}
+
+@media (max-width: 768px) {
+    .seccion-guante {
+        display: flex; 
+        flex-direction: column; 
+    }
+    .guante-capa-1 {
+        position: relative; 
+        width: 100%;
+        height: auto;
+    }
+    .guante-img-fondo {
+        height: auto; 
+    }
+    .guante-capa-2 {
+        display: none; 
+    }
+    .guante-capa-3 {
+        position: relative; 
+        width: 100%;
+        padding: 4rem 5%;
+    }
+    .guante-textos {
+        transform: none; /* Apagamos el desplazamiento en móvil */
+    }
+    .guante-subtitulo, .guante-lista {
+        max-width: 100%; 
+    }
+}
+
+/* =========================================
+   SECCIÓN: NUESTROS PRODUCTOS
+========================================= */
+.seccion-productos {
+    background-color: var(--color-blanco);
+    width: 100%;
+    /* 6rem arriba/abajo, 10% a los lados para la separación lateral de toda la sección */
+    padding: 6rem 10%; 
+}
+
+.productos-titulo-principal {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-negro);
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    text-align: center;
+    font-weight: normal;
+    margin-bottom: 5rem;
+}
+
+/* --- Cuadrícula de Cards --- */
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Ajusta este gap si necesitas acercar o alejar las cards lateralmente */
+    gap: clamp(2rem, 4vw, 5rem); 
+}
+
+/* --- Contenido de cada Card --- */
+.producto-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* Obligamos a que todas las cards tengan la misma altura (la de la card más alta) */
+    height: 100%; 
+}
+
+.producto-img {
+    width: 100%;
+    max-width: 20rem; 
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 1.8rem; 
+}
+
+.producto-titulo {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-negro);
+    font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+    font-weight: 500;
+    margin-bottom: 1rem; 
+}
+
+.producto-desc {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    font-weight: 500;
+    line-height: 1.4;
+    max-width: 23rem; 
+    margin-bottom: 2.5rem; 
+    /* Permite que la caja de texto absorba el espacio vacío si hay menos texto que en las otras cards */
+    flex-grow: 1; 
+}
+
+/* Apuntamos específicamente al botón dentro de esta card */
+.producto-card .btn-outline-azul {
+    /* El auto detecta todo el espacio sobrante arriba y empuja el botón hasta el fondo, alineándolos todos */
+    margin-top: auto; 
+}
+
+/* Reutilización del botón transparente con borde azul */
+.btn-outline-azul {
+    border: 2px solid #173456;
+    color: #173456;
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    padding: 0.8rem 2.2rem;
+}
+
+.btn-outline-azul:hover {
+    background-color: #173456;
+    color: var(--color-blanco);
+}
+
+/* --- Separador Inferior (Líneas y Botón) --- */
+.productos-separador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Gap controla la separación para que las líneas NO toquen el botón */
+    gap: 3rem; 
+    margin-top: 6rem;
+    width: 100%;
+}
+
+.linea-lateral {
+    /* flex: 1 permite que la línea ocupe todo el espacio sobrante horizontalmente */
+    flex: 1; 
+    height: 3px; /* Grosor de la línea */
+    background-color: #173456; /* Color gris suave para la línea (cámbialo si prefieres otro) */
+}
+
+/* Botón especial del separador */
+.btn-solido-azul {
+    background-color: #173456;
+    color: var(--color-blanco);
+    font-family: var(--fuente-principal);
+    font-weight: 500;
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    text-decoration: none;
+    padding: 1rem 3.5rem;
+    border-radius: 50px; /* Forma de pastilla/redondeada */
+    border: 2px solid #173456;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+}
+
+.btn-solido-azul:hover {
+    background-color: transparent;
+    color: #173456;
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO PRODUCTOS)
+========================================= */
+
+@media (max-width: 1024px) {
+    .seccion-productos {
+        padding: 5rem 5%; /* Reducimos el padding lateral para ganar espacio en laptops */
+    }
+    .productos-separador {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .productos-grid {
+        grid-template-columns: 1fr; /* Apilamos las cards en una sola columna */
+        gap: 4rem; /* Separación vertical entre grupo de cards */
+    }
+    .productos-separador {
+        /* En celulares, la línea puede verse muy apretada, ajustamos el gap */
+        gap: 1rem;
+    }
+    .btn-solido-azul {
+        padding: 1rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* =========================================
+   SECCIÓN: PRECIOS DE MAYOREO
+========================================= */
+.seccion-mayoreo {
+    position: relative;
+    background-color: var(--color-blanco);
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+/* --- Capa 1: Imagen (Flujo normal, dicta la altura) --- */
+.mayoreo-capa-img {
+    width: 60%; /* Abarca desde la izquierda hasta el 60% */
+}
+
+.mayoreo-img {
+    width: 100%;
+    height: auto; /* Mantiene la proporción y establece la altura total de la sección */
+    display: block;
+    object-fit: cover;
+}
+
+/* --- Capa 2: Recuadro Azul (Flotante) --- */
+.mayoreo-capa-azul {
+    position: absolute;
+    right: 0; /* Anclado al borde derecho */
+    top: 50%;
+    transform: translateY(-50%); /* Centrado vertical para dejar 10% arriba y 10% abajo */
+    width: 50%; /* Abarca desde la derecha hasta la mitad, montándose 10% sobre la imagen */
+    height: 80%; /* 20% más pequeña que la imagen */
+    background-color: #69aecd;
+    display: flex;
+    align-items: center; /* Centra los textos verticalmente dentro del recuadro */
+    padding: 0 6%; /* Respiro lateral interno */
+}
+
+.mayoreo-textos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea el bloque completo a la izquierda */
+    width: 100%;
+}
+
+/* Título */
+.mayoreo-titulo {
+    font-family: var(--fuente-principal); /* Montserrat */
+    font-weight: 700;
+    color: var(--color-blanco);
+    /* Escalado fluido para el título */
+    font-size: clamp(1.8rem, 2.8vw, 3rem);
+    line-height: 1.1;
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+/* Párrafo */
+.mayoreo-parrafo {
+    font-family: var(--fuente-principal); /* Montserrat */
+    font-weight: 400;
+    color: var(--color-blanco);
+    /* Escalado fluido para el párrafo */
+    font-size: clamp(1rem, 1.2vw, 1.3rem);
+    line-height: 1.6;
+    text-align: justify; /* Texto justificado internamente */
+    max-width: 40rem; /* Limita el ancho para que no se estire demasiado en monitores gigantes */
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO MAYOREO)
+========================================= */
+
+/* Adaptación para Laptops */
+@media (max-width: 1024px) {
+    .mayoreo-capa-azul {
+        height: 90%; /* En laptops aprovechamos más la altura para que el texto no se asfixie */
+        padding: 0 4%;
+    }
+}
+
+/* Adaptación para Móviles */
+@media (max-width: 768px) {
+    .seccion-mayoreo {
+        flex-direction: column; /* Apila los elementos */
+    }
+
+    .mayoreo-capa-img {
+        width: 100%;
+    }
+
+    .mayoreo-capa-azul {
+        position: relative; /* Rompe el flotado para colocarse debajo de la imagen */
+        width: 100%;
+        height: auto;
+        top: 0;
+        transform: none;
+        /* Margen negativo para que el recuadro azul siga montándose sobre la imagen en celular */
+        margin-top: -15%; 
+        padding: 3rem 5%;
+    }
+
+    .mayoreo-titulo {
+        font-size: 2.2rem;
+    }
+
+    .mayoreo-parrafo {
+        max-width: 100%;
+    }
+}
+
+/* =========================================
+   SECCIÓN: MERCADO LIBRE
+========================================= */
+.seccion-mercadolibre {
+    background-color: var(--color-blanco);
+    width: 100%;
+    /* 6rem de margen vertical y 10% de margen lateral */
+    padding: 6rem 10%; 
+}
+
+.meli-contenedor {
+    display: flex;
+    align-items: center; /* Alinea ambos elementos a la misma altura verticalmente */
+    /* El gap aplica exactamente la misma distancia (10%) entre la imagen y el texto */
+    gap: 10%; 
+    width: 100%;
+}
+
+/* Columna Izquierda (25%) */
+.meli-columna-img {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+}
+
+.meli-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Columna Derecha (75%) */
+.meli-columna-texto {
+    width: 75%;
+}
+
+.meli-parrafo {
+    font-family: var(--fuente-principal); /* Montserrat */
+    font-weight: 550;
+    color: var(--color-negro);
+    /* Escalado fluido para mantener proporciones en monitores amplios */
+    font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+    line-height: 1.6;
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO MERCADO LIBRE)
+========================================= */
+
+@media (max-width: 1024px) {
+    .seccion-mercadolibre {
+        padding: 5rem 8%; 
+    }
+    .meli-contenedor {
+        gap: 8%; /* Reducimos la separación proporcionalmente en laptops */
+    }
+}
+
+@media (max-width: 768px) {
+    .meli-contenedor {
+        flex-direction: column; /* Apila la imagen arriba y el texto abajo */
+        text-align: center; /* Centra el texto en móviles */
+        gap: 3rem; 
+    }
+    .meli-columna-img {
+        width: 50%; /* La imagen toma más espacio en móvil para no verse minúscula */
+    }
+    .meli-columna-texto {
+        width: 100%; /* El texto toma el ancho completo disponible */
+    }
+}
+
+/* =========================================
+   SECCIÓN: DIFUSORES Y FRAGANCIAS
+========================================= */
+.seccion-difusores {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Imagen de fondo que dicta la altura */
+.difusores-img-fondo {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Contenedor absoluto para distribuir el contenido con coordenadas */
+.difusores-contenedor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- Encabezado Superior Centrado --- */
+.difusores-encabezado {
+    position: absolute;
+    top: 5%; /* Separación desde arriba */
+    left: 50%;
+    transform: translateX(-50%); /* Centrado horizontal perfecto */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.difusores-titulo-principal {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: var(--color-negro);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: normal;
+    line-height: 1.1;
+    margin-bottom: 0.5rem; 
+}
+
+.difusores-subtitulo-principal {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: #173456; 
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: normal;
+}
+
+/* --- Bloque Inferior Derecho --- */
+.difusores-bloque-derecha {
+    position: absolute;
+    right: 10%; /* Margen del 10% al borde derecho de la página */
+    top: 45%; /* Subido ligeramente por encima de la mitad exacta (50%) */
+    transform: translateY(-50%); /* Centra el bloque entero respecto a ese 45% */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    text-align: right;
+}
+
+.difusores-titulo-secundario {
+    font-family: var(--fuente-secundaria); /* Cambiado a Athelas */
+    color: #5dae39; /* Verde */
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 0.8rem; 
+}
+
+.difusores-subtitulo-secundario {
+    font-family: var(--fuente-principal); /* Montserrat */
+    color: #173456; /* Azul */
+    font-weight: 600;
+    font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+    /* Incrementamos drásticamente el gap para separar los textos de los botones */
+    margin-bottom: 6rem; 
+}
+
+/* Contenedor de los botones */
+.difusores-botones {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2rem; 
+}
+
+/* Botones idénticos, transparentes por defecto */
+.btn-difusor {
+    width: 18rem; /* Forzamos a que ambos botones midan exactamente lo mismo */
+    text-align: center; /* Centramos el texto dentro del botón */
+    background-color: transparent; /* Fondo transparente */
+    color: #173456; /* Texto azul */
+    border: 2px solid #173456; /* Borde azul */
+    font-family: var(--fuente-principal);
+    font-weight: 700;
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    text-decoration: none;
+    padding: 0.9rem 0; /* Padding vertical, el horizontal lo define el width */
+    border-radius: 50px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover: Fondo sólido azul y letras blancas */
+.btn-difusor:hover {
+    background-color: #173456;
+    color: var(--color-blanco);
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO DIFUSORES)
+========================================= */
+
+@media (max-width: 1024px) {
+    .difusores-subtitulo-secundario {
+        margin-bottom: 4rem; /* Reducimos un poco el hueco en laptops */
+    }
+}
+
+@media (max-width: 768px) {
+    .difusores-contenedor {
+        /* En móviles rompemos la posición absoluta para que el texto empuje la caja si necesita espacio */
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        background-color: rgba(255, 255, 255, 0.7); 
+        padding: 3rem 5%;
+    }
+    
+    .difusores-encabezado, .difusores-bloque-derecha {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        transform: none;
+        width: 100%;
+        align-items: center; 
+        text-align: center;
+        padding-right: 0;
+    }
+
+    .difusores-subtitulo-secundario {
+        margin-bottom: 2.5rem; /* Ajuste del hueco para celular */
+    }
+
+    .difusores-botones {
+        align-items: center; 
+    }
+}
+
+/* =========================================
+   SECCIÓN: CONTACTO Y FORMULARIO
+========================================= */
+.seccion-contacto {
+    background-color: #efefef;
+    width: 100%;
+    padding: 6rem 10%;
+}
+
+.contacto-contenedor {
+    display: flex;
+    align-items: center; /* Centra ambas columnas verticalmente */
+    width: 100%;
+    gap: 4rem; /* Separación entre el formulario y la imagen */
+}
+
+/* --- MITAD IZQUIERDA: Formulario (55%) --- */
+.contacto-columna-izq {
+    width: 55%;
+    display: flex;
+    justify-content: center; /* Centra el formulario en su 55% */
+}
+
+.formulario-wrapper {
+    width: 100%;
+    /* Aumentamos el ancho máximo de 32rem a 40rem para hacerlo más amplio */
+    max-width: 60rem; 
+}
+
+.contacto-titulo {
+    font-family: var(--fuente-principal); 
+    font-weight: 700;
+    color: #000000; /* Negro puro forzado */
+    font-size: clamp(2rem, 3.5vw, 2.5rem);
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.contacto-subtitulo {
+    font-family: var(--fuente-principal); 
+    font-weight: 500;
+    color: #000000; /* Negro puro forzado */
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    margin-bottom: 4rem;
+    text-align: left;
+}
+
+/* --- Elementos del Formulario --- */
+.form-sponya {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-grupo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+.form-fila-doble {
+    display: flex;
+    gap: 0.5rem; /* Separación entre Ciudad y Tels */
+}
+
+/* En la fila doble, cada grupo ocupa el 50% */
+.form-fila-doble .form-grupo {
+    flex: 1;
+}
+
+.form-label {
+    font-family: var(--fuente-principal);
+    font-weight: 500;
+    color: #000000; /* Negro puro forzado */
+    font-size: clamp(0.85rem, 1vw, 0.95rem);
+    margin-left: 0.5rem; 
+    margin-bottom: 0.4rem;
+}
+
+/* Campos de entrada */
+.form-input, .form-textarea {
+    width: 100%;
+    font-family: var(--fuente-principal);
+    font-size: 1rem;
+    color: #000000; /* Negro puro forzado */
+    padding: 0.8rem 1rem;
+    background-color: var(--color-blanco);
+    border: 1px solid #d1d1d1;
+    border-radius: 4px; 
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus, .form-textarea:focus {
+    border-color: #173456; /* Borde azul al escribir */
+}
+
+/* Textarea específico */
+.form-textarea {
+    resize: vertical; /* Permite estirar solo hacia abajo */
+}
+
+/* Mensajes de Error (Ocultos por defecto) */
+.error-msg {
+    color: red;
+    font-family: var(--fuente-principal);
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin-top: 0.3rem;
+    margin-left: 0.5rem;
+    display: none; /* Se activará con JS */
+}
+
+/* Botón Enviar */
+.btn-enviar-form {
+    font-family: var(--fuente-principal);
+    font-weight: 600;
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    color: var(--color-blanco);
+    background-color: #206ab5;
+    border: none;
+    border-radius: 6px;
+    padding: 0.9rem 4rem;
+    /* Cambiamos margin: auto por margin-left: 0 para alinearlo perfectamente a la izquierda */
+    margin: 1rem auto 0 0; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-enviar-form:hover {
+    background-color: #112640; /* Azul ligeramente más oscuro */
+}
+
+/* --- MITAD DERECHA: Visuales (45%) --- */
+.contacto-columna-der {
+    width: 45%;
+    display: flex;
+    /* Cambiamos de center a flex-end para pegar la imagen a la derecha */
+    justify-content: flex-end; 
+    align-items: center;
+}
+
+.visual-wrapper {
+    position: relative;
+    width: 100%;
+    /* Aumentamos el límite de 30rem a 38rem para que crezca la imagen y la sombra */
+    max-width: 38rem; 
+}
+
+.img-guante-contacto {
+    position: relative;
+    z-index: 2; 
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Sombra sólida desfasada */
+.visual-wrapper::after {
+    content: '';
+    position: absolute;
+    /* Mantenemos el mismo desfase proporcional */
+    top: 2rem; 
+    left: 2rem; 
+    width: 100%;
+    height: 100%;
+    background-color: #173456; 
+    z-index: 1; 
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO CONTACTO)
+========================================= */
+@media (max-width: 1024px) {
+    .seccion-contacto {
+        padding: 5rem 5%;
+    }
+    .contacto-contenedor {
+        gap: 2rem;
+    }
+    .visual-wrapper::after {
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contacto-contenedor {
+        flex-direction: column-reverse; /* Pone la imagen arriba y el formulario abajo en móviles */
+        gap: 4rem;
+    }
+    .contacto-columna-izq, .contacto-columna-der {
+        width: 100%;
+    }
+    .visual-wrapper {
+        max-width: 20rem; /* Imagen más pequeña en celular */
+        margin-top: 1rem;
+    }
+}
+
+/* =========================================
+   ESTILOS DEL FOOTER SPONYA (ACTUALIZADOS)
+========================================= */
+.footer-sponya {
+    background-color: #206ab5;
+    width: 100%;
+    padding: 4rem 0 2rem 0;
+    color: var(--color-blanco);
+}
+
+.footer-contenedor {
+    width: 100%;
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Logo Superior Izquierdo --- */
+.footer-logo-box {
+    width: 100%;
+    padding-left: 2rem;
+    margin-bottom: 3rem;
+}
+
+.footer-logo {
+    height: 4.5rem;
+    width: auto;
+    /* Quitamos el filtro blanco para que el logo conserve sus colores y diseño original */
+}
+
+/* --- Cuadrícula de la Fila 2 --- */
+.footer-grid-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+/* --- Columna Izquierda --- */
+.footer-col-izq {
+    display: flex;
+    flex-direction: column;
+    max-width: 28rem;
+}
+
+.footer-direccion {
+    font-family: var(--fuente-principal);
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--color-blanco);
+    text-align: left;
+    margin-bottom: 1.8rem;
+}
+
+.footer-lista-contacto {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+}
+
+.footer-lista-contacto li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--fuente-principal);
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--color-blanco);
+}
+
+.footer-icono-lista {
+    width: 1.2rem;
+    height: 1.2rem;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* Mantiene los iconos de contacto blancos */
+}
+
+/* --- Columna Central: Navegación (Centrada y alineada a la izquierda internamente) --- */
+.footer-col-centro {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-start; /* Alinea los elementos a la misma altura en bloque */
+}
+
+.footer-lista-nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left; /* Alineación interna a la izquierda para que los textos guarden simetría */
+}
+
+.footer-lista-nav li a {
+    font-family: var(--fuente-principal);
+    font-weight: 600; /* Montserrat font weight 600 */
+    font-size: 1.1rem;
+    color: var(--color-blanco);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.footer-lista-nav li a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* --- Línea Divisora HR --- */
+.footer-hr {
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-blanco);
+    border: none;
+    margin-bottom: 2rem;
+}
+
+/* --- Copyright Inferior --- */
+.footer-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.footer-copyright {
+    font-family: var(--fuente-principal);
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: var(--color-blanco);
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO FOOTER)
+========================================= */
+@media (max-width: 900px) {
+    .footer-grid-principal {
+        flex-direction: column;
+        gap: 3rem;
+        position: relative;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .footer-logo-box {
+        padding-left: 1rem;
+    }
+
+    .footer-col-centro {
+        position: relative;
+        left: auto;
+        transform: none;
+        align-items: flex-start;
+    }
+
+    .footer-lista-nav {
+        text-align: left;
+    }
+}
