@@ -534,12 +534,12 @@ html {
         margin-top: 5rem;
     }
 
-    /* 1. Imagen centrada sin deformarse: recorta laterales sobrantes de forma simétrica */
+    /* 1. Imagen anclada al borde derecho: corta únicamente el sobrante del lado izquierdo */
     .img-fondo {
         min-height: 28rem;
         height: 65vh;
         object-fit: cover;
-        object-position: center;
+        object-position: right center; 
     }
 
     /* 2. Capa blanca translúcida sobre la imagen para contraste */
