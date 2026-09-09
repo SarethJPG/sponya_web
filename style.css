@@ -535,73 +535,91 @@ html {
         margin-top: 5rem;
     }
 
-    /* 1. Mantiene altura cómoda y ancla las latas al lado derecho */
+    /* 1. Altura y encuadre centrado de la imagen */
     .img-fondo {
-        min-height: 23rem;
-        height: 55vh;
+        min-height: 26rem;
+        height: 60vh;
         object-fit: cover;
-        object-position: 85% center; 
+        object-position: center;
     }
 
-    /* 2. Caja restringida al 50% izquierdo para JAMÁS tocar los aerosoles */
+    /* 2. Capa blanca translúcida sobre la imagen para contraste */
+    .carrusel-slide::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.7); /* Velo blanco al 70% */
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    /* 3. Contenedor de textos centrado en pantalla y en bloque */
     .seccion-1 {
-        left: 5%;
+        left: 50%;
         top: 50%;
-        transform: translateY(-50%);
-        width: 50%;
-        max-width: 13rem;
+        transform: translate(-50%, -50%);
+        width: 88%;
+        max-width: 22rem;
+        align-items: center;
         z-index: 5;
     }
 
-    /* 3. Escala armónica de tipografías y espaciados */
+    /* 4. Jerarquía y alineación justificada con remate centrado */
     .titulo-banner {
-        font-size: 1.8rem;
-        line-height: 0.95;
-        margin-bottom: 0.35rem;
+        font-size: 2.2rem;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+        text-align: center;
     }
 
     .linea-decorativa {
-        width: 1.3rem;
-        height: 0.15rem;
-        margin-left: 0;
-        margin-top: 0.2rem;
-        margin-bottom: 0.45rem;
+        width: 2rem;
+        height: 0.2rem;
+        margin: 0.4rem auto 0.7rem auto; /* Centrada */
     }
 
     .subtitulo-premium {
-        font-size: 0.62rem;
-        line-height: 1.25;
-        margin-bottom: 0.4rem;
-        letter-spacing: 0.01rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.02rem;
+        line-height: 1.3;
+        margin-bottom: 0.6rem;
+        text-align: center;
     }
 
     .parrafo-banner {
-        font-size: 0.74rem;
-        line-height: 1.35;
+        font-size: 0.88rem;
+        line-height: 1.45;
         max-width: 100%;
-        margin-bottom: 0.8rem;
+        text-align: justify;
+        text-align-last: center; /* Mantiene la última línea centrada */
+        margin-bottom: 1.2rem;
     }
 
     .btn-hero {
-        font-size: 0.75rem;
-        padding: 0.45rem 1.1rem;
+        font-size: 0.85rem;
+        padding: 0.6rem 1.6rem;
+        margin: 0 auto;
         white-space: nowrap;
     }
 
-    /* 4. Oculta las flechas en móviles (en pantallas táctiles estorban y tapan texto/producto) */
+    /* 5. Flechas ocultas en pantallas táctiles */
     .carrusel-flecha {
         display: none;
     }
 
-    /* 5. Puntos de navegación discretos en la base */
+    /* 6. Indicadores de página discretos */
     .carrusel-puntos {
-        bottom: 0.6rem;
-        gap: 0.5rem;
+        bottom: 0.8rem;
+        gap: 0.55rem;
+        z-index: 10;
     }
 
     .punto {
-        width: 0.5rem;
-        height: 0.5rem;
+        width: 0.55rem;
+        height: 0.55rem;
     }
 }
 
