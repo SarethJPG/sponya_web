@@ -526,89 +526,82 @@ html {
     }
 }
 
+
 /* =========================================
    ADAPTACIÓN RESPONSIVA MÓVIL (HERO CARRUSEL)
 ========================================= */
 @media (max-width: 768px) {
-    /* 1. Sincronización exacta con la navbar móvil (5rem) para no dejar huecos */
     .hero-carrusel {
         margin-top: 5rem;
     }
 
-    /* 2. Altura mínima para que la imagen no se comprima demasiado y quepan los textos */
+    /* 1. Mantiene altura cómoda y ancla las latas al lado derecho */
     .img-fondo {
-        min-height: 25rem;
+        min-height: 23rem;
+        height: 55vh;
         object-fit: cover;
-        object-position: 70% center; /* Prioriza el producto/arte visual en el encuadre */
+        object-position: 85% center; 
     }
 
-    /* 3. Contenedor de textos centrado verticalmente con respiro lateral */
+    /* 2. Caja restringida al 50% izquierdo para JAMÁS tocar los aerosoles */
     .seccion-1 {
-        left: 6%;
+        left: 5%;
         top: 50%;
         transform: translateY(-50%);
-        max-width: 85%;
+        width: 50%;
+        max-width: 13rem;
         z-index: 5;
     }
 
-    /* 4. Jerarquías de texto y elementos proporcionados a pantalla táctil */
+    /* 3. Escala armónica de tipografías y espaciados */
     .titulo-banner {
-        font-size: 2.3rem;
+        font-size: 1.8rem;
         line-height: 0.95;
-        margin-bottom: 0.6rem;
+        margin-bottom: 0.35rem;
     }
 
     .linea-decorativa {
-        width: 1.6rem;
-        height: 0.18rem;
-        margin-left: -0.2rem;
+        width: 1.3rem;
+        height: 0.15rem;
+        margin-left: 0;
         margin-top: 0.2rem;
-        margin-bottom: 0.7rem;
+        margin-bottom: 0.45rem;
     }
 
     .subtitulo-premium {
-        font-size: 0.75rem;
-        letter-spacing: 0.02rem;
-        margin-bottom: 0.6rem;
-        line-height: 1.3;
+        font-size: 0.62rem;
+        line-height: 1.25;
+        margin-bottom: 0.4rem;
+        letter-spacing: 0.01rem;
     }
 
     .parrafo-banner {
-        font-size: 0.88rem;
-        line-height: 1.4;
-        max-width: 16rem;
-        margin-bottom: 1.3rem;
+        font-size: 0.74rem;
+        line-height: 1.35;
+        max-width: 100%;
+        margin-bottom: 0.8rem;
     }
 
     .btn-hero {
-        font-size: 0.85rem;
-        padding: 0.55rem 1.4rem;
+        font-size: 0.75rem;
+        padding: 0.45rem 1.1rem;
+        white-space: nowrap;
     }
 
-    /* 5. Flechas laterales cuadradas y ajustadas a los bordes sin deformarse */
+    /* 4. Oculta las flechas en móviles (en pantallas táctiles estorban y tapan texto/producto) */
     .carrusel-flecha {
-        width: 2.2rem;
-        height: 2.2rem;
-        font-size: 1.3rem;
+        display: none;
     }
 
-    .flecha-izq {
-        left: 0.4rem;
-    }
-
-    .flecha-der {
-        right: 0.4rem;
-    }
-
-    /* 6. Puntos indicadores compactos */
+    /* 5. Puntos de navegación discretos en la base */
     .carrusel-puntos {
-        bottom: 0.8rem;
-        gap: 0.6rem;
+        bottom: 0.6rem;
+        gap: 0.5rem;
     }
 
     .punto {
-        width: 0.55rem;
-        height: 0.55rem;
+        width: 0.5rem;
+        height: 0.5rem;
     }
 }
 

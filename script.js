@@ -241,3 +241,27 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+// =========================================
+// CONTROL DEL MENÚ SÁNDWICH (VISTA MÓVIL)
+// =========================================
+document.addEventListener("DOMContentLoaded", function() {
+    const btnHamburguesa = document.getElementById('btn-hamburguesa');
+    const seccionD = document.querySelector('.seccion-d');
+    
+    if (btnHamburguesa && seccionD) {
+        btnHamburguesa.addEventListener('click', function(e) {
+            e.stopPropagation();
+            btnHamburguesa.classList.toggle('abierto');
+            seccionD.classList.toggle('menu-activo');
+        });
+
+        const enlaces = seccionD.querySelectorAll('.nav-link');
+        enlaces.forEach(function(enlace) {
+            enlace.addEventListener('click', function() {
+                btnHamburguesa.classList.remove('abierto');
+                seccionD.classList.remove('menu-activo');
+            });
+        });
+    }
+});
