@@ -1990,3 +1990,428 @@ html {
         padding-bottom: 0;
     }
 }
+
+/* =========================================
+   BASE GENERAL: PÁGINAS DE PRODUCTOS INDIVIDUALES
+========================================= */
+.hero-producto {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 6.5rem; /* Ajustado dinámicamente con la Navbar */
+}
+
+.hero-producto-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.hero-producto-contenedor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+/* Alineación forzada a la izquierda desde el 10% de la pantalla */
+.hero-producto-mitad-izq {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding-left: 10%; 
+}
+
+.hero-producto-mitad-der {
+    width: 50%;
+}
+
+/* Agrupación y jerarquía de textos */
+.hero-producto-textos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea los hijos por su borde izquierdo */
+    text-align: left; /* Alinea el texto internamente a la izquierda */
+    max-width: 35rem;
+    gap: 1.2rem; /* Separa los párrafos uniformemente */
+}
+
+.hero-producto-titulo {
+    font-family: var(--fuente-secundaria);
+    font-size: clamp(3rem, 5vw, 5rem);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.hero-producto-subtitulo {
+    font-family: var(--fuente-principal);
+    font-weight: 700;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+}
+
+.hero-producto-tags {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-weight: 600;
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+}
+
+.hero-producto-parrafo {
+    font-family: var(--fuente-principal );
+    color: var(--color-negro);
+    font-size: clamp(1.2rem, 1.5vw, 1.6rem);
+    line-height: 1.4;
+    font-weight: 600;
+
+}
+
+.hero-producto-extra {
+    font-size: clamp(1.2rem, 1.5vw, 1.6rem);
+}
+
+/* --- Ajuste Responsivo para Móviles (Productos) --- */
+@media (max-width: 768px) {
+    .hero-producto-mitad-izq {
+        width: 100%;
+        padding-left: 5%;
+        justify-content: center;
+    }
+    .hero-producto-mitad-der {
+        display: none;
+    }
+    .hero-producto-textos {
+        background-color: rgba(255, 255, 255, 0.85); /* Fondo para lectura */
+        padding: 2.5rem 2rem;
+        border-radius: 1rem;
+        max-width: 90%;
+    }
+}
+
+
+/* =========================================
+   COLORES ESPECÍFICOS: SANDÍA (#a83434)
+========================================= */
+/* Colores del Hero */
+#hero-sandia .hero-producto-titulo,
+#hero-sandia .hero-producto-subtitulo {
+    color: #a83434;
+}
+
+/* Modificadores para el Formulario */
+.seccion-contacto.tema-producto#contacto-sandia .btn-enviar-form {
+    background-color: #a83434;
+}
+.seccion-contacto.tema-producto#contacto-sandia .btn-enviar-form:hover {
+    background-color: #7a2626; /* Tono rojo oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-sandia .visual-wrapper::after {
+    background-color: #a83434;
+}
+
+/* Modificadores para el Footer */
+footer.footer-sponya.tema-producto#footer-sandia {
+    background-color: #a83434;
+}
+
+/* =========================================
+   COLORES ESPECÍFICOS: PASIÓN (#9c000d)
+========================================= */
+/* Colores del Hero */
+#hero-pasion .hero-producto-titulo,
+#hero-pasion .hero-producto-subtitulo {
+    color: #9c000d;
+}
+
+/* Modificadores para el Formulario */
+.seccion-contacto.tema-producto#contacto-pasion .btn-enviar-form {
+    background-color: #9c000d;
+}
+.seccion-contacto.tema-producto#contacto-pasion .btn-enviar-form:hover {
+    background-color: #6b0008; /* Tono rojo oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-pasion .visual-wrapper::after {
+    background-color: #9c000d;
+}
+
+/* Modificadores para el Footer */
+footer.footer-sponya.tema-producto#footer-pasion {
+    background-color: #9c000d;
+}
+
+/* =========================================
+   COLORES ESPECÍFICOS: MANZANA CANELA (#a73131)
+========================================= */
+/* Colores del Hero */
+#hero-manzana .hero-producto-titulo,
+#hero-manzana .hero-producto-subtitulo {
+    color: #a73131;
+}
+
+/* Modificadores para el Formulario */
+.seccion-contacto.tema-producto#contacto-manzana .btn-enviar-form {
+    background-color: #a73131;
+}
+.seccion-contacto.tema-producto#contacto-manzana .btn-enviar-form:hover {
+    background-color: #7c2424; /* Tono rojo oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-manzana .visual-wrapper::after {
+    background-color: #a73131;
+}
+
+/* Modificadores para el Footer */
+footer.footer-sponya.tema-producto#footer-manzana {
+    background-color: #a73131;
+}
+
+/* =========================================
+   COLORES ESPECÍFICOS: MADERA NOBLE (#743e1c)
+========================================= */
+/* Colores del Hero */
+#hero-madera .hero-producto-titulo,
+#hero-madera .hero-producto-subtitulo {
+    color: #743e1c;
+}
+
+/* Modificadores para el Formulario */
+.seccion-contacto.tema-producto#contacto-madera .btn-enviar-form {
+    background-color: #743e1c;
+}
+.seccion-contacto.tema-producto#contacto-madera .btn-enviar-form:hover {
+    background-color: #542d14; /* Tono café oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-madera .visual-wrapper::after {
+    background-color: #743e1c;
+}
+
+/* Modificadores para el Footer */
+footer.footer-sponya.tema-producto#footer-madera {
+    background-color: #743e1c;
+}
+
+/* =========================================
+   COLORES ESPECÍFICOS: VAINILLA LAVANDA (#925f98)
+========================================= */
+/* Colores del Hero */
+#hero-vainilla .hero-producto-titulo,
+#hero-vainilla .hero-producto-subtitulo {
+    color: #925f98;
+}
+
+/* Modificadores para el Formulario */
+.seccion-contacto.tema-producto#contacto-vainilla .btn-enviar-form {
+    background-color: #925f98;
+}
+.seccion-contacto.tema-producto#contacto-vainilla .btn-enviar-form:hover {
+    background-color: #6c4670; /* Tono morado oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-vainilla .visual-wrapper::after {
+    background-color: #925f98;
+}
+
+/* Modificadores para el Footer */
+footer.footer-sponya.tema-producto#footer-vainilla {
+    background-color: #925f98;
+}
+
+/* =========================================
+   COLORES ESPECÍFICOS: JAZMÍN EN FLOR (#a58925)
+========================================= */
+/* Colores del Hero */
+#hero-jazmin .hero-producto-titulo,
+#hero-jazmin .hero-producto-subtitulo {
+    color: #a58925;
+}
+
+/* Modificadores para el Formulario */
+.seccion-contacto.tema-producto#contacto-jazmin .btn-enviar-form {
+    background-color: #a58925;
+}
+.seccion-contacto.tema-producto#contacto-jazmin .btn-enviar-form:hover {
+    background-color: #826a1b; /* Tono dorado/mostaza oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-jazmin .visual-wrapper::after {
+    background-color: #a58925;
+}
+
+/* Modificadores para el Footer */
+footer.footer-sponya.tema-producto#footer-jazmin {
+    background-color: #a58925;
+}
+
+/* =========================================
+   COLORES ESPECÍFICOS: JARDÍN BLANCO (#8fa93e)
+========================================= */
+/* Colores del Hero */
+#hero-jardin-blanco .hero-producto-titulo,
+#hero-jardin-blanco .hero-producto-subtitulo {
+    color: #8fa93e;
+}
+
+/* Modificadores para el Formulario */
+.seccion-contacto.tema-producto#contacto-jardin-blanco .btn-enviar-form {
+    background-color: #8fa93e;
+}
+.seccion-contacto.tema-producto#contacto-jardin-blanco .btn-enviar-form:hover {
+    background-color: #697d2e; /* Tono verde oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-jardin-blanco .visual-wrapper::after {
+    background-color: #8fa93e;
+}
+
+/* Modificadores para el Footer */
+footer.footer-sponya.tema-producto#footer-jardin-blanco {
+    background-color: #8fa93e;
+}
+
+/* =========================================
+   COLORES ESPECÍFICOS: FRUTOS ROJOS (#c21e1d)
+========================================= */
+/* Colores del Hero */
+#hero-frutos .hero-producto-titulo,
+#hero-frutos .hero-producto-subtitulo {
+    color: #c21e1d;
+}
+
+/* Modificadores para el Formulario */
+.seccion-contacto.tema-producto#contacto-frutos .btn-enviar-form {
+    background-color: #c21e1d;
+}
+.seccion-contacto.tema-producto#contacto-frutos .btn-enviar-form:hover {
+    background-color: #991717; /* Tono rojo oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-frutos .visual-wrapper::after {
+    background-color: #c21e1d;
+}
+
+/* Modificadores para el Footer */
+footer.footer-sponya.tema-producto#footer-frutos {
+    background-color: #c21e1d;
+}
+
+/* =========================================
+   COLORES ESPECÍFICOS: FRUTA TROPICAL (#c9581e)
+========================================= */
+/* Colores del Hero */
+#hero-fruta .hero-producto-titulo,
+#hero-fruta .hero-producto-subtitulo {
+    color: #c9581e;
+}
+
+/* Modificadores para el Formulario */
+.seccion-contacto.tema-producto#contacto-fruta .btn-enviar-form {
+    background-color: #c9581e;
+}
+.seccion-contacto.tema-producto#contacto-fruta .btn-enviar-form:hover {
+    background-color: #a14618; /* Tono naranja oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-fruta .visual-wrapper::after {
+    background-color: #c9581e;
+}
+
+/* Modificadores para el Footer */
+footer.footer-sponya.tema-producto#footer-fruta {
+    background-color: #c9581e;
+}
+
+/* =========================================
+   COLORES ESPECÍFICOS: FLORES DE PARIS (#cc808f)
+========================================= */
+/* Colores del Hero */
+#hero-flores .hero-producto-titulo,
+#hero-flores .hero-producto-subtitulo {
+    color: #cc808f;
+}
+
+/* Modificadores para el Formulario */
+.seccion-contacto.tema-producto#contacto-flores .btn-enviar-form {
+    background-color: #cc808f;
+}
+.seccion-contacto.tema-producto#contacto-flores .btn-enviar-form:hover {
+    background-color: #a65d6c; /* Tono rosa oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-flores .visual-wrapper::after {
+    background-color: #cc808f;
+}
+
+/* Modificadores para el Footer */
+footer.footer-sponya.tema-producto#footer-flores {
+    background-color: #cc808f;
+}
+
+/* =========================================
+   COLORES ESPECÍFICOS: EXPLOSIÓN CÍTRICA (#3a8413)
+========================================= */
+/* Colores del Hero */
+#hero-explosion .hero-producto-titulo,
+#hero-explosion .hero-producto-subtitulo {
+    color: #3a8413;
+}
+
+/* Modificadores para el Formulario */
+.seccion-contacto.tema-producto#contacto-explosion .btn-enviar-form {
+    background-color: #3a8413;
+}
+.seccion-contacto.tema-producto#contacto-explosion .btn-enviar-form:hover {
+    background-color: #275c0d; /* Tono verde oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-explosion .visual-wrapper::after {
+    background-color: #3a8413;
+}
+
+/* Modificadores para el Footer */
+footer.footer-sponya.tema-producto#footer-explosion {
+    background-color: #3a8413;
+}
+
+/* =========================================
+   COLORES ESPECÍFICOS: DULCE ATARDECER (#a75638)
+========================================= */
+/* Colores del Hero */
+#hero-dulce .hero-producto-titulo,
+#hero-dulce .hero-producto-subtitulo {
+    color: #a75638;
+}
+
+/* Modificadores para el Formulario */
+.seccion-contacto.tema-producto#contacto-dulce .btn-enviar-form {
+    background-color: #a75638;
+}
+.seccion-contacto.tema-producto#contacto-dulce .btn-enviar-form:hover {
+    background-color: #80412a; /* Tono terracota oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-dulce .visual-wrapper::after {
+    background-color: #a75638;
+}
+
+/* Modificadores para el Footer */
+footer.footer-sponya.tema-producto#footer-dulce {
+    background-color: #a75638;
+}
+
+/* =========================================
+   COLORES ESPECÍFICOS: BRISA DEL AMANECER (#896a2a)
+========================================= */
+/* Colores del Hero */
+#hero-brisa .hero-producto-titulo,
+#hero-brisa .hero-producto-subtitulo {
+    color: #896a2a;
+}
+
+/* Modificadores para el Formulario */
+.seccion-contacto.tema-producto#contacto-brisa .btn-enviar-form {
+    background-color: #896a2a;
+}
+.seccion-contacto.tema-producto#contacto-brisa .btn-enviar-form:hover {
+    background-color: #614a1c; /* Tono ocre oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-brisa .visual-wrapper::after {
+    background-color: #896a2a;
+}
+
+/* Modificadores para el Footer */
+footer.footer-sponya.tema-producto#footer-brisa {
+    background-color: #896a2a;
+}
