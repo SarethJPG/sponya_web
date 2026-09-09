@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponya - Aerosoles</title>
+    
+    <!-- Importación de la fuente Montserrat desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Vinculación del archivo de estilos CSS compartido -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- SDK de EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+            publicKey: "gTenyf6EX_CI6FkZh",
+            });
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- INICIO DE LA NAVBAR COMPARTIDA -->
+    <nav class="navbar" id="navbar">
+        <div class="seccion-a">
+            <div class="seccion-b">
+                <a href="index.html" class="enlace-logo">
+                    <img src="imgs/logo.webp" alt="Logo Sponya" class="logo" loading="lazy">
+                </a>
+            </div>
+            <div class="seccion-d">
+                <div class="seccion-2">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                    <a href="guantes.html" class="nav-link">Guantes</a>
+                    <a href="aerosoles.html" class="nav-link">Aerosoles</a>
+                    <a href="difusores.html" class="nav-link">Difusores</a>
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                </div>
+                <div class="seccion-3">
+                    <img src="imgs/telefono.svg" alt="Icono Teléfono" class="icono-telefono" loading="lazy">
+                    <span class="texto-telefono">55 55 76 67 09 / 55 55 76 00 04</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- FIN DE LA NAVBAR -->
+    <!-- =========================================
+         SECCIÓN HERO: CARRUSEL DE AEROSOLES
+    ========================================= -->
+    <section class="hero-carrusel" id="hero">
+        
+        <!-- Contenedor de la pista donde se deslizarán los banners -->
+        <div class="carrusel-track" id="carrusel-track">
+            
+            <!-- ================= SLIDE 1 ================= -->
+            <div class="carrusel-slide">
+                <!-- Como indicaste, la imagen dictará la altura del carrusel -->
+                <img src="imgs/banner_4.webp" alt="Banner Aerosoles 1" class="img-fondo" loading="lazy">
+            </div>
+
+            <!-- ================= SLIDE 2 ================= -->
+            <div class="carrusel-slide">
+                <!-- Usamos la misma imagen por ahora para probar la funcionalidad -->
+                <img src="imgs/banner_4.webp" alt="Banner Aerosoles 2" class="img-fondo" loading="lazy">
+            </div>
+
+            <!-- ================= SLIDE 3 ================= -->
+            <div class="carrusel-slide">
+                <img src="imgs/banner_4.webp" alt="Banner Aerosoles 3" class="img-fondo" loading="lazy">
+            </div>
+
+        </div>
+
+        <!-- Botones de navegación (Flechas) compartidas con el sitio principal -->
+        <button class="carrusel-flecha flecha-izq" id="flecha-izq">&lt;</button>
+        <button class="carrusel-flecha flecha-der" id="flecha-der">&gt;</button>
+        
+        <!-- Omitimos el div de carrusel-puntos tal como solicitaste -->
+
+    </section>
+    <!-- Fin de la Sección Hero -->
+
+    <!-- =========================================
+         SECCIÓN: COLECCIÓN FLORAL
+    ========================================= -->
+    <section class="seccion-coleccion" id="coleccion-floral">
+        
+        <!-- Contenedor del encabezado -->
+        <div class="coleccion-encabezado">
+            <!-- Título principal centrado, usando Athelas color negro -->
+            <h2 class="coleccion-titulo">Colección Floral</h2>
+        </div>
+
+        <!-- Cuadrícula de 3 tarjetas -->
+        <div class="coleccion-grid">
+            
+            <!-- Tarjeta 1: Vainilla Lavanda -->
+            <div class="coleccion-card">
+                <img src="imgs/lavanda.webp" alt="Aerosol Vainilla Lavanda" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Vainilla Lavanda</h4>
+                <p class="card-subtitulo">Suave • Delicado • Envolvente</p>
+                <!-- Botón con hipervínculo en blanco para futuras subpáginas -->
+                <a href="vainilla_lavanda.html" class="btn-hero btn-coleccion">Ver Producto</a>
+            </div>
+
+            <!-- Tarjeta 2: Jardín Blanco -->
+            <div class="coleccion-card">
+                <img src="imgs/jardin_blanco.webp" alt="Aerosol Jardín Blanco" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Jardín Blanco</h4>
+                <p class="card-subtitulo">Fresco • Vibrante • Energizante</p>
+                <a href="jardin_blanco.html" class="btn-hero btn-coleccion">Ver Producto</a>
+            </div>
+
+            <!-- Tarjeta 3: Perfumado -->
+            <div class="coleccion-card">
+                <img src="imgs/perfumado.webp" alt="Aerosol Perfumado" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Perfumado</h4>
+                <p class="card-subtitulo">Perfumado • Cálido • Refinado</p>
+                <a href="jazmin_en_flor.html" class="btn-hero btn-coleccion">Ver Producto</a>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Fin de la Sección Colección Floral -->
+
+    <!-- =========================================
+         SECCIÓN: COLECCIÓN FRUTAL
+    ========================================= -->
+    <section class="seccion-coleccion" id="coleccion-frutal">
+        
+        <!-- Contenedor del encabezado -->
+        <div class="coleccion-encabezado">
+            <!-- Título principal centrado -->
+            <h2 class="coleccion-titulo">Colección Frutal</h2>
+        </div>
+
+        <!-- Cuadrícula de 5 tarjetas (El CSS Grid las acomodará 3 arriba y 2 abajo automáticamente) -->
+        <div class="coleccion-grid">
+            
+            <!-- Tarjeta 1: Frutos Rojos -->
+            <div class="coleccion-card">
+                <img src="imgs/frutos_rojos.webp" alt="Aerosol Frutos Rojos" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Frutos Rojos</h4>
+                <p class="card-subtitulo">Fresco • Vibrante • Energizante</p>
+                <a href="frutos_rojos.html" class="btn-hero btn-coleccion">Ver Producto</a>
+            </div>
+
+            <!-- Tarjeta 2: Explosión Cítrica -->
+            <div class="coleccion-card">
+                <img src="imgs/explosion_citrica.webp" alt="Aerosol Explosión Cítrica" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Explosión Citrica</h4>
+                <p class="card-subtitulo">Fresco • Vibrante • Energizante</p>
+                <a href="explosion_citrica.html" class="btn-hero btn-coleccion">Ver Producto</a>
+            </div>
+
+            <!-- Tarjeta 3: Fruta Tropical -->
+            <div class="coleccion-card">
+                <img src="imgs/fruta_tropical.webp" alt="Aerosol Fruta Tropical" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Fruta Tropical</h4>
+                <p class="card-subtitulo">Fresco • Vibrante • Energizante</p>
+                <a href="fruta_tropical.html" class="btn-hero btn-coleccion">Ver Producto</a>
+            </div>
+
+            <!-- Tarjeta 4: Manzana Canela (Se alinea debajo de Tarjeta 1) -->
+            <div class="coleccion-card">
+                <img src="imgs/manzana_canela.webp" alt="Aerosol Manzana Canela" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Manzana Canela</h4>
+                <p class="card-subtitulo">Fresco • Vibrante • Energizante</p>
+                <a href="manzana_canela.html" class="btn-hero btn-coleccion">Ver Producto</a>
+            </div>
+
+            <!-- Tarjeta 5: Sandía (Se alinea debajo de Tarjeta 2) -->
+            <div class="coleccion-card">
+                <img src="imgs/sandia.webp" alt="Aerosol Sandía" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Sandía</h4>
+                <p class="card-subtitulo">Fresco • Vibrante • Energizante</p>
+                <a href="sandia.html" class="btn-hero btn-coleccion">Ver Producto</a>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Fin de la Sección Colección Frutal -->
+
+    <!-- =========================================
+         SECCIÓN: COLECCIÓN PERFUMADO
+    ========================================= -->
+    <section class="seccion-coleccion" id="coleccion-perfumado">
+        
+        <!-- Contenedor del encabezado -->
+        <div class="coleccion-encabezado">
+            <!-- Título principal centrado -->
+            <h2 class="coleccion-titulo">Colección Perfumado</h2>
+        </div>
+
+        <!-- Cuadrícula de 5 tarjetas -->
+        <div class="coleccion-grid">
+            
+            <!-- Tarjeta 1: Brisa del Amanecer -->
+            <div class="coleccion-card">
+                <img src="imgs/brisa_amanecer.webp" alt="Aerosol Brisa del Amanecer" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Brisa del Amanecer</h4>
+                <p class="card-subtitulo">Limpio • Especial • Elegante</p>
+                <a href="brisa_del_amanecer.html" class="btn-hero btn-coleccion">Ver Producto</a>
+            </div>
+
+            <!-- Tarjeta 2: Dulce Atardecer -->
+            <div class="coleccion-card">
+                <img src="imgs/dulce_atardecer.webp" alt="Aerosol Dulce Atardecer" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Dulce Atardecer</h4>
+                <p class="card-subtitulo">Limpio • Especial • Elegante</p>
+                <a href="dulce_atardecer.html" class="btn-hero btn-coleccion">Ver Producto</a>
+            </div>
+
+            <!-- Tarjeta 3: Madera Noble -->
+            <div class="coleccion-card">
+                <img src="imgs/madera_noble.webp" alt="Aerosol Madera Noble" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Madera Noble</h4>
+                <p class="card-subtitulo">Limpio • Especial • Elegante</p>
+                <a href="madera_noble.html" class="btn-hero btn-coleccion">Ver Producto</a>
+            </div>
+
+            <!-- Tarjeta 4: Flores de Paris (Se alinea debajo de Tarjeta 1) -->
+            <div class="coleccion-card">
+                <img src="imgs/flores_paris.webp" alt="Aerosol Flores de Paris" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Flores de Paris</h4>
+                <p class="card-subtitulo">Limpio • Especial • Elegante</p>
+                <a href="flores_de_paris.html" class="btn-hero btn-coleccion">Ver Producto</a>
+            </div>
+
+            <!-- Tarjeta 5: Pasión (Se alinea debajo de Tarjeta 2) -->
+            <div class="coleccion-card">
+                <img src="imgs/pasion.webp" alt="Aerosol Pasión" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Pasión</h4>
+                <p class="card-subtitulo">Limpio • Especial • Elegante</p>
+                <a href="pasion.html" class="btn-hero btn-coleccion">Ver Producto</a>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Fin de la Sección Colección Perfumado -->
+
+    <!-- =========================================
+         SECCIÓN: BANNER TRANSFORMA TU ESPACIO
+    ========================================= -->
+    <section class="seccion-ambientes" id="transforma-espacio">
+        
+        <img src="imgs/banner_5.webp" alt="Transforma tu espacio" class="ambientes-img-fondo" loading="lazy">
+        
+        <div class="ambientes-contenedor">
+            <div class="ambientes-mitad-izq"></div>
+            
+            <div class="ambientes-mitad-der">
+                <!-- HTML completamente limpio, sin estilos en línea -->
+                <div class="ambientes-caja-textos">
+                    <h3 class="ambientes-subtitulo">Transforma tu espacio</h3>
+                    <h2 class="ambientes-titulo">Aromas que distinguen,<br>espacios que inspiran.</h2>
+                    <p class="ambientes-parrafo">Sponya Air transforma cada espacio con una fragancia sofisticada, creando ambientes de frescura, armonía y distinción.</p>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    <!-- Fin de la Sección Transforma tu Espacio -->
+
+    <!-- =========================================
+         SECCIÓN: TECNOLOGÍA LIMPIA
+    ========================================= -->
+    <section class="seccion-tecnologia" id="tecnologia">
+        
+        <h2 class="tecnologia-titulo">Tecnología Limpia Sponya</h2>
+
+        <div class="tecnologia-grid">
+            
+            <!-- Elemento 1 -->
+            <div class="tecnologia-item">
+                <img src="imgs/planeta.svg" alt="Planeta" class="tecnologia-icono" loading="lazy">
+                <p class="tecnologia-texto">No daña la capa de ozono.</p>
+            </div>
+
+            <!-- Elemento 2 -->
+            <div class="tecnologia-item">
+                <img src="imgs/mascotas.svg" alt="Mascotas" class="tecnologia-icono" loading="lazy">
+                <p class="tecnologia-texto">Amable con tu hogar, tus mascotas.</p>
+            </div>
+
+            <!-- Elemento 3 -->
+            <div class="tecnologia-item">
+                <img src="imgs/aerosol.svg" alt="Aerosol reciclado" class="tecnologia-icono" loading="lazy">
+                <p class="tecnologia-texto">Envase y tapa fabricados con material reciclado.</p>
+            </div>
+
+            <!-- Elemento 4 -->
+            <div class="tecnologia-item">
+                <img src="imgs/puntos.svg" alt="Dispersión fina" class="tecnologia-icono" loading="lazy">
+                <p class="tecnologia-texto">Logra una dispersión más fina y eficiente.</p>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Fin de la Sección Tecnología Limpia -->
+
+    <!-- =========================================
+         SECCIÓN: CONTACTO Y FORMULARIO
+    ========================================= -->
+    <section class="seccion-contacto" id="contacto">
+        
+        <div class="contacto-contenedor">
+            
+            <!-- MITAD IZQUIERDA: Formulario (55%) -->
+            <div class="contacto-columna-izq">
+                <div class="formulario-wrapper">
+                    
+                    <h2 class="contacto-titulo">ENVÍANOS UN MENSAJE</h2>
+                    <h3 class="contacto-subtitulo">Un ejecutivo se pondrá en contacto</h3>
+                    
+                    <form id="form-contacto" class="form-sponya" novalidate>
+                        
+                        <!-- Fila 1: Nombre (Ancho completo) -->
+                        <div class="form-grupo">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <!-- El pattern rechaza números -->
+                            <input type="text" id="nombre" name="nombre" class="form-input" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" required>
+                            <span class="error-msg">Por favor ingresa un nombre válido (sin números).</span>
+                        </div>
+
+                        <!-- Fila 2: Ciudad y Teléfonos (Mitad y mitad) -->
+                        <div class="form-fila-doble">
+                            <div class="form-grupo">
+                                <label for="ciudad" class="form-label">Ciudad</label>
+                                <input type="text" id="ciudad" name="ciudad" class="form-input" required>
+                                <span class="error-msg">Campo requerido.</span>
+                            </div>
+                            
+                            <div class="form-grupo">
+                                <label for="telefono" class="form-label">Tels.</label>
+                                <!-- El pattern solo acepta números y espacios -->
+                                <input type="tel" id="telefono" name="telefono" class="form-input" pattern="[0-9\s]+" required>
+                                <span class="error-msg">Solo se permiten números.</span>
+                            </div>
+                        </div>
+
+                        <!-- Fila 3: Correo (Ancho completo) -->
+                        <div class="form-grupo">
+                            <label for="correo" class="form-label">Correo electrónico</label>
+                            <input type="email" id="correo" name="correo" class="form-input" required>
+                            <span class="error-msg">Por favor ingresa un correo válido con "@".</span>
+                        </div>
+
+                        <!-- Fila 4: Mensaje (Textarea alto) -->
+                        <div class="form-grupo">
+                            <label for="mensaje" class="form-label">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" class="form-textarea" rows="5" required></textarea>
+                            <span class="error-msg">El mensaje no puede estar vacío.</span>
+                        </div>
+
+                        <!-- Botón Enviar -->
+                        <button type="submit" class="btn-enviar-form">Enviar</button>
+                    </form>
+
+                </div>
+            </div>
+
+            <!-- MITAD DERECHA: Visuales (45%) -->
+            <div class="contacto-columna-der">
+                <div class="visual-wrapper">
+                    <!-- Imagen actualizada para la sección de Aerosoles -->
+                    <img src="imgs/aerosol_2.webp" alt="Contacto Sponya Aerosoles" class="img-guante-contacto" loading="lazy">
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Fin de la Sección Contacto -->
+
+
+    <!-- INICIO DEL FOOTER COMPARTIDO -->
+    <footer class="footer-sponya">
+        <div class="footer-contenedor">
+            <div class="footer-logo-box">
+                <img src="imgs/logo.webp" alt="Logo Sponya" class="footer-logo" loading="lazy">
+            </div>
+            <div class="footer-grid-principal">
+                <div class="footer-col-izq">
+                    <p class="footer-direccion">
+                        Blvd Manuel Avila Camacho Joselillo 6a Naucalpan Col. El Parque Edo. de México.
+                    </p>
+                    <ul class="footer-lista-contacto">
+                        <li>
+                            <img src="imgs/telefono.svg" alt="Teléfono" class="footer-icono-lista">
+                            <span>55 55 76 67 09 / 55 55 76 00 04</span>
+                        </li>
+                        <li>
+                            <img src="imgs/whatsapp.svg" alt="WhatsApp" class="footer-icono-lista">
+                            <span>55 2480 5342</span>
+                        </li>
+                        <li>
+                            <img src="imgs/correo.svg" alt="Correo" class="footer-icono-lista">
+                            <span>isaac@sponya.com</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-col-centro">
+                    <ul class="footer-lista-nav">
+                        <li><a href="index.html">inicio</a></li>
+                        <li><a href="guantes.html">Productos</a></li>
+                        <li><a href="aerosoles.html">Aerosoles</a></li>
+                        <li><a href="difusores.html">Difusores</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="footer-hr">
+            <div class="footer-bottom">
+                <p class="footer-copyright">Copyright © 2026 SPONYA todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+    <!-- FIN DEL FOOTER -->
+
+    <!-- Vinculación del archivo JavaScript compartido -->
+    <script src="script.js"></script>
+</body>
+</html>

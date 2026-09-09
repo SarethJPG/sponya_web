@@ -195,23 +195,139 @@ html {
 }
 
 /* Adaptación para móviles (Por ahora ajustamos para que no se rompa, luego podemos implementar un menú hamburguesa si lo requieres) */
+/* =======================================================
+   BOTÓN HAMBURGUESA (Oculto por defecto en Monitores/Laptops)
+======================================================= */
+.btn-hamburguesa {
+    display: none;
+}
+
+/* =======================================================
+   ADAPTACIÓN RESPONSIVA PARA MÓVILES (Navbar y Globales)
+======================================================= */
 @media (max-width: 768px) {
+    /* 1. Barra principal compacta y ordenada */
     .seccion-a {
-        flex-direction: column; /* Apila el logo y los enlaces */
-        height: auto;
-        padding: 15px 5%;
-        gap: 15px;
+        height: 5rem; /* Altura ideal en pantalla de móvil */
+        padding: 0 5%;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-    .seccion-d {
+
+    /* 2. Tamaño de logo ajustado a pantalla chica */
+    .logo {
+        height: 3.5rem;
+        width: auto;
+    }
+
+    /* 3. Estilo del botón sándwich (3 líneas) */
+    .btn-hamburguesa {
+        display: flex;
         flex-direction: column;
-        gap: 15px;
+        justify-content: space-between;
+        width: 2rem;
+        height: 1.4rem;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
     }
+
+    .btn-hamburguesa span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: var(--color-negro);
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+    }
+
+    /* Transformación de las líneas a 'X' al abrir */
+    .btn-hamburguesa.abierto span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        background-color: var(--color-verde);
+    }
+
+    .btn-hamburguesa.abierto span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .btn-hamburguesa.abierto span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        background-color: var(--color-verde);
+    }
+
+    /* 4. Menú desplegable flotante (No empuja el contenido de la web) */
+    .seccion-d {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-blanco);
+        flex-direction: column;
+        align-items: center;
+        gap: 1.8rem;
+        padding: 0 5%;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+        border-top: 1px solid #f0f0f0;
+
+        /* Animación suave de apertura/cierre */
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+        transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.35s ease;
+    }
+
+    /* Estado cuando el usuario pulsa el menú sándwich */
+    .seccion-d.menu-activo {
+        max-height: 80vh;
+        opacity: 1;
+        padding: 2.2rem 5% 2rem 5%;
+        pointer-events: auto;
+    }
+
+    /* 5. Lista de pestañas apiladas verticalmente */
     .seccion-2 {
-        flex-wrap: wrap; /* Permite que las pestañas bajen a la siguiente línea si no caben */
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.4rem;
+        width: 100%;
     }
+
+    .nav-link {
+        font-size: 1.25rem;
+        text-align: center;
+        padding: 0.2rem 0;
+    }
+
+    /* 6. Bloque del teléfono con línea divisoria superior */
+    .seccion-3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.8rem;
+        padding-top: 1.4rem;
+        border-top: 1px solid #ececec;
+        width: 100%;
+        max-width: 22rem;
+    }
+
+    .texto-telefono {
+        font-size: 0.95rem;
+        text-align: center;
+    }
+
+    .icono-telefono {
+        height: 1.1rem;
+    }
+
+    /* Ajuste de sección de prueba */
     .hero1 {
-        padding-top: 180px; /* Ajuste para el nuevo alto de la navbar apilada */
+        padding-top: 7rem;
     }
 }
 
@@ -410,32 +526,89 @@ html {
     }
 }
 
+/* =========================================
+   ADAPTACIÓN RESPONSIVA MÓVIL (HERO CARRUSEL)
+========================================= */
 @media (max-width: 768px) {
+    /* 1. Sincronización exacta con la navbar móvil (5rem) para no dejar huecos */
+    .hero-carrusel {
+        margin-top: 5rem;
+    }
+
+    /* 2. Altura mínima para que la imagen no se comprima demasiado y quepan los textos */
+    .img-fondo {
+        min-height: 25rem;
+        object-fit: cover;
+        object-position: 70% center; /* Prioriza el producto/arte visual en el encuadre */
+    }
+
+    /* 3. Contenedor de textos centrado verticalmente con respiro lateral */
     .seccion-1 {
-        left: 5%; /* Acercamos un poco más el contenido al borde en móviles */
+        left: 6%;
+        top: 50%;
+        transform: translateY(-50%);
+        max-width: 85%;
+        z-index: 5;
     }
+
+    /* 4. Jerarquías de texto y elementos proporcionados a pantalla táctil */
     .titulo-banner {
-        font-size: 2.5rem;
+        font-size: 2.3rem;
+        line-height: 0.95;
+        margin-bottom: 0.6rem;
     }
+
     .linea-decorativa {
-        margin-left: -0.25rem; /* Adaptamos el sobresaliente */
+        width: 1.6rem;
+        height: 0.18rem;
+        margin-left: -0.2rem;
+        margin-top: 0.2rem;
+        margin-bottom: 0.7rem;
     }
+
     .subtitulo-premium {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.02rem;
+        margin-bottom: 0.6rem;
+        line-height: 1.3;
     }
+
     .parrafo-banner {
-        font-size: 0.9rem;
-        max-width: 14rem;
+        font-size: 0.88rem;
+        line-height: 1.4;
+        max-width: 16rem;
+        margin-bottom: 1.3rem;
     }
+
     .btn-hero {
-        padding: 0.6rem 1.5rem;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        padding: 0.55rem 1.4rem;
     }
-    /* Ocultamos las flechas en celular si queremos priorizar táctil, 
-       o las achicamos. Por ahora las achicamos. */
+
+    /* 5. Flechas laterales cuadradas y ajustadas a los bordes sin deformarse */
     .carrusel-flecha {
-        font-size: 1.5rem;
-        padding: 0.8rem 0.3rem;
+        width: 2.2rem;
+        height: 2.2rem;
+        font-size: 1.3rem;
+    }
+
+    .flecha-izq {
+        left: 0.4rem;
+    }
+
+    .flecha-der {
+        right: 0.4rem;
+    }
+
+    /* 6. Puntos indicadores compactos */
+    .carrusel-puntos {
+        bottom: 0.8rem;
+        gap: 0.6rem;
+    }
+
+    .punto {
+        width: 0.55rem;
+        height: 0.55rem;
     }
 }
 
@@ -548,26 +721,63 @@ html {
     }
 }
 
-/* Adaptación para móviles */
+/* =========================================
+   ADAPTACIÓN RESPONSIVA MÓVIL (COLECCIÓN)
+========================================= */
 @media (max-width: 768px) {
+    /* 1. Respiro vertical controlado y margen lateral seguro */
     .seccion-coleccion {
-        padding: 3rem 5%;
+        padding: 3.5rem 6%;
     }
+
+    /* 2. Encabezado compacto para no consumir demasiada pantalla */
+    .coleccion-encabezado {
+        margin-bottom: 2.5rem;
+        gap: 0.35rem;
+    }
+
     .coleccion-titulo {
-        font-size: 2.2rem;
+        font-size: 2.1rem;
+        line-height: 1.15;
     }
+
     .coleccion-subtitulo {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
+        line-height: 1.2;
     }
+
+    /* 3. Cuadrícula convertida en 1 columna fluida con respiro vertical */
     .coleccion-grid {
-        /* Cambiamos de 3 columnas a 1 sola columna para apilar las imágenes */
         grid-template-columns: 1fr;
-        gap: 3.5rem; /* Aumentamos la separación vertical entre cada grupo (imagen+textos+botón) */
+        gap: 3rem; /* Espacio uniforme entre cada producto al hacer scroll vertical */
     }
+
+    /* 4. Proporción de imagen optimizada para teléfonos */
     .coleccion-img {
-        max-width: 18rem; /* Imágenes un poco más pequeñas en celular */
+        max-width: 16.5rem;
+        margin-bottom: 1.2rem;
+    }
+
+    /* 5. Títulos y subtítulos con jerarquía y espaciados equilibrados */
+    .card-titulo {
+        font-size: 1.9rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .card-subtitulo {
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+        margin-bottom: 1.4rem;
+        padding: 0 1rem; /* Previene desbordes si la descripción es larga */
+    }
+
+    /* 6. Botón con tamaño táctil cómodo y proporcionado */
+    .btn-coleccion {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.6rem;
     }
 }
+
 
 /* =========================================
    SECCIÓN: CALIDAD QUE SE SIENTE
@@ -646,18 +856,47 @@ html {
     }
 }
 
-/* Adaptación para móviles */
+
+/* =========================================
+   ADAPTACIÓN RESPONSIVA MÓVIL (CALIDAD QUE SE SIENTE)
+========================================= */
 @media (max-width: 768px) {
+    /* 1. Respiro vertical balanceado y margen lateral seguro */
     .seccion-calidad {
-        padding: 3rem 5%;
+        padding: 3.5rem 6%;
     }
+
+    /* 2. Título principal proporcionado y sin espacio muerto excesivo */
     .calidad-titulo-principal {
-        font-size: 1.8rem;
+        font-size: 2rem;
+        line-height: 1.2;
+        margin-bottom: 2.8rem; /* Evita los 5rem de separación de escritorio */
     }
+
+    /* 3. Cuadrícula apilada en 1 sola columna con separación uniforme */
     .calidad-grid {
-        /* 1 sola columna para apilar todo hacia abajo */
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.5rem;
+    }
+
+    /* 4. Iconos optimizados para no dominar de más en pantalla chica */
+    .calidad-icono {
+        width: 4.5rem;
+        height: 4.5rem;
+        margin-bottom: 1rem;
+    }
+
+    /* 5. Títulos de cada beneficio con jerarquía clara */
+    .calidad-titulo {
+        font-size: 1.45rem;
+        margin-bottom: 0.4rem;
+    }
+
+    /* 6. Subtítulo legible en pantallas pequeñas (el 0.7rem base quedaba demasiado diminuto) */
+    .calidad-subtitulo {
+        font-size: 0.88rem;
+        line-height: 1.45;
+        max-width: 18rem; /* Permite que el texto respire y no haga quiebres incómodos */
     }
 }
 
@@ -759,34 +998,59 @@ html {
     }
 }
 
-/* Adaptación para móviles */
+/* =========================================
+   ADAPTACIÓN RESPONSIVA MÓVIL (BANNER AMBIENTES)
+========================================= */
 @media (max-width: 768px) {
-    .ambientes-contenedor {
-        /* En móvil, la distribución 50/50 suele apretar mucho el texto, 
-           así que dejamos que la caja ocupe casi todo el ancho */
-        justify-content: center; 
+    /* 1. Altura mínima para evitar que la imagen se comprima y corte los textos */
+    .ambientes-img-fondo {
+        min-height: 25rem;
+        object-fit: cover;
+        object-position: center;
     }
-    
+
+    /* 2. Ocultar mitad izquierda vacía y centrar área de lectura */
     .ambientes-mitad-izq {
-        display: none; /* Ocultamos la mitad vacía en móviles */
+        display: none;
     }
-    
+
     .ambientes-mitad-der {
-        width: 90%; /* Toma casi todo el ancho */
-        text-align: center; /* Centramos el texto para mejor estética en móvil */
+        width: 100%;
+        padding: 0 5%;
+        justify-content: center;
+        align-items: center;
     }
-    
+
+    /* 3. Tarjeta contenedora centrada (anula el margin-bottom: 5rem de escritorio) */
     .ambientes-caja-textos {
-        align-items: center; /* Asegura el centrado de los bloques de texto */
-        /* Agregamos un fondo semitransparente blanco opcional si la imagen 
-           interfiere con la lectura en celular al abarcar toda la pantalla */
-        background-color: rgba(255, 255, 255, 0.7);
-        padding: 2rem;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 0; /* Elimina el desfase vertical de escritorio */
+        background-color: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(4px);
+        padding: 2rem 1.4rem;
         border-radius: 1rem;
+        max-width: 92%;
+    }
+
+    /* 4. Jerarquía de texto ajustada a pantalla chica */
+    .ambientes-subtitulo {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
     }
 
     .ambientes-titulo {
-        font-size: 2rem;
+        font-size: 1.85rem;
+        line-height: 1.15;
+        margin-top: 0;
+        margin-bottom: 0.8rem;
+    }
+
+    .ambientes-parrafo {
+        font-size: 0.95rem;
+        line-height: 1.45;
+        max-width: 100%;
+        margin-top: 0;
     }
 }
 
@@ -972,41 +1236,107 @@ html {
     color: var(--color-blanco);
 }
 
-/* =========================================
-   MEDIA QUERIES (RESPONSIVO GUANTE)
-========================================= */
-@media (max-width: 1024px) {
-    .guante-capa-3 {
-        width: 45%; 
-    }
-}
-
+/* =======================================================
+   ADAPTACIÓN RESPONSIVA MÓVIL (ENCABEZADO Y GUANTE)
+======================================================= */
 @media (max-width: 768px) {
-    .seccion-guante {
-        display: flex; 
-        flex-direction: column; 
+    /* --- 1. Encabezado Colección Guantes --- */
+    .seccion-encabezado-guantes {
+        padding: 3.5rem 6% 2.5rem 6%; /* Compacta el respiro vertical en móvil */
     }
+
+    .titulo-guantes {
+        font-size: 2.1rem;
+        line-height: 1.2;
+        margin-bottom: 0.4rem;
+    }
+
+    .subtitulo-guantes {
+        font-size: 1.25rem;
+        line-height: 1.3;
+    }
+
+    /* --- 2. Guante de Doble Resistencia --- */
+    .seccion-guante {
+        display: flex;
+        flex-direction: column;
+        min-height: auto; /* Anula la altura mínima rígida de 38rem de escritorio */
+    }
+
+    /* Capa 1: Foto superior */
     .guante-capa-1 {
-        position: relative; 
+        position: relative;
         width: 100%;
         height: auto;
     }
+
     .guante-img-fondo {
-        height: auto; 
-    }
-    .guante-capa-2 {
-        display: none; 
-    }
-    .guante-capa-3 {
-        position: relative; 
         width: 100%;
-        padding: 4rem 5%;
+        height: auto;
+        max-height: 22rem; /* Evita que la foto consuma toda la pantalla vertical */
+        object-fit: cover;
+        object-position: center;
     }
+
+    /* Capa 2: Oculta en móvil para no saturar */
+    .guante-capa-2 {
+        display: none;
+    }
+
+    /* Capa 3: Bloque de texto inferior */
+    .guante-capa-3 {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 2.8rem 6% 3.5rem 6%;
+    }
+
     .guante-textos {
-        transform: none; /* Apagamos el desplazamiento en móvil */
+        transform: none; /* Apaga desplazamientos artificiales de escritorio */
+        width: 100%;
     }
-    .guante-subtitulo, .guante-lista {
-        max-width: 100%; 
+
+    .guante-titulo {
+        font-size: 2.2rem;
+        line-height: 1.05;
+        margin-bottom: 0.9rem;
+    }
+
+    .guante-subtitulo {
+        font-size: 0.95rem;
+        line-height: 1.35;
+        max-width: 100%;
+        margin-bottom: 0.9rem;
+    }
+
+    .linea-azul {
+        width: 2.2rem;
+        height: 0.35rem;
+        margin-left: 0; /* Alineada al borde exacto de los textos */
+        margin-bottom: 1.2rem;
+    }
+
+    .guante-lista {
+        font-size: 1.05rem; /* Reduce el 1.3rem original para que no ocupe demasiado scroll */
+        line-height: 1.5;
+        max-width: 100%;
+        margin-left: 1.4rem;
+        margin-bottom: 1.6rem;
+    }
+
+    .guante-texto-colores {
+        font-size: 0.8rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .guante-img-colores {
+        height: 3.8rem; /* Ajustado proporcionalmente al ancho móvil */
+        margin-bottom: 2rem;
+    }
+
+    .btn-guante {
+        font-size: 0.95rem;
+        padding: 0.75rem 2rem;
     }
 }
 
@@ -1145,20 +1475,66 @@ html {
     }
 }
 
+/* =========================================
+   ADAPTACIÓN RESPONSIVA MÓVIL (PRODUCTOS)
+========================================= */
 @media (max-width: 768px) {
+    /* 1. Respiro vertical balanceado y margen lateral seguro */
+    .seccion-productos {
+        padding: 3.5rem 6%;
+    }
+
+    /* 2. Título principal sin espacio muerto excesivo */
+    .productos-titulo-principal {
+        font-size: 2.1rem;
+        line-height: 1.2;
+        margin-bottom: 2.5rem; /* Reduce los 5rem de escritorio */
+    }
+
+    /* 3. Cuadrícula apilada en 1 sola columna con separación uniforme */
     .productos-grid {
-        grid-template-columns: 1fr; /* Apilamos las cards en una sola columna */
-        gap: 4rem; /* Separación vertical entre grupo de cards */
+        grid-template-columns: 1fr;
+        gap: 3rem;
     }
-    .productos-separador {
-        /* En celulares, la línea puede verse muy apretada, ajustamos el gap */
-        gap: 1rem;
+
+    /* 4. Proporción de imagen optimizada para teléfonos */
+    .producto-img {
+        max-width: 15rem;
+        margin-bottom: 1.2rem;
     }
-    .btn-solido-azul {
-        padding: 1rem 1.5rem;
+
+    /* 5. Jerarquía de texto y descripción ajustadas a pantalla táctil */
+    .producto-titulo {
+        font-size: 1.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .producto-desc {
+        font-size: 0.92rem;
+        line-height: 1.45;
+        max-width: 100%;
+        margin-bottom: 1.5rem; /* Elimina los 2.5rem de separación de escritorio */
+        padding: 0 0.5rem;
+    }
+
+    .btn-outline-azul {
         font-size: 0.9rem;
+        padding: 0.65rem 1.8rem;
+    }
+
+    /* 6. Separador inferior compacto sin hueco vertical gigante */
+    .productos-separador {
+        margin-top: 3.5rem; /* Reduce los 6rem de margen superior */
+        gap: 0.8rem;
+    }
+
+    .btn-solido-azul {
+        font-size: 0.88rem;
+        padding: 0.8rem 1.3rem;
+        white-space: nowrap; /* Evita quiebres de línea en pantallas estrechas */
     }
 }
+
 
 /* =========================================
    SECCIÓN: PRECIOS DE MAYOREO
@@ -1240,33 +1616,51 @@ html {
     }
 }
 
-/* Adaptación para Móviles */
+/* =========================================
+   ADAPTACIÓN RESPONSIVA MÓVIL (PRECIOS MAYOREO)
+========================================= */
 @media (max-width: 768px) {
+    /* 1. Apilado vertical del contenedor principal */
     .seccion-mayoreo {
-        flex-direction: column; /* Apila los elementos */
+        flex-direction: column;
     }
 
+    /* 2. Imagen ocupando el ancho total con encuadre óptimo */
     .mayoreo-capa-img {
         width: 100%;
     }
 
+    .mayoreo-img {
+        min-height: 16rem;
+        object-fit: cover;
+    }
+
+    /* 3. Recuadro azul con superposición limpia sobre la fotografía */
     .mayoreo-capa-azul {
-        position: relative; /* Rompe el flotado para colocarse debajo de la imagen */
+        position: relative;
+        z-index: 2; /* Asegura que el recuadro siempre flote por encima de la imagen */
         width: 100%;
         height: auto;
-        top: 0;
+        top: auto;
+        right: auto;
         transform: none;
-        /* Margen negativo para que el recuadro azul siga montándose sobre la imagen en celular */
-        margin-top: -15%; 
-        padding: 3rem 5%;
+        margin-top: -12%; /* Solapamiento controlado sin tapar demasiado la foto */
+        padding: 2.5rem 6%;
     }
 
+    /* 4. Título proporcionado para no quebrar palabras en pantallas angostas */
     .mayoreo-titulo {
-        font-size: 2.2rem;
+        font-size: 1.85rem;
+        line-height: 1.15;
+        margin-bottom: 1rem;
     }
 
+    /* 5. Párrafo legible sin los espacios irregulares de la justificación */
     .mayoreo-parrafo {
+        font-size: 0.92rem;
+        line-height: 1.5;
         max-width: 100%;
+        text-align: left; /* Evita 'ríos' de espacio vacío entre palabras en pantallas chicas */
     }
 }
 

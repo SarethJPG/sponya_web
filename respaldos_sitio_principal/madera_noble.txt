@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponya - Madera Noble</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+            publicKey: "gTenyf6EX_CI6FkZh",
+            });
+        })();
+    </script>
+</head>
+
+<body>
+
+    <!-- NAVBAR COMPARTIDA -->
+    <nav class="navbar" id="navbar">
+        <div class="seccion-a">
+            <div class="seccion-b">
+                <a href="index.html" class="enlace-logo">
+                    <img src="imgs/logo.webp" alt="Logo Sponya" class="logo" loading="lazy">
+                </a>
+            </div>
+            <div class="seccion-d">
+                <div class="seccion-2">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                    <a href="guantes.html" class="nav-link">Guantes</a>
+                    <a href="aerosoles.html" class="nav-link">Aerosoles</a>
+                    <a href="difusores.html" class="nav-link">Difusores</a>
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                </div>
+                <div class="seccion-3">
+                    <img src="imgs/telefono.svg" alt="Icono Teléfono" class="icono-telefono" loading="lazy">
+                    <span class="texto-telefono">55 55 76 67 09 / 55 55 76 00 04</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- =========================================
+         HERO PRODUCTO INDIVIDUAL (MADERA NOBLE)
+    ========================================= -->
+    <section class="hero-producto" id="hero-madera">
+        <img src="imgs/banner_madera.webp" alt="Banner Aerosol Madera Noble" class="hero-producto-img" loading="lazy">
+        
+        <div class="hero-producto-contenedor">
+            <div class="hero-producto-mitad-izq">
+                <div class="hero-producto-textos">
+                    <h2 class="hero-producto-titulo">Madera Noble</h2>
+                    <h3 class="hero-producto-subtitulo">ITEM:306</h3>
+                    <p class="hero-producto-tags">Perfumado • Cálido • Refinado</p>
+                    <p class="hero-producto-parrafo">Aroma cálido con notas frutales y florales que ventila el ambiente, eleva el bienestar y aporta una sensación acogedora inmediata.</p>
+                    <p class="hero-producto-parrafo">Su fragancia suave y natural deja un ambiente armonioso y lleno de confort.</p>
+                    <p class="hero-producto-parrafo hero-producto-extra">(Aromas duraderos • Inhibe malos olores • Sensación de ambiente limpio.).</p>
+                    <p class="hero-producto-parrafo">Fragancia con notas de vainilla, flores y madera cálida.</p>
+                </div>
+            </div>
+            <div class="hero-producto-mitad-der"></div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         CONTACTO (MADERA NOBLE)
+    ========================================= -->
+    <section class="seccion-contacto tema-producto" id="contacto-madera">
+        <div class="contacto-contenedor">
+            
+            <div class="contacto-columna-izq">
+                <div class="formulario-wrapper">
+                    <h2 class="contacto-titulo">ENVÍANOS UN MENSAJE</h2>
+                    <h3 class="contacto-subtitulo">Un ejecutivo se pondrá en contacto</h3>
+                    
+                    <form id="form-contacto" class="form-sponya" novalidate>
+                        <div class="form-grupo">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" class="form-input" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" required>
+                            <span class="error-msg">Por favor ingresa un nombre válido (sin números).</span>
+                        </div>
+
+                        <div class="form-fila-doble">
+                            <div class="form-grupo">
+                                <label for="ciudad" class="form-label">Ciudad</label>
+                                <input type="text" id="ciudad" name="ciudad" class="form-input" required>
+                                <span class="error-msg">Campo requerido.</span>
+                            </div>
+                            <div class="form-grupo">
+                                <label for="telefono" class="form-label">Tels.</label>
+                                <input type="tel" id="telefono" name="telefono" class="form-input" pattern="[0-9\s]+" required>
+                                <span class="error-msg">Solo se permiten números.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-grupo">
+                            <label for="correo" class="form-label">Correo electrónico</label>
+                            <input type="email" id="correo" name="correo" class="form-input" required>
+                            <span class="error-msg">Por favor ingresa un correo válido con "@".</span>
+                        </div>
+
+                        <div class="form-grupo">
+                            <label for="mensaje" class="form-label">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" class="form-textarea" rows="5" required></textarea>
+                            <span class="error-msg">El mensaje no puede estar vacío.</span>
+                        </div>
+
+                        <button type="submit" class="btn-enviar-form">Enviar</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="contacto-columna-der">
+                <div class="visual-wrapper">
+                    <img src="imgs/formulario.webp" alt="Contacto Sponya" class="img-guante-contacto" loading="lazy">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- =========================================
+         FOOTER (MADERA NOBLE)
+    ========================================= -->
+    <footer class="footer-sponya tema-producto" id="footer-madera">
+        <div class="footer-contenedor">
+            <div class="footer-logo-box">
+                <img src="imgs/logo.webp" alt="Logo Sponya" class="footer-logo" loading="lazy">
+            </div>
+            <div class="footer-grid-principal">
+                <div class="footer-col-izq">
+                    <p class="footer-direccion">Blvd Manuel Avila Camacho Joselillo 6a Naucalpan Col. El Parque Edo. de México.</p>
+                    <ul class="footer-lista-contacto">
+                        <li><img src="imgs/telefono.svg" alt="Teléfono" class="footer-icono-lista"><span>55 55 76 67 09 / 55 55 76 00 04</span></li>
+                        <li><img src="imgs/whatsapp.svg" alt="WhatsApp" class="footer-icono-lista"><span>55 2480 5342</span></li>
+                        <li><img src="imgs/correo.svg" alt="Correo" class="footer-icono-lista"><span>isaac@sponya.com</span></li>
+                    </ul>
+                </div>
+                <div class="footer-col-centro">
+                    <ul class="footer-lista-nav">
+                        <li><a href="index.html">inicio</a></li>
+                        <li><a href="guantes.html">Productos</a></li>
+                        <li><a href="aerosoles.html">Aerosoles</a></li>
+                        <li><a href="difusores.html">Difusores</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="footer-hr">
+            <div class="footer-bottom">
+                <p class="footer-copyright">Copyright © 2026 SPONYA todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
