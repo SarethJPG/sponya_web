@@ -1722,17 +1722,38 @@ html {
     }
 }
 
+/* =========================================
+   ADAPTACIÓN RESPONSIVA MÓVIL (MERCADO LIBRE)
+========================================= */
 @media (max-width: 768px) {
+    /* 1. Respiro vertical controlado y margen lateral seguro */
+    .seccion-mercadolibre {
+        padding: 3.5rem 6%;
+    }
+
+    /* 2. Contenedor apilado en columna con separación equilibrada */
     .meli-contenedor {
-        flex-direction: column; /* Apila la imagen arriba y el texto abajo */
-        text-align: center; /* Centra el texto en móviles */
-        gap: 3rem; 
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem; /* Reduce el hueco excesivo de 3rem */
     }
+
+    /* 3. Escala del logo con tope para pantallas medianas */
     .meli-columna-img {
-        width: 50%; /* La imagen toma más espacio en móvil para no verse minúscula */
+        width: 45%;
+        max-width: 11rem; /* Previene que crezca de más en teléfonos anchos o phablets */
     }
+
+    /* 4. Columna de texto al ancho completo */
     .meli-columna-texto {
-        width: 100%; /* El texto toma el ancho completo disponible */
+        width: 100%;
+    }
+
+    /* 5. Párrafo nítido y con interlineado adaptado a pantallas táctiles */
+    .meli-parrafo {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        padding: 0 0.5rem;
     }
 }
 
@@ -1861,37 +1882,91 @@ html {
     }
 }
 
+/* =========================================
+   ADAPTACIÓN RESPONSIVA MÓVIL (DIFUSORES)
+========================================= */
 @media (max-width: 768px) {
+    /* 1. La imagen pasa a cubrir el fondo absoluto sin empujar la caja hacia abajo */
+    .difusores-img-fondo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    /* 2. El contenedor se vuelve relativo sobre la imagen, adaptando su altura al contenido */
     .difusores-contenedor {
-        /* En móviles rompemos la posición absoluta para que el texto empuje la caja si necesita espacio */
         position: relative;
+        z-index: 2;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 3rem;
-        background-color: rgba(255, 255, 255, 0.7); 
-        padding: 3rem 5%;
+        gap: 2.5rem;
+        background-color: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(3px);
+        padding: 3.5rem 6%;
+        width: 100%;
     }
-    
-    .difusores-encabezado, .difusores-bloque-derecha {
+
+    /* 3. Encabezado superior centrado sin posiciones absolutas fijas */
+    .difusores-encabezado {
         position: relative;
         top: auto;
         left: auto;
+        transform: none;
+        width: 100%;
+    }
+
+    .difusores-titulo-principal {
+        font-size: 2.1rem;
+        line-height: 1.15;
+        margin-bottom: 0.3rem;
+    }
+
+    .difusores-subtitulo-principal {
+        font-size: 1.25rem;
+        line-height: 1.2;
+    }
+
+    /* 4. Bloque inferior centrado y con márgenes equilibrados */
+    .difusores-bloque-derecha {
+        position: relative;
+        top: auto;
         right: auto;
         transform: none;
         width: 100%;
-        align-items: center; 
+        align-items: center;
         text-align: center;
         padding-right: 0;
     }
 
-    .difusores-subtitulo-secundario {
-        margin-bottom: 2.5rem; /* Ajuste del hueco para celular */
+    .difusores-titulo-secundario {
+        font-size: 1.9rem;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
     }
 
+    .difusores-subtitulo-secundario {
+        font-size: 0.95rem;
+        margin-bottom: 1.8rem; /* Anula los 6rem de escritorio */
+    }
+
+    /* 5. Botones centrados y con ancho responsivo seguro para pantallas chicas */
     .difusores-botones {
-        align-items: center; 
+        align-items: center;
+        width: 100%;
+        gap: 0.9rem;
+    }
+
+    .btn-difusor {
+        width: 100%;
+        max-width: 16.5rem; /* Evita que el ancho rígido de 18rem desborde teléfonos pequeños */
+        font-size: 0.95rem;
+        padding: 0.75rem 1.2rem;
     }
 }
 
@@ -2080,16 +2155,66 @@ html {
     }
 }
 
+/* =========================================
+   ADAPTACIÓN RESPONSIVA MÓVIL (CONTACTO)
+========================================= */
 @media (max-width: 768px) {
-    .contacto-contenedor {
-        flex-direction: column-reverse; /* Pone la imagen arriba y el formulario abajo en móviles */
-        gap: 4rem;
+    /* 1. Respiro vertical controlado */
+    .seccion-contacto {
+        padding: 3.5rem 6%;
     }
-    .contacto-columna-izq, .contacto-columna-der {
+
+    /* 2. Imagen arriba centrada y formulario abajo */
+    .contacto-contenedor {
+        flex-direction: column-reverse;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .contacto-columna-izq, 
+    .contacto-columna-der {
         width: 100%;
     }
+
+    /* 3. Centrado del elemento visual (corrige el flex-end de escritorio) */
+    .contacto-columna-der {
+        justify-content: center;
+    }
+
+    /* 4. Proporción de imagen y sombra desfasada sin desbordar el ancho de pantalla */
     .visual-wrapper {
-        max-width: 20rem; /* Imagen más pequeña en celular */
+        max-width: 16.5rem;
+        margin: 0 auto;
+    }
+
+    .visual-wrapper::after {
+        top: 1.2rem;
+        left: 1.2rem;
+    }
+
+    /* 5. Jerarquía de títulos sin espacio muerto excesivo */
+    .contacto-titulo {
+        font-size: 1.85rem;
+        line-height: 1.2;
+        margin-bottom: 0.4rem;
+    }
+
+    .contacto-subtitulo {
+        font-size: 1rem;
+        margin-bottom: 2rem; /* Reduce los 4rem de espacio muerto de escritorio */
+    }
+
+    /* 6. Apilado vertical de Ciudad y Teléfono para no comprimir inputs ni errores */
+    .form-fila-doble {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* 7. Botón ancho completo para facilitar pulsación táctil */
+    .btn-enviar-form {
+        width: 100%;
+        text-align: center;
+        padding: 0.9rem 2rem;
         margin-top: 1rem;
     }
 }
@@ -2234,30 +2359,89 @@ html {
 }
 
 /* =========================================
-   MEDIA QUERIES (RESPONSIVO FOOTER)
+   ADAPTACIÓN RESPONSIVA MÓVIL (FOOTER)
 ========================================= */
 @media (max-width: 900px) {
-    .footer-grid-principal {
-        flex-direction: column;
-        gap: 3rem;
-        position: relative;
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-    
-    .footer-logo-box {
-        padding-left: 1rem;
+    /* 1. Respiro vertical balanceado en móviles */
+    .footer-sponya {
+        padding: 3rem 0 1.8rem 0;
     }
 
-    .footer-col-centro {
+    /* 2. Alineación del logo limpia y proporcional */
+    .footer-logo-box {
+        padding-left: 0; /* Elimina desfases manuales para alinearse al margen general del 5% */
+        margin-bottom: 2rem;
+    }
+
+    .footer-logo {
+        height: 3.5rem;
+    }
+
+    /* 3. Apilado en columna de dirección y navegación */
+    .footer-grid-principal {
+        flex-direction: column;
+        gap: 2.2rem;
         position: relative;
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 2.5rem;
+    }
+
+    /* 4. Columna izquierda (Dirección y datos de contacto) */
+    .footer-col-izq {
+        max-width: 100%;
+    }
+
+    .footer-direccion {
+        font-size: 0.95rem;
+        line-height: 1.45;
+        margin-bottom: 1.4rem;
+    }
+
+    .footer-lista-contacto {
+        gap: 0.85rem;
+    }
+
+    .footer-lista-contacto li {
+        font-size: 0.92rem;
+        gap: 0.7rem;
+    }
+
+    .footer-icono-lista {
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+
+    /* 5. Navegación liberada del centrado absoluto de escritorio */
+    .footer-col-centro {
+        position: static;
         left: auto;
         transform: none;
+        width: 100%;
         align-items: flex-start;
     }
 
     .footer-lista-nav {
         text-align: left;
+        gap: 0.85rem;
+        width: 100%;
+    }
+
+    .footer-lista-nav li a {
+        font-size: 1rem;
+        display: inline-block;
+        padding: 0.2rem 0; /* Área de toque cómoda para pantallas táctiles */
+    }
+
+    /* 6. Línea divisoria y copyright adaptados */
+    .footer-hr {
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-copyright {
+        font-size: 0.82rem;
+        line-height: 1.4;
+        padding: 0 0.5rem;
     }
 }
 
@@ -2299,6 +2483,40 @@ html {
     /* Ancho máximo fluido para el párrafo */
     max-width: clamp(25rem, 35vw, 35rem);
     line-height: 1.4; /* Cambiado a un valor relativo en lugar de 2rem para escalar mejor */
+}
+
+/* =======================================================
+   ADAPTACIÓN RESPONSIVA MÓVIL (TRANSFORMA TU ESPACIO)
+======================================================= */
+@media (max-width: 768px) {
+    /* 1. Anula anchos fijos y centra la tarjeta con fondo translúcido */
+    #transforma-espacio .ambientes-caja-textos {
+        align-items: center;
+        text-align: center;
+        max-width: 92%; /* Anula el clamp(30rem, ...) que desborda en celular */
+        padding: 2rem 1.4rem; /* Elimina el padding-left desfasado de escritorio */
+        gap: 0.8rem; /* Espaciado vertical más compacto */
+    }
+
+    /* 2. Subtítulo proporcionado */
+    #transforma-espacio .ambientes-subtitulo {
+        font-size: 0.95rem;
+        line-height: 1.3;
+    }
+
+    /* 3. Título principal adaptado sin quiebres forzados */
+    #transforma-espacio .ambientes-titulo {
+        font-size: 1.85rem;
+        line-height: 1.15;
+        margin-bottom: 0.4rem;
+    }
+
+    /* 4. Párrafo legible que aprovecha el 100% del contenedor */
+    #transforma-espacio .ambientes-parrafo {
+        font-size: 0.95rem;
+        line-height: 1.45;
+        max-width: 100%; /* Anula el clamp(25rem, ...) */
+    }
 }
 
 /* =========================================
@@ -2368,20 +2586,52 @@ html {
     }
 }
 
+/* =======================================================
+   ADAPTACIÓN RESPONSIVA MÓVIL (TECNOLOGÍA LIMPIA)
+======================================================= */
 @media (max-width: 768px) {
-    .tecnologia-grid {
-        grid-template-columns: 1fr; /* Apilamos a 1 sola columna en celulares */
-        gap: 3rem;
+    /* 1. Respiro vertical controlado y margen lateral seguro */
+    .seccion-tecnologia {
+        padding: 3.5rem 6%;
     }
+
+    /* 2. Título principal adaptado sin espacio muerto vertical */
+    .tecnologia-titulo {
+        font-size: 2.1rem;
+        line-height: 1.2;
+        margin-bottom: 2.5rem; /* Reduce los 5rem de separación de escritorio */
+    }
+
+    /* 3. Cuadrícula apilada en 1 columna con separación balanceada */
+    .tecnologia-grid {
+        grid-template-columns: 1fr;
+        gap: 2.2rem;
+    }
+
+    /* 4. Divisores horizontales y respiro interno de cada ítem */
     .tecnologia-item {
         border-right: none;
-        /* Cambiamos las líneas divisorias verticales por horizontales en la versión móvil */
-        border-bottom: 2px solid #e1e1e1;
-        padding: 0 0 3rem 0;
+        border-bottom: 1.5px solid #e1e1e1;
+        padding: 0 0.5rem 2.2rem 0.5rem;
     }
+
     .tecnologia-item:last-child {
         border-bottom: none;
         padding-bottom: 0;
+    }
+
+    /* 5. Iconos proporcionados a pantalla chica */
+    .tecnologia-icono {
+        width: 4.5rem;
+        height: 4.5rem;
+        margin-bottom: 1.2rem; /* Reduce los 2rem de escritorio */
+    }
+
+    /* 6. Textos descriptivos centrados y legibles */
+    .tecnologia-texto {
+        font-size: 1.15rem;
+        line-height: 1.35;
+        max-width: 19rem; /* Evita quiebres de una sola palabra */
     }
 }
 
