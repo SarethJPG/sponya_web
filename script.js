@@ -33,136 +33,109 @@ window.addEventListener('scroll', function() {
 // =========================================
 
 const track = document.getElementById('carrusel-track');
-// Convertimos los hijos actuales del track en un Array (nuestras 3 cards originales)
-const slidesOriginales = Array.from(track.children);
-const btnIzq = document.getElementById('flecha-izq');
-const btnDer = document.getElementById('flecha-der');
-const puntos = Array.from(document.querySelectorAll('.punto'));
 
-let indiceActual = 1; // Iniciamos en 1 porque en el índice 0 pondremos un clon de la última card
-let enMovimiento = false; // Bandera para evitar que el usuario de clics rápidos y rompa la animación
-let intervaloCarrusel; // Variable para guardar el temporizador
+// Condicional de seguridad: solo se ejecuta si la página actual tiene carrusel
+if (track) {
+    const slidesOriginales = Array.from(track.children);
+    const btnIzq = document.getElementById('flecha-izq');
+    const btnDer = document.getElementById('flecha-der');
+    const puntos = Array.from(document.querySelectorAll('.punto'));
 
-// 1. Crear los clones para la ilusión de carrusel infinito
-const primerClon = slidesOriginales[0].cloneNode(true);
-const ultimoClon = slidesOriginales[slidesOriginales.length - 1].cloneNode(true);
+    let indiceActual = 1;
+    let enMovimiento = false;
+    let intervaloCarrusel;
 
-// 2. Insertar los clones en el DOM
-track.appendChild(primerClon); // El clon de la card 1 se va al final (como si fuera la card 4)
-track.insertBefore(ultimoClon, slidesOriginales[0]); // El clon de la card 3 se va al inicio (como si fuera la card 0)
+    const primerClon = slidesOriginales[0].cloneNode(true);
+    const ultimoClon = slidesOriginales[slidesOriginales.length - 1].cloneNode(true);
 
-// Actualizamos la lista de todas las cards (ahora son 5 en total con los clones)
-const todosLosSlides = Array.from(track.children);
+    track.appendChild(primerClon);
+    track.insertBefore(ultimoClon, slidesOriginales[0]);
 
-// 3. Función principal para desplazar la pista (track)
-function moverCarrusel() {
-    // Calculamos el ancho actual de una card
-    const anchoSlide = todosLosSlides[0].getBoundingClientRect().width;
-    // Movemos el contenedor entero hacia la izquierda multiplicando el ancho por el índice
-    track.style.transform = `translateX(-${indiceActual * anchoSlide}px)`;
-}
+    const todosLosSlides = Array.from(track.children);
 
-// Inicializamos la posición sin animación para que no se vea el salto al cargar la página
-track.style.transition = 'none';
-moverCarrusel();
-
-// 4. Función para iluminar el punto (dot) correcto
-function actualizarPuntos() {
-    // Limpiamos todos los puntos
-    puntos.forEach(punto => punto.classList.remove('activo'));
-    
-    // Calculamos qué punto encender en base al índice real
-    let indexReal = indiceActual - 1;
-    if (indiceActual === todosLosSlides.length - 1) indexReal = 0; // Si estamos viendo el clon del final
-    if (indiceActual === 0) indexReal = slidesOriginales.length - 1; // Si estamos viendo el clon del inicio
-    
-    // Encendemos el punto correspondiente
-    if(puntos[indexReal]) {
-        puntos[indexReal].classList.add('activo');
+    function moverCarrusel() {
+        const anchoSlide = todosLosSlides[0].getBoundingClientRect().width;
+        track.style.transform = `translateX(-${indiceActual * anchoSlide}px)`;
     }
-}
 
-// 5. Funciones para navegar a los lados
-function moverDerecha() {
-    if (enMovimiento) return;
-    enMovimiento = true;
-    
-    track.style.transition = 'transform 0.5s ease-in-out';
-    indiceActual++;
+    track.style.transition = 'none';
     moverCarrusel();
-    actualizarPuntos();
-    reiniciarIntervalo();
-}
 
-function moverIzquierda() {
-    if (enMovimiento) return;
-    enMovimiento = true;
-    
-    track.style.transition = 'transform 0.5s ease-in-out';
-    indiceActual--;
-    moverCarrusel();
-    actualizarPuntos();
-    reiniciarIntervalo();
-}
-
-// 6. El "Efecto Ninja": Cuando termina la transición, revisamos si estamos en un clon
-track.addEventListener('transitionend', () => {
-    enMovimiento = false;
-    
-    // Si llegamos al clon de la derecha (la card 1 falsa)
-    if (indiceActual === todosLosSlides.length - 1) {
-        track.style.transition = 'none'; // Apagamos la animación
-        indiceActual = 1; // Saltamos de regreso a la card 1 original
-        moverCarrusel();
+    function actualizarPuntos() {
+        puntos.forEach(punto => punto.classList.remove('activo'));
+        let indexReal = indiceActual - 1;
+        if (indiceActual === todosLosSlides.length - 1) indexReal = 0;
+        if (indiceActual === 0) indexReal = slidesOriginales.length - 1;
+        if (puntos[indexReal]) {
+            puntos[indexReal].classList.add('activo');
+        }
     }
-    
-    // Si llegamos al clon de la izquierda (la card 3 falsa)
-    if (indiceActual === 0) {
-        track.style.transition = 'none'; // Apagamos la animación
-        indiceActual = todosLosSlides.length - 2; // Saltamos de regreso a la card 3 original
-        moverCarrusel();
-    }
-});
 
-// 7. Escuchadores de eventos para las flechas
-btnDer.addEventListener('click', moverDerecha);
-btnIzq.addEventListener('click', moverIzquierda);
-
-// 8. Escuchadores de eventos para los puntos de la base
-puntos.forEach((punto, index) => {
-    punto.addEventListener('click', () => {
+    function moverDerecha() {
         if (enMovimiento) return;
         enMovimiento = true;
-        
-        // Sumamos 1 porque el índice de nuestro arreglo real está desfasado por el clon inicial
-        indiceActual = index + 1;
         track.style.transition = 'transform 0.5s ease-in-out';
+        indiceActual++;
         moverCarrusel();
         actualizarPuntos();
         reiniciarIntervalo();
+    }
+
+    function moverIzquierda() {
+        if (enMovimiento) return;
+        enMovimiento = true;
+        track.style.transition = 'transform 0.5s ease-in-out';
+        indiceActual--;
+        moverCarrusel();
+        actualizarPuntos();
+        reiniciarIntervalo();
+    }
+
+    track.addEventListener('transitionend', () => {
+        enMovimiento = false;
+        if (indiceActual === todosLosSlides.length - 1) {
+            track.style.transition = 'none';
+            indiceActual = 1;
+            moverCarrusel();
+        }
+        if (indiceActual === 0) {
+            track.style.transition = 'none';
+            indiceActual = todosLosSlides.length - 2;
+            moverCarrusel();
+        }
     });
-});
 
-// 9. Lógica del deslizamiento automático (cada 5000 milisegundos)
-function iniciarIntervalo() {
-    intervaloCarrusel = setInterval(moverDerecha, 50000);
-}
+    if (btnDer) btnDer.addEventListener('click', moverDerecha);
+    if (btnIzq) btnIzq.addEventListener('click', moverIzquierda);
 
-// Reinicia el contador para que no salte de golpe si el usuario acaba de dar clic
-function reiniciarIntervalo() {
-    clearInterval(intervaloCarrusel);
+    puntos.forEach((punto, index) => {
+        punto.addEventListener('click', () => {
+            if (enMovimiento) return;
+            enMovimiento = true;
+            indiceActual = index + 1;
+            track.style.transition = 'transform 0.5s ease-in-out';
+            moverCarrusel();
+            actualizarPuntos();
+            reiniciarIntervalo();
+        });
+    });
+
+    function iniciarIntervalo() {
+        intervaloCarrusel = setInterval(moverDerecha, 50000);
+    }
+
+    function reiniciarIntervalo() {
+        clearInterval(intervaloCarrusel);
+        iniciarIntervalo();
+    }
+
     iniciarIntervalo();
+
+    window.addEventListener('resize', () => {
+        track.style.transition = 'none';
+        moverCarrusel();
+    });
 }
-
-// Arrancar el temporizador al cargar
-iniciarIntervalo();
-
-// 10. Reajustar la posición exacta si el usuario redimensiona la ventana
-window.addEventListener('resize', () => {
-    track.style.transition = 'none';
-    moverCarrusel();
-});
-
 
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById("form-contacto");
