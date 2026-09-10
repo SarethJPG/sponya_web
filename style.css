@@ -525,7 +525,6 @@ html {
         max-width: 18rem;
     }
 }
-
 /* =========================================
    ADAPTACIÓN RESPONSIVA MÓVIL (HERO CARRUSEL)
 ========================================= */
@@ -534,16 +533,21 @@ html {
         margin-top: 5rem;
     }
 
-    /* 1. Imagen desplazada: 90% corta exactamente un 10% del excedente derecho */
+    /* 1. Base para carruseles de solo imagen (como aerosoles): centrada por su mitad */
     .img-fondo {
         min-height: 28rem;
         height: 65vh;
         object-fit: cover;
-        object-position: 84% center; 
+        object-position: center center; 
     }
 
-    /* 2. Capa blanca translúcida sobre la imagen para contraste */
-    .carrusel-slide::after {
+    /* 2. Encuadre al 83% exclusivo para el carrusel de Inicio (con textos) */
+    .carrusel-slide:has(.seccion-1) .img-fondo {
+        object-position: 83% center;
+    }
+
+    /* 3. Capa blanca translúcida: se activa ÚNICAMENTE si la card tiene textos */
+    .carrusel-slide:has(.seccion-1)::after {
         content: '';
         position: absolute;
         top: 0;
@@ -555,7 +559,7 @@ html {
         pointer-events: none;
     }
 
-    /* 3. Contenedor de textos centrado con margen seguro para no chocar con las flechas */
+    /* 4. Contenedor de textos centrado (Inicio) */
     .seccion-1 {
         left: 50%;
         top: 50%;
@@ -566,7 +570,6 @@ html {
         z-index: 5;
     }
 
-    /* 4. Título "Perfuma tu espacio" más grande con altura de línea compacta */
     .titulo-banner {
         font-size: 2.85rem;
         line-height: 0.95;
@@ -604,7 +607,7 @@ html {
         white-space: nowrap;
     }
 
-    /* 5. Flechas laterales recuperadas y visibles por encima del velo */
+    /* 5. Flechas laterales visibles y cuadradas en ambos carruseles */
     .carrusel-flecha {
         display: flex;
         width: 2.2rem;
@@ -635,7 +638,6 @@ html {
         height: 0.55rem;
     }
 }
-
 
 /* =========================================
    SECCIÓN: COLECCIÓN DE FRAGANCIAS
@@ -2741,21 +2743,90 @@ html {
     font-size: clamp(1.2rem, 1.5vw, 1.6rem);
 }
 
-/* --- Ajuste Responsivo para Móviles (Productos) --- */
+/* =======================================================
+   ADAPTACIÓN RESPONSIVA MÓVIL (PÁGINAS DE PRODUCTOS)
+======================================================= */
 @media (max-width: 768px) {
+    .hero-producto {
+        margin-top: 5rem; /* Sincronizado con la altura de la navbar móvil */
+    }
+
+    /* 1. Altura mínima y encuadre (ajusta el 80% según el arte de cada banner) */
+    .hero-producto-img {
+        min-height: 28rem;
+        height: 65vh;
+        object-fit: cover;
+        object-position: 80% center; /* <- Aquí calibras el recorte lateral de la foto */
+    }
+
+    /* 2. Velo blanco translúcido sobre toda la imagen para contraste */
+    .hero-producto::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.72);
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    /* 3. Estructura centrada sobre el velo */
+    .hero-producto-contenedor {
+        z-index: 5;
+    }
+
     .hero-producto-mitad-izq {
         width: 100%;
-        padding-left: 5%;
+        padding: 0 6%;
         justify-content: center;
+        align-items: center;
     }
+
     .hero-producto-mitad-der {
         display: none;
     }
+
+    /* 4. Contenedor de textos centrado y compacto */
     .hero-producto-textos {
-        background-color: rgba(255, 255, 255, 0.85); /* Fondo para lectura */
-        padding: 2.5rem 2rem;
-        border-radius: 1rem;
-        max-width: 90%;
+        align-items: center;
+        text-align: center;
+        max-width: 22rem;
+        gap: 2rem;
+    }
+
+    /* 5. Jerarquías tipográficas adaptadas a lectura vertical */
+    .hero-producto-titulo {
+        font-size: 2.6rem;
+        line-height: 1;
+        margin-bottom: 0.2rem;
+    }
+
+    .hero-producto-subtitulo {
+        font-size: 1.5rem;
+        letter-spacing: 0.05rem;
+    }
+
+    .hero-producto-tags {
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .hero-producto-parrafo {
+        font-size: 1rem;
+        line-height: 1.2;
+        text-align: left;
+        font-weight: 650;
+        text-align-last: left; /* Justificado con cierre al centro */
+    }
+
+    .hero-producto-extra {
+        font-size: 0.9rem;
+        line-height: 1;
+        font-weight: 650;
+        text-align: left;
+        opacity: 0.9;
     }
 }
 
