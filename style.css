@@ -2747,39 +2747,42 @@ html {
    ADAPTACIÓN RESPONSIVA MÓVIL (PÁGINAS DE PRODUCTOS)
 ======================================================= */
 @media (max-width: 768px) {
+    /* 1. Convertimos el Hero en una columna flexible para apilar imagen y textos */
     .hero-producto {
         margin-top: 5rem; /* Sincronizado con la altura de la navbar móvil */
+        display: flex;
+        flex-direction: column;
+        height: auto;
     }
 
-    /* 1. Altura mínima y encuadre (ajusta el 80% según el arte de cada banner) */
+    /* 2. Altura optimizada para la imagen (sin tapar los textos de abajo) */
     .hero-producto-img {
-        min-height: 28rem;
+        min-height: 20rem;
         height: 65vh;
         object-fit: cover;
-        object-position: 80% center; /* <- Aquí calibras el recorte lateral de la foto */
+        object-position: 78% center; /* Centra el producto en la fotografía */
     }
 
-    /* 2. Velo blanco translúcido sobre toda la imagen para contraste */
+    /* 3. ¡ELIMINAMOS EL VELO BLANCO GLOBAL SOBRE LA IMAGEN! */
     .hero-producto::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255, 255, 255, 0.72);
-        z-index: 2;
-        pointer-events: none;
+        display: none;
     }
 
-    /* 3. Estructura centrada sobre el velo */
+    /* 4. Transformamos el contenedor flotante en la nueva "mini sección" inferior */
     .hero-producto-contenedor {
-        z-index: 5;
+        position: relative; /* Lo saca de encima de la imagen y lo empuja hacia abajo */
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        background-color: var(--color-blanco); /* Fondo de la nueva sección */
+        padding: 3.5rem 6%; /* Respiro interno de la mini sección */
+        z-index: 1;
     }
 
     .hero-producto-mitad-izq {
         width: 100%;
-        padding: 0 6%;
+        padding: 0;
         justify-content: center;
         align-items: center;
     }
@@ -2788,48 +2791,53 @@ html {
         display: none;
     }
 
-    /* 4. Contenedor de textos centrado y compacto */
+    /* 5. Quitamos el recuadro blanco de lectura y centramos todo internamente */
     .hero-producto-textos {
-        align-items: center;
-        text-align: center;
-        max-width: 22rem;
-        gap: 2rem;
+        background-color: transparent;
+        padding: 0;
+        align-items: left;
+        text-align: left;
+        max-width: 100%;
+        gap: 1.2rem; /* Separación vertical entre párrafos */
     }
 
-    /* 5. Jerarquías tipográficas adaptadas a lectura vertical */
+    /* 6. Jerarquías tipográficas centradas para la mini sección */
     .hero-producto-titulo {
-        font-size: 2.6rem;
+        font-size: 2.8rem;
         line-height: 1;
         margin-bottom: 0.2rem;
+        text-align: left;
     }
 
     .hero-producto-subtitulo {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         letter-spacing: 0.05rem;
     }
 
     .hero-producto-tags {
-        font-size: 1rem;
-        margin-bottom: 0.3rem;
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
     }
 
     .hero-producto-parrafo {
         font-size: 1rem;
-        line-height: 1.2;
+        line-height: 1.45;
         text-align: left;
-        font-weight: 650;
-        text-align-last: left; /* Justificado con cierre al centro */
+        text-align-last: left;
+        font-weight: 500; /* Suaviza el grosor para lectura sobre fondo blanco */
+        max-width: 25rem;
     }
 
     .hero-producto-extra {
-        font-size: 0.9rem;
-        line-height: 1;
-        font-weight: 650;
+        font-size: 1rem;
+        line-height: 1.4;
         text-align: left;
+        font-weight: 500;
         opacity: 0.9;
+        max-width: 25rem;
     }
 }
-
 
 /* =========================================
    COLORES ESPECÍFICOS: SANDÍA (#a83434)
