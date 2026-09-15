@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponya - Guantes</title>
+    
+    <!-- Importación de la fuente Montserrat desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Vinculación del archivo de estilos CSS compartido -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- SDK de EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+            publicKey: "gTenyf6EX_CI6FkZh",
+            });
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- INICIO DE LA NAVBAR COMPARTIDA -->
+    <nav class="navbar" id="navbar">
+        <div class="seccion-a">
+            <div class="seccion-b">
+                <a href="index.html" class="enlace-logo">
+                    <img src="imgs/logo.webp" alt="Logo Sponya" class="logo" loading="lazy">
+                </a>
+            </div>
+            
+            <!-- BOTÓN SÁNDWICH PARA MÓVILES -->
+            <button class="btn-hamburguesa" id="btn-hamburguesa" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div class="seccion-d">
+                <div class="seccion-2">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                    <a href="guantes.html" class="nav-link">Guantes</a>
+                    <a href="aerosoles.html" class="nav-link">Aerosoles</a>
+                    <a href="difusores.html" class="nav-link">Difusores</a>
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                </div>
+                <div class="seccion-3">
+                    <img src="imgs/telefono.svg" alt="Icono Teléfono" class="icono-telefono" loading="lazy">
+                    <span class="texto-telefono">55 55 76 67 09 / 55 55 76 00 04</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- FIN DE LA NAVBAR -->
+
+
+    <!-- =========================================
+         AQUÍ IREMOS INSERTANDO LAS SECCIONES
+         DE CONTENIDO DE GUANTES.HTML
+    ========================================= -->
+
+    <!-- =========================================
+     SECCIÓN HERO: PROTECCIÓN PARA CADA TAREA
+    ========================================= -->
+    <section class="hero-guantes" id="hero">
+
+        <!-- Imagen de fondo que dicta la altura total de la sección -->
+        <img src="imgs/hero_guantes.webp" alt="Hero Guantes Sponya" class="hero-guantes-img" loading="lazy">
+
+        <!-- Contenedor absoluto superpuesto para colocar los textos sobre la mitad izquierda -->
+        <div class="hero-guantes-contenedor">
+
+            <!-- Caja que agrupa todos los elementos de texto -->
+            <div class="hero-guantes-caja">
+
+                <!-- Elemento 1: Título con saltos de línea forzados solo en escritorio -->
+                <h1 class="hero-guantes-titulo">
+                    Protección<br class="br-hero">
+                    para cada<br class="br-hero">
+                    tarea.
+                </h1>
+
+                <!-- Elemento 2: Línea decorativa azul (sobresale ligeramente a la izquierda) -->
+                <div class="hero-guantes-linea"></div>
+
+                <!-- Elemento 3: Subtítulo -->
+                <h2 class="hero-guantes-subtitulo">EN SPONYA SOMOS ESPECIALISTAS</h2>
+
+                <!-- Elemento 4: Párrafo -->
+                <p class="hero-guantes-parrafo">en guantes para uso doméstico, trabajo, industria y protección química, con una amplia variedad de modelos diseñados para responder a diferentes necesidades de protección, resistencia, comodidad y desempeño.</p>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Fin de la Sección Hero -->
+    <!-- =========================================
+    SECCIÓN: COLECCIÓN DE GUANTES
+    ========================================= -->
+    <section class="seccion-coleccion" id="coleccion-guantes">
+
+        <!-- Encabezado -->
+        <div class="coleccion-encabezado">
+            <h2 class="coleccion-titulo">Colección de Guantes</h2>
+        </div>
+
+        <!-- Cuadrícula de 5 tarjetas (3 arriba + 2 abajo, alineadas a la columna 1 y 2) -->
+        <div class="coleccion-grid">
+
+            <!-- Card 1: Guante Ultra -->
+            <div class="coleccion-card">
+                <img src="imgs/guante_1.webp" alt="Guante Ultra" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Guante Ultra</h4>
+                <p class="card-subtitulo">Para trabajos rudos con palma reforzada</p>
+                <a href="#" class="btn-hero btn-coleccion btn-coleccion-azul">Conoce la colección</a>
+            </div>
+
+            <!-- Card 2: Nitrilo -->
+            <div class="coleccion-card">
+                <img src="imgs/guante_2.webp" alt="Guante Nitrilo" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Nitrilo</h4>
+                <p class="card-subtitulo">Para ensamblado, pintado de automóviles, refinería y petroquímica</p>
+                <a href="#" class="btn-hero btn-coleccion btn-coleccion-azul">Conoce la colección</a>
+            </div>
+
+            <!-- Card 3: Nitrilo Desechable -->
+            <div class="coleccion-card">
+                <img src="imgs/guante_3.webp" alt="Guante Nitrilo Desechable" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Nitrilo Desechable</h4>
+                <p class="card-subtitulo">Color negro para uso diario económico ideal para el uso diario</p>
+                <a href="#" class="btn-hero btn-coleccion btn-coleccion-azul">Conoce la colección</a>
+            </div>
+
+            <!-- Card 4: Guante Doble Resistencia (cae en columna 1 de la segunda fila) -->
+            <div class="coleccion-card">
+                <img src="imgs/guante_4.webp" alt="Guante Doble Resistencia" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Guante Doble Resistencia</h4>
+                <p class="card-subtitulo">Para uso doméstico, antiderrapante, ajuste perfecto, ultrasensible</p>
+                <a href="#" class="btn-hero btn-coleccion btn-coleccion-azul">Conoce la colección</a>
+            </div>
+
+            <!-- Card 5: Guante Afelpado (cae en columna 2 de la segunda fila) -->
+            <div class="coleccion-card">
+                <img src="imgs/guante_5.webp" alt="Guante Afelpado" class="coleccion-img" loading="lazy">
+                <h4 class="card-titulo">Guante Afelpado</h4>
+                <p class="card-subtitulo">Con acción antibacteriana natural</p>
+                <a href="#" class="btn-hero btn-coleccion btn-coleccion-azul">Conoce la colección</a>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Fin de la Sección Colección de Guantes -->
+    <!-- =========================================
+    SECCIÓN: ARMA TU PAQUETE
+    ========================================= -->
+    <section class="hero-guantes" id="arma-paquete">
+
+        <!-- Imagen de fondo que dicta la altura total de la sección -->
+        <img src="imgs/hero_guantes_2.webp" alt="Arma tu paquete de guantes" class="hero-guantes-img" loading="lazy">
+
+        <!-- Contenedor absoluto superpuesto sobre la mitad izquierda -->
+        <div class="hero-guantes-contenedor">
+
+            <div class="hero-guantes-caja">
+
+                <!-- Elemento 1: Título -->
+                <h1 class="hero-guantes-titulo">¡Arma tu<br class="br-hero">paquete!</h1>
+
+                <!-- Elemento 2: Línea decorativa azul -->
+                <div class="hero-guantes-linea"></div>
+
+                <!-- Elemento 3: Subtítulo -->
+                <h2 class="hero-guantes-subtitulo">CONTAMOS CON SUPER PRECIOS DE MAYOREO</h2>
+
+                <!-- Elemento 4: Párrafo -->
+                <p class="hero-guantes-parrafo">Explora nuestra amplia gama de paquetes de guantes, disponibles en diversos modelos y tamaños. Ofrecemos opciones que van desde paquetes individuales hasta lotes de 3, 6, 10, 12, 20 y 120 unidades. perfecto para minoristas y mayoristas por igual.</p>
+
+                <!-- Elemento 5: Botón -->
+                <a href="#" class="btn-hero btn-outline-azul">Cotiza</a>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Fin de la Sección Arma tu Paquete -->
+
+
+    <!-- INICIO DEL FOOTER COMPARTIDO -->
+    <footer class="footer-sponya">
+        <div class="footer-contenedor">
+            <div class="footer-logo-box">
+                <img src="imgs/logo.webp" alt="Logo Sponya" class="footer-logo" loading="lazy">
+            </div>
+            <div class="footer-grid-principal">
+                <div class="footer-col-izq">
+                    <p class="footer-direccion">
+                        Blvd Manuel Avila Camacho Joselillo 6a Naucalpan Col. El Parque Edo. de México.
+                    </p>
+                    <ul class="footer-lista-contacto">
+                        <li>
+                            <img src="imgs/telefono.svg" alt="Teléfono" class="footer-icono-lista">
+                            <span>55 55 76 67 09 / 55 55 76 00 04</span>
+                        </li>
+                        <li>
+                            <img src="imgs/whatsapp.svg" alt="WhatsApp" class="footer-icono-lista">
+                            <span>55 2480 5342</span>
+                        </li>
+                        <li>
+                            <img src="imgs/correo.svg" alt="Correo" class="footer-icono-lista">
+                            <span>isaac@sponya.com</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-col-centro">
+                    <ul class="footer-lista-nav">
+                        <li><a href="index.html">inicio</a></li>
+                        <li><a href="guantes.html">Productos</a></li>
+                        <li><a href="aerosoles.html">Aerosoles</a></li>
+                        <li><a href="difusores.html">Difusores</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="footer-hr">
+            <div class="footer-bottom">
+                <p class="footer-copyright">Copyright © 2026 SPONYA todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+    <!-- FIN DEL FOOTER -->
+
+    <!-- Vinculación del archivo JavaScript compartido -->
+    <script src="script.js"></script>
+</body>
+</html>

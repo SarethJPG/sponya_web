@@ -3163,3 +3163,216 @@ footer.footer-sponya.tema-producto#footer-dulce {
 footer.footer-sponya.tema-producto#footer-brisa {
     background-color: #896a2a;
 }
+
+/* =========================================
+   SECCIÓN HERO: PROTECCIÓN PARA CADA TAREA (GUANTES)
+========================================= */
+.hero-guantes {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* Margen superior para que la navbar fija (aprox 6.5rem) no tape el banner */
+    margin-top: 6.5rem;
+}
+
+/* Imagen de fondo que ocupa el 100% del ancho y dicta la altura */
+.hero-guantes-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Contenedor absoluto superpuesto que ocupa todo el hero */
+.hero-guantes-contenedor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex; /* Divide en mitad izquierda (textos) y derecha (vacía) */
+}
+
+/* Caja de textos: ocupa la mitad izquierda y centra el bloque verticalmente */
+.hero-guantes-caja {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea todos los hijos a la izquierda */
+    justify-content: center;
+    padding-left: 10%;
+}
+
+/* Elemento 1: Título principal */
+.hero-guantes-titulo {
+    font-family: var(--fuente-secundaria); /* Athelas */
+    color: #173456; /* Azul Sponya */
+    font-weight: 500;
+    /* Escalado fluido: mínimo 3rem, ideal 5vw, máximo 5rem */
+    font-size: clamp(3rem, 5vw, 5rem);
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+/* Elemento 2: Línea decorativa azul que sobresale ligeramente a la izquierda */
+.hero-guantes-linea {
+    width: 2.5rem;
+    height: 0.3rem;
+    background-color: #173456;
+    /* El margen negativo la saca artificialmente de la alineación izquierda */
+    margin-left: -1.2rem;
+    margin-bottom: 1.8rem;
+}
+
+/* Elemento 3: Subtítulo */
+.hero-guantes-subtitulo {
+    font-family: var(--fuente-principal); /* Montserrat */
+    color: #3b3b3b; /* Gris corporativo */
+    font-weight: 700;
+    /* Escalado fluido para que acompañe al título */
+    font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+    line-height: 1.25;
+    letter-spacing: 0.02rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+/* Elemento 4: Párrafo */
+.hero-guantes-parrafo {
+    font-family: var(--fuente-principal);
+    color: #3b3b3b;
+    font-weight: 500;
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    line-height: 1.5;
+    /* Ancho máximo ajustable desde aquí */
+    max-width: 30rem;
+    text-align: left;
+}
+
+/* =========================================
+   ADAPTACIÓN RESPONSIVA MÓVIL (HERO GUANTES)
+========================================= */
+@media (max-width: 768px) {
+    /* 1. Sincroniza el margen superior con la navbar móvil */
+    .hero-guantes {
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 2. La imagen toma una altura controlada y encuadra su MITAD DERECHA */
+    .hero-guantes-img {
+        min-height: 22rem;
+        height: 55vh;
+        object-fit: cover;
+        /* 75% center muestra la mitad derecha de la imagen, deja visible el producto/persona */
+        object-position: 75% center;
+    }
+
+    /* 3. El contenedor pasa a flujo normal, generando una nueva "mini sección" inferior */
+    .hero-guantes-contenedor {
+        position: relative;
+        top: auto;
+        left: auto;
+        height: auto;
+        background-color: var(--color-blanco);
+        padding: 3rem 6%;
+    }
+
+    /* 4. Caja al ancho completo y centrada horizontalmente */
+    .hero-guantes-caja {
+        width: 100%;
+        padding-left: 0;
+        align-items: center;   /* Centra horizontalmente los hijos dentro de la caja */
+        text-align: center;    /* Centra el texto internamente por si acaso */
+    }
+
+    /* 5. Se desactivan los saltos de línea forzados de escritorio */
+    .br-hero {
+        display: none;
+    }
+
+    /* 6. Jerarquía tipográfica ajustada a pantalla táctil y centrada */
+    .hero-guantes-titulo {
+        font-size: 2.6rem;
+        line-height: 1;
+        margin-bottom: 0.6rem;
+        text-align: center;
+    }
+
+    .hero-guantes-linea {
+        width: 20.2rem;
+        height: 0.28rem;
+        margin-left: 0;   /* Alineada al centro natural del bloque */
+        margin-bottom: 1rem;
+    }
+
+    .hero-guantes-subtitulo {
+        font-size: 1rem;
+        line-height: 1.3;
+        margin-bottom: 0.8rem;
+        text-align: center;
+    }
+
+    .hero-guantes-parrafo {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        max-width: 100%;
+        text-align: center;
+    }
+}
+
+/* =========================================
+   VARIANTE BOTÓN: COLECCIÓN GUANTES (BORDE AZUL)
+========================================= */
+.btn-coleccion-azul {
+    border: 2px solid #173456; /* Azul Sponya en vez del verde por defecto */
+    color: #173456;
+}
+
+.btn-coleccion-azul:hover {
+    background-color: #173456;
+    color: var(--color-blanco);
+}
+
+/* =========================================
+   SUBTÍTULOS CON ANCHO LIMITADO (SOLO GUANTES)
+========================================= */
+#coleccion-guantes .card-subtitulo {
+    max-width: 18rem;      /* ← Ajusta este valor a tu gusto */
+    margin-left: auto;     /* Centra el bloque restringido dentro de la card */
+    margin-right: auto;
+}
+
+/* =========================================
+   AJUSTES ESPECÍFICOS: SECCIÓN ARMA TU PAQUETE
+========================================= */
+
+/* 1. Ancho máximo del párrafo */
+#arma-paquete .hero-guantes-parrafo {
+    max-width: 36rem;   /* ← Ajusta aquí el ancho del párrafo */
+}
+
+/* 2. Ancho del botón "Cotiza" */
+#arma-paquete .btn-outline-azul {
+    padding: 0.8rem 6.5rem;  /* ← El segundo valor controla el ancho horizontal */
+    margin-top: 1.5rem;    /* ← Separación entre el párrafo y el botón */
+}
+
+/* 3. Distancia vertical entre elementos del bloque de textos */
+#arma-paquete .hero-guantes-titulo {
+    margin-bottom: 3rem;   /* ← Espacio entre título y línea azul */
+}
+
+#arma-paquete .hero-guantes-linea {
+    margin-bottom: 1.7rem;   /* ← Espacio entre línea azul y subtítulo */
+}
+
+#arma-paquete .hero-guantes-subtitulo {
+    margin-bottom: 1rem;     /* ← Espacio entre subtítulo y párrafo */
+}
+
+#arma-paquete .hero-guantes-parrafo {
+    margin-bottom: 1.2rem;     /* ← Espacio entre subtítulo y párrafo */
+}
