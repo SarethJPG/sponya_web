@@ -3345,6 +3345,22 @@ footer.footer-sponya.tema-producto#footer-brisa {
     margin-right: auto;
 }
 
+/* Título con el mismo ancho máximo que la imagen (solo guantes) */
+#coleccion-guantes .card-titulo {
+    max-width: 22rem;      /* ← Igual al max-width de .coleccion-img en escritorio */
+    margin-left: auto;     /* Centra el bloque restringido dentro de la card */
+    margin-right: auto;
+    line-height: 1.1;      /* Ajuste fino para que los títulos de 2 líneas no se vean apretados */
+}
+
+@media (max-width: 768px) {
+    #coleccion-guantes .card-titulo {
+        max-width: 16.5rem;  /* ← Igual al max-width de .coleccion-img en móvil */
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 /* =========================================
    AJUSTES ESPECÍFICOS: SECCIÓN ARMA TU PAQUETE
 ========================================= */
@@ -3375,4 +3391,44 @@ footer.footer-sponya.tema-producto#footer-brisa {
 
 #arma-paquete .hero-guantes-parrafo {
     margin-bottom: 1.2rem;     /* ← Espacio entre subtítulo y párrafo */
+}
+
+/* =========================================
+   ALINEACIÓN VERTICAL UNIFORME DE CARDS (SOLO GUANTES)
+========================================= */
+
+/* La cuadrícula padre mantiene sus 3 columnas, pero ahora cada fila de cards
+   genera 4 carriles internos (uno por cada hijo de la card) */
+#coleccion-guantes .coleccion-grid {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 4rem;      /* Separación entre la fila de arriba y la de abajo */
+    column-gap: 3rem;   /* Separación horizontal entre cards */
+}
+
+/* Cada card hereda esos 4 carriles con subgrid y ocupa los 4 en vertical */
+#coleccion-guantes .coleccion-card {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 4;        /* Ocupa 4 filas internas: img, título, subtítulo, botón */
+    row-gap: 0;              /* Anula el gap interno: los márgenes controlan el espaciado */
+    justify-items: center;   /* Centra horizontalmente cada hijo */
+    align-items: start;      /* Alinea al inicio vertical de cada celda */
+    text-align: center;
+}
+
+/* El botón se centra verticalmente dentro de su celda para verse equilibrado */
+#coleccion-guantes .coleccion-card .btn-coleccion-azul {
+    align-self: center;
+}
+
+@media (max-width: 768px) {
+    /* En móvil las cards se apilan una por fila: no necesitan subgrid */
+    #coleccion-guantes .coleccion-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #coleccion-guantes .coleccion-grid {
+        row-gap: 3rem;
+    }
 }
