@@ -3436,3 +3436,8 @@ footer.footer-sponya.tema-producto#footer-brisa {
         object-position: center;
     }
 }
+
+/* Anula el margen superior heredado de .hero-guantes (esa sección no es la primera) */
+#arma-paquete {
+    margin-top: 0;
+}
