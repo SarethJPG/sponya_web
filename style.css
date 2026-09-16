@@ -3171,11 +3171,9 @@ footer.footer-sponya.tema-producto#footer-brisa {
     position: relative;
     width: 100%;
     overflow: hidden;
-    /* Margen superior para que la navbar fija (aprox 6.5rem) no tape el banner */
     margin-top: 6.5rem;
 }
 
-/* Imagen de fondo que ocupa el 100% del ancho y dicta la altura */
 .hero-guantes-img {
     width: 100%;
     height: auto;
@@ -3183,54 +3181,46 @@ footer.footer-sponya.tema-producto#footer-brisa {
     object-fit: cover;
 }
 
-/* Contenedor absoluto superpuesto que ocupa todo el hero */
 .hero-guantes-contenedor {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex; /* Divide en mitad izquierda (textos) y derecha (vacía) */
+    display: flex;
 }
 
-/* Caja de textos: ocupa la mitad izquierda y centra el bloque verticalmente */
 .hero-guantes-caja {
     width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Alinea todos los hijos a la izquierda */
+    align-items: flex-start;
     justify-content: center;
     padding-left: 10%;
 }
 
-/* Elemento 1: Título principal */
 .hero-guantes-titulo {
-    font-family: var(--fuente-secundaria); /* Athelas */
-    color: #173456; /* Azul Sponya */
+    font-family: var(--fuente-secundaria);
+    color: #173456;
     font-weight: 500;
-    /* Escalado fluido: mínimo 3rem, ideal 5vw, máximo 5rem */
     font-size: clamp(3rem, 5vw, 5rem);
     line-height: 0.95;
     margin-bottom: 1.5rem;
     text-align: left;
 }
 
-/* Elemento 2: Línea decorativa azul que sobresale ligeramente a la izquierda */
 .hero-guantes-linea {
     width: 2.5rem;
     height: 0.3rem;
     background-color: #173456;
-    /* El margen negativo la saca artificialmente de la alineación izquierda */
     margin-left: -1.2rem;
     margin-bottom: 1.8rem;
 }
 
-/* Elemento 3: Subtítulo */
 .hero-guantes-subtitulo {
-    font-family: var(--fuente-principal); /* Montserrat */
-    color: #3b3b3b; /* Gris corporativo */
+    font-family: var(--fuente-principal);
+    color: #3b3b3b;
     font-weight: 700;
-    /* Escalado fluido para que acompañe al título */
     font-size: clamp(1.1rem, 1.5vw, 1.4rem);
     line-height: 1.25;
     letter-spacing: 0.02rem;
@@ -3238,39 +3228,30 @@ footer.footer-sponya.tema-producto#footer-brisa {
     text-align: left;
 }
 
-/* Elemento 4: Párrafo */
 .hero-guantes-parrafo {
     font-family: var(--fuente-principal);
     color: #3b3b3b;
     font-weight: 500;
     font-size: clamp(1rem, 1.3vw, 1.2rem);
     line-height: 1.5;
-    /* Ancho máximo ajustable desde aquí */
     max-width: 30rem;
     text-align: left;
 }
 
-/* =========================================
-   ADAPTACIÓN RESPONSIVA MÓVIL (HERO GUANTES)
-========================================= */
 @media (max-width: 768px) {
-    /* 1. Sincroniza el margen superior con la navbar móvil */
     .hero-guantes {
         margin-top: 5rem;
         display: flex;
         flex-direction: column;
     }
 
-    /* 2. La imagen toma una altura controlada y encuadra su MITAD DERECHA */
     .hero-guantes-img {
         min-height: 22rem;
         height: 55vh;
         object-fit: cover;
-        /* 75% center muestra la mitad derecha de la imagen, deja visible el producto/persona */
         object-position: 75% center;
     }
 
-    /* 3. El contenedor pasa a flujo normal, generando una nueva "mini sección" inferior */
     .hero-guantes-contenedor {
         position: relative;
         top: auto;
@@ -3280,20 +3261,17 @@ footer.footer-sponya.tema-producto#footer-brisa {
         padding: 3rem 6%;
     }
 
-    /* 4. Caja al ancho completo y centrada horizontalmente */
     .hero-guantes-caja {
         width: 100%;
         padding-left: 0;
-        align-items: center;   /* Centra horizontalmente los hijos dentro de la caja */
-        text-align: center;    /* Centra el texto internamente por si acaso */
+        align-items: center;
+        text-align: center;
     }
 
-    /* 5. Se desactivan los saltos de línea forzados de escritorio */
     .br-hero {
         display: none;
     }
 
-    /* 6. Jerarquía tipográfica ajustada a pantalla táctil y centrada */
     .hero-guantes-titulo {
         font-size: 2.6rem;
         line-height: 1;
@@ -3304,7 +3282,7 @@ footer.footer-sponya.tema-producto#footer-brisa {
     .hero-guantes-linea {
         width: 20.2rem;
         height: 0.28rem;
-        margin-left: 0;   /* Alineada al centro natural del bloque */
+        margin-left: 0;
         margin-bottom: 1rem;
     }
 
@@ -3324,10 +3302,10 @@ footer.footer-sponya.tema-producto#footer-brisa {
 }
 
 /* =========================================
-   VARIANTE BOTÓN: COLECCIÓN GUANTES (BORDE AZUL)
+   VARIANTE BOTÓN: COLECCIONES CON BORDE AZUL
 ========================================= */
 .btn-coleccion-azul {
-    border: 2px solid #173456; /* Azul Sponya en vez del verde por defecto */
+    border: 2px solid #173456;
     color: #173456;
 }
 
@@ -3337,98 +3315,124 @@ footer.footer-sponya.tema-producto#footer-brisa {
 }
 
 /* =========================================
-   SUBTÍTULOS CON ANCHO LIMITADO (SOLO GUANTES)
+   SECCIONES: COLECCIÓN DE GUANTES Y NUEVOS PRODUCTOS
+   (Comparten estructura de grid, cards con subgrid y botón)
 ========================================= */
-#coleccion-guantes .card-subtitulo {
-    max-width: 18rem;      /* ← Ajusta este valor a tu gusto */
-    margin-left: auto;     /* Centra el bloque restringido dentro de la card */
+
+/* Ancho máximo de títulos y subtítulos (igual al de la imagen de la card) */
+#coleccion-guantes .card-titulo,
+#nuevos-productos .card-titulo {
+    max-width: 22rem;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.1;
+}
+
+#coleccion-guantes .card-subtitulo,
+#nuevos-productos .card-subtitulo {
+    max-width: 18rem;
+    margin-left: auto;
     margin-right: auto;
 }
 
-/* Título con el mismo ancho máximo que la imagen (solo guantes) */
-#coleccion-guantes .card-titulo {
-    max-width: 22rem;      /* ← Igual al max-width de .coleccion-img en escritorio */
-    margin-left: auto;     /* Centra el bloque restringido dentro de la card */
-    margin-right: auto;
-    line-height: 1.1;      /* Ajuste fino para que los títulos de 2 líneas no se vean apretados */
+/* Grid padre: solo sobreescribe el row-gap (el resto se hereda de .coleccion-grid) */
+#coleccion-guantes .coleccion-grid,
+#nuevos-productos .coleccion-grid {
+    row-gap: 4rem;
 }
 
+/* Cada card hereda 4 carriles del padre (img, título, subtítulo, botón) */
+#coleccion-guantes .coleccion-card,
+#nuevos-productos .coleccion-card {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 4;
+    row-gap: 0;
+    justify-items: center;
+    align-items: start;
+    text-align: center;
+}
+
+/* Botón centrado verticalmente dentro de su carril */
+#coleccion-guantes .coleccion-card .btn-coleccion-azul,
+#nuevos-productos .coleccion-card .btn-coleccion-azul {
+    align-self: center;
+}
+
+/* Botón "Cotizar" con ancho uniforme (igual al de "Conoce la colección") */
+#nuevos-productos .btn-coleccion-azul {
+    min-width: 14rem;
+    text-align: center;
+}
+
+/* Móvil: cards apiladas en 1 columna, sin subgrid */
 @media (max-width: 768px) {
-    #coleccion-guantes .card-titulo {
-        max-width: 16.5rem;  /* ← Igual al max-width de .coleccion-img en móvil */
-        margin-left: auto;
-        margin-right: auto;
+    #coleccion-guantes .coleccion-grid,
+    #nuevos-productos .coleccion-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        row-gap: 3rem;
+    }
+
+    #coleccion-guantes .coleccion-card,
+    #nuevos-productos .coleccion-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        grid-row: auto;
+    }
+
+    #nuevos-productos .card-titulo {
+        max-width: 16.5rem;
     }
 }
 
 /* =========================================
    AJUSTES ESPECÍFICOS: SECCIÓN ARMA TU PAQUETE
 ========================================= */
-
-/* 1. Ancho máximo del párrafo */
 #arma-paquete .hero-guantes-parrafo {
-    max-width: 36rem;   /* ← Ajusta aquí el ancho del párrafo */
+    max-width: 36rem;
+    margin-bottom: 1.2rem;
 }
 
-/* 2. Ancho del botón "Cotiza" */
 #arma-paquete .btn-outline-azul {
-    padding: 0.8rem 6.5rem;  /* ← El segundo valor controla el ancho horizontal */
-    margin-top: 1.5rem;    /* ← Separación entre el párrafo y el botón */
+    padding: 0.8rem 6.5rem;
+    margin-top: 1.5rem;
 }
 
-/* 3. Distancia vertical entre elementos del bloque de textos */
 #arma-paquete .hero-guantes-titulo {
-    margin-bottom: 3rem;   /* ← Espacio entre título y línea azul */
+    margin-bottom: 3rem;
 }
 
 #arma-paquete .hero-guantes-linea {
-    margin-bottom: 1.7rem;   /* ← Espacio entre línea azul y subtítulo */
+    margin-bottom: 1.7rem;
 }
 
 #arma-paquete .hero-guantes-subtitulo {
-    margin-bottom: 1rem;     /* ← Espacio entre subtítulo y párrafo */
-}
-
-#arma-paquete .hero-guantes-parrafo {
-    margin-bottom: 1.2rem;     /* ← Espacio entre subtítulo y párrafo */
+    margin-bottom: 1rem;
 }
 
 /* =========================================
-   ALINEACIÓN VERTICAL UNIFORME DE CARDS (SOLO GUANTES)
+   SECCIÓN: BANNER GUANTES (SOLO IMAGEN)
 ========================================= */
-
-/* La cuadrícula padre mantiene sus 3 columnas, pero ahora cada fila de cards
-   genera 4 carriles internos (uno por cada hijo de la card) */
-#coleccion-guantes .coleccion-grid {
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: 4rem;      /* Separación entre la fila de arriba y la de abajo */
-    column-gap: 3rem;   /* Separación horizontal entre cards */
+.banner-guantes {
+    width: 100%;
+    overflow: hidden;
 }
 
-/* Cada card hereda esos 4 carriles con subgrid y ocupa los 4 en vertical */
-#coleccion-guantes .coleccion-card {
-    display: grid;
-    grid-template-rows: subgrid;
-    grid-row: span 4;        /* Ocupa 4 filas internas: img, título, subtítulo, botón */
-    row-gap: 0;              /* Anula el gap interno: los márgenes controlan el espaciado */
-    justify-items: center;   /* Centra horizontalmente cada hijo */
-    align-items: start;      /* Alinea al inicio vertical de cada celda */
-    text-align: center;
+.banner-guantes-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
-/* El botón se centra verticalmente dentro de su celda para verse equilibrado */
-#coleccion-guantes .coleccion-card .btn-coleccion-azul {
-    align-self: center;
-}
-
+/* Móvil: altura controlada para no comerse toda la pantalla */
 @media (max-width: 768px) {
-    /* En móvil las cards se apilan una por fila: no necesitan subgrid */
-    #coleccion-guantes .coleccion-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    #coleccion-guantes .coleccion-grid {
-        row-gap: 3rem;
+    .banner-guantes-img {
+        min-height: 18rem;
+        height: 50vh;
+        object-fit: cover;
+        object-position: center;
     }
 }
