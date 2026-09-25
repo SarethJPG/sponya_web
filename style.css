@@ -3441,3 +3441,105 @@ footer.footer-sponya.tema-producto#footer-brisa {
 #arma-paquete {
     margin-top: 0;
 }
+
+/* =========================================
+   PÁGINA PRODUCTO: GUANTE ULTRA (#26c8b9)
+========================================= */
+
+/* --- HERO: separación vertical uniforme entre elementos --- */
+#hero-ultra .hero-producto-textos {
+    /* ← Ajusta este valor para controlar la distancia vertical entre título y párrafo */
+    gap: 1.8rem;
+}
+
+/* Título (Athelas, weight 600, negro por defecto) */
+#hero-ultra .hero-ultra-titulo {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-negro);
+    font-weight: 600;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1.1;
+    margin: 0;
+    text-align: left;
+}
+
+/* Variante del título en turquesa (para "Ventajas") */
+#hero-ultra .hero-ultra-titulo-acento {
+    color: #26c8b9;
+}
+
+/* Párrafo (Montserrat, weight 500, negro) */
+#hero-ultra .hero-ultra-parrafo {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    line-height: 1.55;
+    /* ← Ajusta este valor para controlar el ancho máximo del párrafo */
+    max-width: 32rem;
+    margin: 0;
+    text-align: left;
+}
+
+/* Lista con viñetas (•) */
+#hero-ultra .hero-ultra-lista {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    line-height: 1.55;
+    /* ← Ajusta este valor para controlar el ancho máximo de la lista */
+    max-width: 32rem;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    text-align: left;
+}
+
+#hero-ultra .hero-ultra-lista li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.4rem;
+}
+
+#hero-ultra .hero-ultra-lista li:last-child {
+    margin-bottom: 0;
+}
+
+#hero-ultra .hero-ultra-lista li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-negro);
+}
+
+/* --- CONTACTO: botón + sombra de la imagen --- */
+.seccion-contacto.tema-producto#contacto-ultra .btn-enviar-form {
+    background-color: #26c8b9;
+}
+.seccion-contacto.tema-producto#contacto-ultra .btn-enviar-form:hover {
+    background-color: #1a9e92;
+}
+.seccion-contacto.tema-producto#contacto-ultra .visual-wrapper::after {
+    background-color: #26c8b9;
+}
+
+/* --- FOOTER --- */
+footer.footer-sponya.tema-producto#footer-ultra {
+    background-color: #26c8b9;
+}
+
+/* --- RESPONSIVE MÓVIL --- */
+@media (max-width: 768px) {
+    #hero-ultra .hero-producto-textos {
+        gap: 1.2rem;
+    }
+    #hero-ultra .hero-ultra-titulo {
+        font-size: 1.9rem;
+    }
+    #hero-ultra .hero-ultra-parrafo,
+    #hero-ultra .hero-ultra-lista {
+        max-width: 100%;
+    }
+}
