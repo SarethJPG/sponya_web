@@ -3456,8 +3456,8 @@ footer.footer-sponya.tema-producto#footer-brisa {
 #hero-ultra .hero-ultra-titulo {
     font-family: var(--fuente-secundaria);
     color: var(--color-negro);
-    font-weight: 600;
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 500;
+    font-size: clamp(2.5rem, 3.83vw, 4.6rem);
     line-height: 1.1;
     margin: 0;
     text-align: left;
@@ -3467,16 +3467,25 @@ footer.footer-sponya.tema-producto#footer-brisa {
 #hero-ultra .hero-ultra-titulo-acento {
     color: #26c8b9;
 }
+#hero-ultra .hero-producto-textos {
+    max-width: 43rem;   /* ← Ajusta hasta donde quieras llegar */
+    gap: 1.8rem;
+}
+
+/* Separación extra entre el grupo 1 (título + párrafo) y el grupo 2 (título + párrafo) */
+#hero-ultra .hero-ultra-titulo-acento {
+    /* ← Ajusta este valor para controlar la distancia entre grupos */
+    margin-top: 3rem;
+}
 
 /* Párrafo (Montserrat, weight 500, negro) */
 #hero-ultra .hero-ultra-parrafo {
     font-family: var(--fuente-principal);
     color: var(--color-negro);
     font-weight: 500;
-    font-size: clamp(1rem, 1.3vw, 1.15rem);
-    line-height: 1.55;
+    font-size: clamp(1rem, 1.5vw, 1.8rem);
+    line-height: 1.30;
     /* ← Ajusta este valor para controlar el ancho máximo del párrafo */
-    max-width: 32rem;
     margin: 0;
     text-align: left;
 }
@@ -3486,14 +3495,14 @@ footer.footer-sponya.tema-producto#footer-brisa {
     font-family: var(--fuente-principal);
     color: var(--color-negro);
     font-weight: 500;
-    font-size: clamp(1rem, 1.3vw, 1.15rem);
-    line-height: 1.55;
+    font-size: clamp(1rem, 1.58vw, 1.9rem);
+    line-height: 1;
     /* ← Ajusta este valor para controlar el ancho máximo de la lista */
-    max-width: 32rem;
     margin: 0;
     padding-left: 0;
     list-style: none;
     text-align: left;
+    letter-spacing: -1px;
 }
 
 #hero-ultra .hero-ultra-lista li {
@@ -3534,12 +3543,647 @@ footer.footer-sponya.tema-producto#footer-ultra {
 @media (max-width: 768px) {
     #hero-ultra .hero-producto-textos {
         gap: 1.2rem;
+        align-items: center;   /* Centra horizontalmente cada bloque hijo */
+        text-align: center;
     }
+
+    /* Zoom + encuadre más hacia la derecha de la imagen */
+    #hero-ultra .hero-producto-img {
+        /* Muestra más de la mitad derecha de la imagen */
+        object-position: 88% center;
+        /* Zoom del 10% (recortado por el overflow del hero) */
+        transform: scale(1.1);
+    }
+
+    /* Títulos centrados */
     #hero-ultra .hero-ultra-titulo {
         font-size: 1.9rem;
+        text-align: center;
     }
-    #hero-ultra .hero-ultra-parrafo,
+
+    /* Párrafo: justificado con la última línea centrada */
+    #hero-ultra .hero-ultra-parrafo {
+        max-width: 100%;
+        text-align: justify;
+    }
+
+    /* Lista: texto interno alineado a la izquierda, bloque centrado */
     #hero-ultra .hero-ultra-lista {
         max-width: 100%;
+        text-align: left;
+        /* El bloque se centra automáticamente por align-items: center del padre */
+    }
+
+    /* Separación entre grupos ajustada para móvil */
+    #hero-ultra .hero-ultra-titulo-acento {
+        margin-top: 2rem;
+    }
+}
+
+/* =========================================
+   PÁGINA PRODUCTO: GUANTE NITRILO (#26c8b9)
+========================================= */
+
+/* --- HERO: contenedor de textos --- */
+#hero-nitrilo .hero-producto-textos {
+    max-width: 43rem;   /* Igual que la página anterior */
+    gap: 1.8rem;        /* Separación vertical uniforme entre elementos */
+}
+
+/* Título (Athelas, weight 500, negro) */
+#hero-nitrilo .hero-nitrilo-titulo {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: clamp(2.5rem, 3.83vw, 4.6rem);
+    line-height: 1.1;
+    margin: 0;
+    text-align: left;
+}
+
+/* Párrafos (Montserrat, weight 500, negro) */
+#hero-nitrilo .hero-nitrilo-parrafo {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: clamp(1rem, 1.5vw, 1.8rem);
+    line-height: 1.30;
+    /* ← Ajusta este valor para controlar el ancho máximo de cada párrafo */
+    max-width: 39rem;
+    margin: 0;
+    text-align: left;
+}
+
+/* --- CONTACTO: botón + sombra de la imagen --- */
+.seccion-contacto.tema-producto#contacto-nitrilo .btn-enviar-form {
+    background-color: #26c8b9;
+}
+.seccion-contacto.tema-producto#contacto-nitrilo .btn-enviar-form:hover {
+    background-color: #1a9e92;
+}
+.seccion-contacto.tema-producto#contacto-nitrilo .visual-wrapper::after {
+    background-color: #26c8b9;
+}
+
+/* --- FOOTER --- */
+footer.footer-sponya.tema-producto#footer-nitrilo {
+    background-color: #26c8b9;
+}
+
+/* --- RESPONSIVE MÓVIL --- */
+@media (max-width: 768px) {
+    #hero-nitrilo .hero-producto-textos {
+        gap: 1.2rem;
+        align-items: center;   /* Centra horizontalmente cada bloque hijo */
+        text-align: center;
+    }
+
+    /* Zoom + encuadre más hacia la derecha de la imagen */
+    #hero-nitrilo .hero-producto-img {
+        object-position: 86.5% center;
+        transform: scale(1.1);
+    }
+
+    /* Título centrado */
+    #hero-nitrilo .hero-nitrilo-titulo {
+        font-size: 1.9rem;
+        text-align: center;
+    }
+
+    /* Párrafos justificados a lo ancho completo */
+    #hero-nitrilo .hero-nitrilo-parrafo {
+        max-width: 100%;
+        text-align: justify;
+    }
+}
+
+/* =========================================
+   PÁGINA PRODUCTO: GUANTE NITRILO DESECHABLE (#000000)
+========================================= */
+
+/* --- HERO: contenedor de textos --- */
+#hero-nitrilo-desechable .hero-producto-textos {
+    max-width: 43rem;   /* Igual que las páginas anteriores */
+    gap: 0rem;        /* Separación vertical uniforme entre elementos */
+}
+
+/* Título (Athelas, weight 500, negro por defecto) */
+#hero-nitrilo-desechable .hero-nitrilo-desechable-titulo {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: clamp(2.5rem, 3.83vw, 4.6rem);
+    line-height: 1.1;
+    text-align: left;
+    margin-bottom: 1rem;
+    margin-top: -3rem;
+}
+
+/* Variante del título en negro puro (para "Ventajas") */
+#hero-nitrilo-desechable .hero-nitrilo-desechable-titulo-acento {
+    color: #000000;
+    /* Separación extra entre el título 1 y el título 2 */
+    margin-top: 3rem;
+}
+
+/* Lista con viñetas (•) */
+#hero-nitrilo-desechable .hero-nitrilo-desechable-lista {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: clamp(1rem, 1.58vw, 1.9rem);
+    line-height: 1;
+    /* ← Ajusta este valor para controlar el ancho máximo de la lista */
+    max-width: 39rem;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    text-align: left;
+    letter-spacing: -1px;
+}
+
+#hero-nitrilo-desechable .hero-nitrilo-desechable-lista li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.4rem;
+}
+
+#hero-nitrilo-desechable .hero-nitrilo-desechable-lista li:last-child {
+    margin-bottom: 0;
+}
+
+#hero-nitrilo-desechable .hero-nitrilo-desechable-lista li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-negro);
+}
+
+/* --- CONTACTO: botón + sombra de la imagen --- */
+.seccion-contacto.tema-producto#contacto-nitrilo-desechable .btn-enviar-form {
+    background-color: #000000;
+}
+.seccion-contacto.tema-producto#contacto-nitrilo-desechable .btn-enviar-form:hover {
+    background-color: #333333; /* Gris oscuro para que el hover se note sobre el negro */
+}
+.seccion-contacto.tema-producto#contacto-nitrilo-desechable .visual-wrapper::after {
+    background-color: #000000;
+}
+
+/* --- FOOTER --- */
+footer.footer-sponya.tema-producto#footer-nitrilo-desechable {
+    background-color: #000000;
+}
+
+/* --- RESPONSIVE MÓVIL --- */
+@media (max-width: 768px) {
+    #hero-nitrilo-desechable .hero-producto-textos {
+        gap: 1.2rem;
+        align-items: center;   /* Centra horizontalmente cada bloque hijo */
+        text-align: center;
+    }
+
+    /* Zoom + encuadre más hacia la derecha de la imagen */
+    #hero-nitrilo-desechable .hero-producto-img {
+        object-position: 87% center;
+        transform: scale(1.1);
+    }
+
+    /* Títulos centrados */
+    #hero-nitrilo-desechable .hero-nitrilo-desechable-titulo {
+        font-size: 1.9rem;
+        text-align: center;
+    }
+
+    #hero-nitrilo-desechable .hero-nitrilo-desechable-titulo-acento {
+        margin-top: 2rem;
+    }
+
+    /* Lista: texto interno alineado a la izquierda, bloque centrado por el padre */
+    #hero-nitrilo-desechable .hero-nitrilo-desechable-lista {
+        max-width: 100%;
+        text-align: left;
+    }
+}
+
+/* =========================================
+   PÁGINA PRODUCTO: GUANTE DOBLE RESISTENCIA (#df2123)
+========================================= */
+
+/* --- HERO: contenedor de textos --- */
+#hero-doble-resistencia .hero-producto-textos {
+    max-width: 43rem;   /* Igual que las páginas anteriores */
+    gap: 1.8rem;        /* Separación vertical uniforme entre elementos */
+}
+
+/* Título (Athelas, weight 500, negro por defecto) */
+#hero-doble-resistencia .hero-doble-resistencia-titulo {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: clamp(2.5rem, 3.83vw, 4.6rem);
+    line-height: 1.1;
+    margin: 0;
+    text-align: left;
+}
+
+/* Variante del título en rojo (para "Ventajas") */
+#hero-doble-resistencia .hero-doble-resistencia-titulo-acento {
+    color: #df2123;
+}
+
+/* Lista con viñetas (•) */
+#hero-doble-resistencia .hero-doble-resistencia-lista {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: clamp(1rem, 1.58vw, 1.9rem);
+    line-height: 1;
+    /* ← Ajusta este valor para controlar el ancho máximo de la lista */
+    max-width: 39rem;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    text-align: left;
+    letter-spacing: -1px;
+}
+
+#hero-doble-resistencia .hero-doble-resistencia-lista li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.4rem;
+}
+
+#hero-doble-resistencia .hero-doble-resistencia-lista li:last-child {
+    margin-bottom: 0;
+}
+
+#hero-doble-resistencia .hero-doble-resistencia-lista li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-negro);
+}
+
+/* --- CONTACTO: botón + sombra de la imagen --- */
+.seccion-contacto.tema-producto#contacto-doble-resistencia .btn-enviar-form {
+    background-color: #df2123;
+}
+.seccion-contacto.tema-producto#contacto-doble-resistencia .btn-enviar-form:hover {
+    background-color: #a8181a; /* Tono rojo oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-doble-resistencia .visual-wrapper::after {
+    background-color: #df2123;
+}
+
+/* --- FOOTER --- */
+footer.footer-sponya.tema-producto#footer-doble-resistencia {
+    background-color: #df2123;
+}
+
+/* --- RESPONSIVE MÓVIL --- */
+@media (max-width: 768px) {
+    #hero-doble-resistencia .hero-producto-textos {
+        gap: 1.2rem;
+        align-items: center;   /* Centra horizontalmente cada bloque hijo */
+        text-align: center;
+    }
+
+    /* Zoom + encuadre más hacia la derecha de la imagen */
+    #hero-doble-resistencia .hero-producto-img {
+        object-position: 84% center;
+        transform: scale(1);
+    }
+
+    /* Títulos centrados */
+    #hero-doble-resistencia .hero-doble-resistencia-titulo {
+        font-size: 1.9rem;
+        text-align: center;
+    }
+
+    #hero-doble-resistencia .hero-doble-resistencia-titulo-acento {
+        margin-top: 2rem;
+    }
+
+    /* Lista: texto interno alineado a la izquierda, bloque centrado por el padre */
+    #hero-doble-resistencia .hero-doble-resistencia-lista {
+        max-width: 100%;
+        text-align: left;
+    }
+}
+
+/* =========================================
+   PÁGINA PRODUCTO: GUANTE AFELPADO (#e0c806)
+========================================= */
+
+/* --- HERO: contenedor de textos --- */
+#hero-afelpado .hero-producto-textos {
+    max-width: 43rem;   /* Igual que las páginas anteriores */
+    gap: 1.8rem;        /* Separación vertical uniforme entre elementos */
+}
+
+/* Título (Athelas, weight 500, negro) */
+#hero-afelpado .hero-afelpado-titulo {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: clamp(2.5rem, 3.83vw, 4.6rem);
+    line-height: 1.1;
+    margin: 0;
+    text-align: left;
+}
+
+/* Párrafos (Montserrat, weight 500, negro) */
+#hero-afelpado .hero-afelpado-parrafo {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: clamp(1rem, 1.5vw, 1.8rem);
+    line-height: 1.30;
+    /* ← Ajusta este valor para controlar el ancho máximo de cada párrafo */
+    max-width: 41rem;
+    margin: 0;
+    text-align: left;
+}
+
+/* --- CONTACTO: botón + sombra de la imagen --- */
+.seccion-contacto.tema-producto#contacto-afelpado .btn-enviar-form {
+    background-color: #e0c806;
+}
+.seccion-contacto.tema-producto#contacto-afelpado .btn-enviar-form:hover {
+    background-color: #b5a105; /* Tono amarillo oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-afelpado .visual-wrapper::after {
+    background-color: #e0c806;
+}
+
+/* --- FOOTER --- */
+footer.footer-sponya.tema-producto#footer-afelpado {
+    background-color: #e0c806;
+}
+
+/* --- RESPONSIVE MÓVIL --- */
+@media (max-width: 768px) {
+    #hero-afelpado .hero-producto-textos {
+        gap: 1.2rem;
+        align-items: center;   /* Centra horizontalmente cada bloque hijo */
+        text-align: center;
+    }
+
+    /* Zoom + encuadre más hacia la derecha de la imagen */
+    #hero-afelpado .hero-producto-img {
+        object-position: 86.5% center;
+        transform: scale(1);
+    }
+
+    /* Título centrado */
+    #hero-afelpado .hero-afelpado-titulo {
+        font-size: 1.9rem;
+        text-align: center;
+    }
+
+    /* Párrafos justificados y centrados horizontalmente */
+    #hero-afelpado .hero-afelpado-parrafo {
+        max-width: 100%;
+        text-align: justify;
+        text-align-last: left;   /* Última línea pegada a la izquierda */
+    }
+}
+
+/* =========================================
+   PÁGINA PRODUCTO: TAPETE ANTI SALPICADURAS (#42b0ff)
+========================================= */
+
+/* --- HERO: contenedor de textos --- */
+#hero-tapete .hero-producto-textos {
+    max-width: 43rem;   /* Igual que las páginas anteriores */
+    gap: 1.8rem;        /* Separación vertical uniforme entre elementos */
+}
+
+/* Título (Athelas, weight 500, negro) */
+#hero-tapete .hero-tapete-titulo {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: clamp(2.5rem, 3.83vw, 4.6rem);
+    line-height: 1.1;
+    margin: 0;
+    text-align: left;
+}
+
+/* Párrafos (Montserrat, weight 500, negro) */
+#hero-tapete .hero-tapete-parrafo {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: clamp(1rem, 1.5vw, 1.8rem);
+    line-height: 1.30;
+    /* ← Ajusta este valor para controlar el ancho máximo de cada párrafo */
+    max-width: 40rem;
+    margin: 0;
+    text-align: left;
+}
+
+/* --- CONTACTO: botón + sombra de la imagen --- */
+.seccion-contacto.tema-producto#contacto-tapete .btn-enviar-form {
+    background-color: #42b0ff;
+}
+.seccion-contacto.tema-producto#contacto-tapete .btn-enviar-form:hover {
+    background-color: #1e8ee0; /* Azul más oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-tapete .visual-wrapper::after {
+    background-color: #42b0ff;
+}
+
+/* --- FOOTER --- */
+footer.footer-sponya.tema-producto#footer-tapete {
+    background-color: #42b0ff;
+}
+
+/* --- RESPONSIVE MÓVIL --- */
+@media (max-width: 768px) {
+    #hero-tapete .hero-producto-textos {
+        gap: 1.2rem;
+        align-items: center;   /* Centra horizontalmente cada bloque hijo */
+        text-align: center;
+    }
+
+    /* Zoom + encuadre más hacia la derecha de la imagen */
+    #hero-tapete .hero-producto-img {
+        object-position: 86.5% center;
+        transform: scale(1);
+    }
+
+    /* Título centrado */
+    #hero-tapete .hero-tapete-titulo {
+        font-size: 1.9rem;
+        text-align: center;
+    }
+
+    /* Párrafos justificados y centrados horizontalmente */
+    #hero-tapete .hero-tapete-parrafo {
+        max-width: 100%;
+        text-align: justify;
+        text-align-last: left;   /* Última línea pegada a la izquierda */
+    }
+}
+
+/* =========================================
+   PÁGINA PRODUCTO: TERMOSPONGE (#42b0ff)
+========================================= */
+
+/* --- HERO: contenedor de textos --- */
+#hero-termosponge .hero-producto-textos {
+    max-width: 43rem;   /* Igual que las páginas anteriores */
+    gap: 1.8rem;        /* Separación vertical uniforme entre elementos */
+}
+
+/* Título (Athelas, weight 500, negro) */
+#hero-termosponge .hero-termosponge-titulo {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: clamp(2.5rem, 3.83vw, 4.6rem);
+    line-height: 1.1;
+    margin: 0;
+    text-align: left;
+}
+
+/* Párrafo (Montserrat, weight 500, negro) */
+#hero-termosponge .hero-termosponge-parrafo {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: clamp(1rem, 1.5vw, 1.8rem);
+    line-height: 1.30;
+    /* ← Ajusta este valor para controlar el ancho máximo del párrafo */
+    max-width: 41rem;
+    margin: 0;
+    text-align: left;
+}
+
+/* --- CONTACTO: botón + sombra de la imagen --- */
+.seccion-contacto.tema-producto#contacto-termosponge .btn-enviar-form {
+    background-color: #42b0ff;
+}
+.seccion-contacto.tema-producto#contacto-termosponge .btn-enviar-form:hover {
+    background-color: #1e8ee0; /* Azul más oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-termosponge .visual-wrapper::after {
+    background-color: #42b0ff;
+}
+
+/* --- FOOTER --- */
+footer.footer-sponya.tema-producto#footer-termosponge {
+    background-color: #42b0ff;
+}
+
+/* --- RESPONSIVE MÓVIL --- */
+@media (max-width: 768px) {
+    #hero-termosponge .hero-producto-textos {
+        gap: 1.2rem;
+        align-items: center;   /* Centra horizontalmente cada bloque hijo */
+        text-align: center;
+    }
+
+    /* Zoom + encuadre más hacia la derecha de la imagen */
+    #hero-termosponge .hero-producto-img {
+        object-position: 86.5% center;
+        transform: scale(1);
+    }
+
+    /* Título centrado */
+    #hero-termosponge .hero-termosponge-titulo {
+        font-size: 1.9rem;
+        text-align: center;
+    }
+
+    /* Párrafo justificado y centrado horizontalmente */
+    #hero-termosponge .hero-termosponge-parrafo {
+        max-width: 100%;
+        text-align: justify;
+        text-align-last: left;   /* Última línea pegada a la izquierda */
+    }
+}
+
+/* =========================================
+   PÁGINA PRODUCTO: FIBRA ANTIRRESIDUOS (#414141)
+========================================= */
+
+/* --- HERO: contenedor de textos --- */
+#hero-fibra .hero-producto-textos {
+    max-width: 43rem;   /* Igual que las páginas anteriores */
+    gap: 1.8rem;        /* Separación vertical uniforme entre elementos */
+    margin-top: -12rem;
+}
+
+/* Título (Athelas, weight 500, negro) */
+#hero-fibra .hero-fibra-titulo {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-negro);
+    font-weight: 600;
+    font-size: clamp(2rem, 3.08vw, 3.7rem);
+    line-height: 1.1;
+    margin: 0;
+    text-align: left;
+}
+
+/* Párrafo (Montserrat, weight 500, negro) */
+#hero-fibra .hero-fibra-parrafo {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-weight: 500;
+    font-size: clamp(1rem, 1.5vw, 1.8rem);
+    line-height: 1.30;
+    /* ← Ajusta este valor para controlar el ancho máximo del párrafo */
+    max-width: 40rem;
+    margin: 0;
+    text-align: left;
+}
+
+/* --- CONTACTO: botón + sombra de la imagen --- */
+.seccion-contacto.tema-producto#contacto-fibra .btn-enviar-form {
+    background-color: #414141;
+}
+.seccion-contacto.tema-producto#contacto-fibra .btn-enviar-form:hover {
+    background-color: #1f1f1f; /* Gris más oscuro para el hover */
+}
+.seccion-contacto.tema-producto#contacto-fibra .visual-wrapper::after {
+    background-color: #414141;
+}
+
+/* --- FOOTER --- */
+footer.footer-sponya.tema-producto#footer-fibra {
+    background-color: #414141;
+}
+
+/* --- RESPONSIVE MÓVIL --- */
+@media (max-width: 768px) {
+    #hero-fibra .hero-producto-textos {
+        margin-top: 0;
+        gap: 1.2rem;
+        align-items: center;   /* Centra horizontalmente cada bloque hijo */
+        text-align: center;
+    }
+
+    /* Zoom + encuadre más hacia la derecha de la imagen */
+    #hero-fibra .hero-producto-img {
+        object-position: 88% center;
+        transform: scale(1.1);
+    }
+
+    /* Título centrado */
+    #hero-fibra .hero-fibra-titulo {
+        font-size: 1.9rem;
+        text-align: center;
+    }
+
+    /* Párrafo justificado y centrado horizontalmente */
+    #hero-fibra .hero-fibra-parrafo {
+        max-width: 100%;
+        text-align: justify;
+        text-align-last: left;   /* Última línea pegada a la izquierda */
     }
 }
