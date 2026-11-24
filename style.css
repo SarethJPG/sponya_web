@@ -4187,3 +4187,191 @@ footer.footer-sponya.tema-producto#footer-fibra {
         text-align-last: left;   /* Última línea pegada a la izquierda */
     }
 }
+
+/* =========================================
+   SECCIÓN: PÁGINA NO ENCONTRADA (404)
+========================================= */
+.seccion-404 {
+    background-color: var(--color-blanco);
+    width: 100%;
+    /* Compensa la navbar fija y garantiza altura mínima cómoda */
+    margin-top: 6.5rem;
+    min-height: calc(100vh - 6.5rem);
+    padding: 5rem 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor de dos columnas (texto + visual) */
+.contenedor-404 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+    width: 100%;
+    max-width: 80rem;
+}
+
+/* --- Columna Izquierda: Textos --- */
+.columna-404-textos {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Número 404 gigante en Athelas verde (sello visual de la marca) */
+.titulo-404 {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-verde);
+    font-size: 11rem;
+    line-height: 0.9;
+    font-weight: normal;
+    letter-spacing: -0.3rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Línea decorativa verde (misma estética que la del Hero) */
+.linea-404 {
+    width: 4rem;
+    height: 0.25rem;
+    background-color: var(--color-verde);
+    margin-bottom: 1.5rem;
+}
+
+/* Subtítulo: "Página no encontrada" */
+.subtitulo-404 {
+    font-family: var(--fuente-secundaria);
+    color: var(--color-negro);
+    font-size: 2.8rem;
+    font-weight: normal;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+/* Párrafos descriptivos */
+.parrafo-404 {
+    font-family: var(--fuente-principal);
+    color: var(--color-negro);
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.65;
+    max-width: 34rem;
+    margin-bottom: 1.2rem;
+}
+
+.parrafo-404-secundario {
+    font-weight: 400;
+    color: #5a5a5a;
+    margin-bottom: 2.5rem;
+}
+
+/* Botón de retorno (extiende .btn-hero) */
+.btn-404 {
+    font-size: 1.1rem;
+    padding: 0.9rem 2.6rem;
+}
+
+/* --- Columna Derecha: Visual del Guante --- */
+.columna-404-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-404 {
+    width: 100%;
+    max-width: 32rem;
+    height: auto;
+    max-height: 34rem;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.12));
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVO 404)
+========================================= */
+
+/* Adaptación para pantallas medianas (Laptops pequeñas / Tablets) */
+@media (max-width: 1024px) {
+    .seccion-404 {
+        padding: 4rem 5%;
+    }
+    .titulo-404 {
+        font-size: 8rem;
+        letter-spacing: -0.2rem;
+    }
+    .subtitulo-404 {
+        font-size: 2.2rem;
+    }
+    .parrafo-404 {
+        font-size: 1rem;
+    }
+}
+
+/* =========================================
+   ADAPTACIÓN RESPONSIVA MÓVIL (404)
+========================================= */
+@media (max-width: 768px) {
+    /* 1. Altura natural (la sección crece con el contenido) */
+    .seccion-404 {
+        margin-top: 5rem;
+        min-height: auto;
+        padding: 3rem 6%;
+    }
+
+    /* 2. Apilado vertical centrado */
+    .contenedor-404 {
+        flex-direction: column;
+        gap: 2.5rem;
+        text-align: center;
+    }
+
+    .columna-404-textos {
+        align-items: center;
+        width: 100%;
+    }
+
+    /* 3. Número 404 proporcionado al viewport móvil */
+    .titulo-404 {
+        font-size: 7rem;
+        letter-spacing: -0.15rem;
+        margin-bottom: 0.8rem;
+    }
+
+    /* 4. Línea centrada */
+    .linea-404 {
+        width: 3rem;
+        height: 0.2rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .subtitulo-404 {
+        font-size: 1.9rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .parrafo-404 {
+        font-size: 0.95rem;
+        line-height: 1.55;
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .parrafo-404-secundario {
+        margin-bottom: 2rem;
+    }
+
+    .btn-404 {
+        font-size: 0.95rem;
+        padding: 0.75rem 2rem;
+    }
+
+    /* 5. Visual debajo del texto (más pequeño para no dominar la pantalla) */
+    .img-404 {
+        max-width: 20rem;
+        max-height: 22rem;
+    }
+}
